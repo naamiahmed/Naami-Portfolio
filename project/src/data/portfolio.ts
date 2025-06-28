@@ -41,20 +41,20 @@ export const projects: Project[] = [
   },
   {
     id: '3',
-    title: 'E-Commerce Platform',
-    description: 'Full-stack e-commerce solution with real-time inventory and payment processing.',
-    techStack: ['React', 'Node.js', 'MongoDB', 'Stripe', 'Redux'],
-    githubUrl: 'https://github.com/username/ecommerce-platform',
-    demoUrl: 'https://demo.example.com',
+    title: 'TrekTempo (Smart Travel app for Sri Lanka )',
+    description: 'A comprehensive travel app that enables users to plan trips, explore destinations, and manage events and accommodations.Key Features - Trip planning based on budget type , Explore and add events and destinations ,Add and manage accommodation options',
+    techStack: ['Flutter', 'Node.js', 'Express.js', 'JavaScript', 'HTML', 'CSS', 'React', 'MongoDB', 'AWS EC2'],
+    githubUrl: 'https://github.com/naamiahmed/TrekTempo',
+    // demoUrl: 'https://demo.example.com',
     category: 'development'
   },
   {
     id: '4',
-    title: 'Task Management App',
-    description: 'Cross-platform task management application with real-time collaboration features.',
-    techStack: ['Flutter', 'Firebase', 'Node.js', 'WebSocket', 'MongoDB'],
-    githubUrl: 'https://github.com/username/task-manager',
-    demoUrl: 'https://task-demo.example.com',
+    title: 'Busify (Ticket Booking Managements System)',
+    description: 'Developed a web application for bus ticket booking with real-time tracking of bus locations.',
+    techStack: ['HTML', 'CSS', 'JavaScript', 'PHP', 'MySQL'],
+    githubUrl: 'https://github.com/naamiahmed/Busify',
+    // demoUrl: 'https://task-demo.example.com',
     category: 'development'
   }
 ];

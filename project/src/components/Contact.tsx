@@ -1,6 +1,7 @@
 import React, { useState } from 'react';
 import { Mail, Linkedin, Send, MapPin, CheckCircle, AlertCircle, Loader2, Facebook, Instagram, ExternalLink } from 'lucide-react';
 import { personalInfo } from '../data/portfolio';
+import { useGoogleAnalytics } from '../hooks/useGoogleAnalytics';
 
 const Contact: React.FC = () => {
   const [formData, setFormData] = useState({
@@ -11,6 +12,7 @@ const Contact: React.FC = () => {
   const [isSubmitting, setIsSubmitting] = useState(false);
   const [submitStatus, setSubmitStatus] = useState<'idle' | 'success' | 'error'>('idle');
   const [submitMessage, setSubmitMessage] = useState('');
+  const { trackEvent } = useGoogleAnalytics();
 
   // Social media links - you can update these with your actual profiles
   const socialLinks = {
@@ -25,6 +27,9 @@ const Contact: React.FC = () => {
     setIsSubmitting(true);
     setSubmitStatus('idle');
     setSubmitMessage('');
+
+    // Track form submission attempt
+    trackEvent('form_submit', 'contact', 'contact_form');
 
     try {
       const response = await fetch('https://formspree.io/f/xzzgykpg', {
@@ -43,12 +48,16 @@ const Contact: React.FC = () => {
         setSubmitStatus('success');
         setSubmitMessage('Thank you! Your message has been sent successfully.');
         setFormData({ name: '', email: '', message: '' });
+        // Track successful form submission
+        trackEvent('form_success', 'contact', 'contact_form');
       } else {
         throw new Error('Failed to send message');
       }
     } catch (error) {
       setSubmitStatus('error');
       setSubmitMessage('Sorry, there was an error sending your message. Please try again.');
+      // Track form submission error
+      trackEvent('form_error', 'contact', 'contact_form');
     } finally {
       setIsSubmitting(false);
     }
@@ -59,6 +68,10 @@ const Contact: React.FC = () => {
       ...formData,
       [e.target.name]: e.target.value
     });
+  };
+
+  const handleSocialLinkClick = (platform: string) => {
+    trackEvent('social_link_click', 'engagement', platform);
   };
 
   return (
@@ -83,6 +96,7 @@ const Contact: React.FC = () => {
               <div className="space-y-4">
                 <a
                   href={`mailto:${personalInfo.email}`}
+                  onClick={() => trackEvent('email_click', 'contact', 'email')}
                   className="flex items-center space-x-4 p-4 bg-white dark:bg-gray-900 rounded-lg hover:shadow-md transition-all duration-300 hover:-translate-y-1"
                 >
                   <div className="w-12 h-12 bg-gray-100 dark:bg-gray-700 rounded-lg flex items-center justify-center transition-colors duration-300">
@@ -96,6 +110,7 @@ const Contact: React.FC = () => {
 
                 <a
                   href={personalInfo.linkedin}
+                  onClick={() => trackEvent('social_link_click', 'engagement', 'linkedin')}
                   className="flex items-center space-x-4 p-4 bg-white dark:bg-gray-900 rounded-lg hover:shadow-md transition-all duration-300 hover:-translate-y-1"
                 >
                   <div className="w-12 h-12 bg-gray-100 dark:bg-gray-700 rounded-lg flex items-center justify-center transition-colors duration-300">
@@ -129,6 +144,7 @@ const Contact: React.FC = () => {
                   href={socialLinks.facebook}
                   target="_blank"
                   rel="noopener noreferrer"
+                  onClick={() => handleSocialLinkClick('facebook')}
                   className="flex items-center space-x-3 p-3 bg-white dark:bg-gray-900 rounded-lg hover:shadow-md transition-all duration-300 hover:-translate-y-1"
                 >
                   <div className="w-10 h-10 bg-blue-100 dark:bg-blue-900/20 rounded-lg flex items-center justify-center transition-colors duration-300">
@@ -145,6 +161,7 @@ const Contact: React.FC = () => {
                   href={socialLinks.instagram}
                   target="_blank"
                   rel="noopener noreferrer"
+                  onClick={() => handleSocialLinkClick('instagram')}
                   className="flex items-center space-x-3 p-3 bg-white dark:bg-gray-900 rounded-lg hover:shadow-md transition-all duration-300 hover:-translate-y-1"
                 >
                   <div className="w-10 h-10 bg-pink-100 dark:bg-pink-900/20 rounded-lg flex items-center justify-center transition-colors duration-300">
@@ -161,6 +178,7 @@ const Contact: React.FC = () => {
                   href={socialLinks.medium}
                   target="_blank"
                   rel="noopener noreferrer"
+                  onClick={() => handleSocialLinkClick('medium')}
                   className="flex items-center space-x-3 p-3 bg-white dark:bg-gray-900 rounded-lg hover:shadow-md transition-all duration-300 hover:-translate-y-1"
                 >
                   <div className="w-10 h-10 bg-green-100 dark:bg-green-900/20 rounded-lg flex items-center justify-center transition-colors duration-300">
@@ -179,6 +197,7 @@ const Contact: React.FC = () => {
                   href={socialLinks.devto}
                   target="_blank"
                   rel="noopener noreferrer"
+                  onClick={() => handleSocialLinkClick('devto')}
                   className="flex items-center space-x-3 p-3 bg-white dark:bg-gray-900 rounded-lg hover:shadow-md transition-all duration-300 hover:-translate-y-1"
                 >
                   <div className="w-10 h-10 bg-gray-100 dark:bg-gray-700 rounded-lg flex items-center justify-center transition-colors duration-300">

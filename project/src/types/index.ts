@@ -31,6 +31,18 @@ export interface Education {
   description?: string;
 }
 
+export interface Experience {
+  id: string;
+  position: string;
+  company: string;
+  location: string;
+  duration: string;
+  description: string;
+  achievements: string[];
+  technologies: string[];
+  categories: ('devops' | 'development' | 'fullstack')[];
+}
+
 export interface Certificate {
   id: string;
   name: string;

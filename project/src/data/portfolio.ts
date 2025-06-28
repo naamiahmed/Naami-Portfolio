@@ -1,4 +1,4 @@
-import { Skill, Project, BlogPost, Education, Certificate, Volunteering } from '../types';
+import { Skill, Project, BlogPost, Education, Experience, Certificate, Volunteering } from '../types';
 
 export const devopsSkills: Skill[] = [
   { name: 'Docker', level: 'Advanced' },
@@ -122,6 +122,53 @@ export const education: Education[] = [
   }
 ];
 
+export const experience: Experience[] = [
+  // {
+  //   id: '1',
+  //   position: 'Senior DevOps Engineer',
+  //   company: 'TechCorp Solutions',
+  //   location: 'San Francisco, CA',
+  //   duration: '2023 - Present',
+  //   description: 'Leading infrastructure automation and cloud migration initiatives for enterprise clients.',
+  //   achievements: [
+  //     'Reduced deployment time by 70% through CI/CD pipeline optimization',
+  //     'Implemented multi-cloud strategy saving $200K annually in infrastructure costs',
+  //     'Led team of 5 engineers in Kubernetes migration project',
+  //     'Improved system reliability achieving 99.9% uptime'
+  //   ],
+  //   technologies: ['AWS', 'Kubernetes', 'Docker', 'Terraform', 'Jenkins', 'GitHub Actions', 'Python', 'Bash'],
+  //   category: 'devops'
+  // },
+  {
+    id: '2',
+    position: 'Intern Software Engineer',
+    company: 'EverestX Technologies',
+    location: 'Sri Lanka, Colombo',
+    duration: 'Jan 2025 - Present',
+    description: 'Developed and maintained web applications using React with TypeScript for a scalable and efficient frontend. Worked on cloud infrastructure, utilizing AWS RDS, Lambda, EC2, and Nginx for deployment and backend optimization.',
+    achievements: [
+    ],
+    technologies: ['React', 'Angular', 'TypeScript', 'PostgreSQL', 'Nginx', 'Docker', 'AWS'],
+    categories: ['development', 'devops']
+  },
+  // {
+  //   id: '3',
+  //   position: 'Software Engineer',
+  //   company: 'StartupHub',
+  //   location: 'Austin, TX',
+  //   duration: '2020 - 2021',
+  //   description: 'Contributed to early-stage startup developing mobile-first web applications.',
+  //   achievements: [
+  //     'Developed MVP features that helped secure $2M in funding',
+  //     'Built responsive UI components used across 5 different applications',
+  //     'Implemented automated testing increasing code coverage to 85%',
+  //     'Collaborated with design team to improve user experience'
+  //   ],
+  //   technologies: ['React', 'JavaScript', 'Flutter', 'Firebase', 'Git', 'Jest', 'Figma'],
+  //   category: 'development'
+  // }
+];
+
 export const certificates: Certificate[] = [
   {
     id: '1',
@@ -239,10 +286,10 @@ export const personalInfo = {
   name: 'Naami Ahmed',
   title: 'Full-Stack & DevOps Enthusiast',
   summary: 'Passionate about building scalable solutions and optimizing development workflows.',
-  email: 'mailto:naamiahmed27@gmail.com',
-  linkedin: 'https://www.linkedin.com/in/naami-ahmed/',
+  email: 'naamiahmed@gmail.com',
+  linkedin: 'https://linkedin.com/in/naamiahmed',
   github: 'https://github.com/naamiahmed',
   about: `Hello! I'm Naami Ahmed, an enthusiastic IT undergraduate at the Institute of Technology, University of Moratuwa, Sri Lanka. I specialize in DevOps, Full-Stack Web Development, and Cloud Technologies.
-I’m passionate about building scalable software and systems, contributing to open-source, and learning modern cloud-native tools. My goal is to become a skilled software engineer who can create impactful digital solutions.
+I'm passionate about building scalable software and systems, contributing to open-source, and learning modern cloud-native tools. My goal is to become a skilled software engineer who can create impactful digital solutions.
 `
 };

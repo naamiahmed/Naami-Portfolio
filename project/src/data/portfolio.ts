@@ -25,10 +25,10 @@ export const developmentSkills: Skill[] = [
 export const projects: Project[] = [
   {
     id: '1',
-    title: 'Multi-Cloud Infrastructure',
-    description: 'Automated deployment pipeline with Terraform and Kubernetes for multi-cloud environments.',
-    techStack: ['Terraform', 'Kubernetes', 'AWS', 'Docker', 'GitHub Actions'],
-    githubUrl: 'https://github.com/username/multi-cloud-infra',
+    title: 'AWS RDS Cost Optimization Using Serverless Automation',
+    description: 'Designed and implemented an automated cost-optimization solution for AWS RDS using **AWS Lambda, CloudFormation, and CloudWatch Logs**. This serverless function automatically starts and stops the RDS instance based on scheduled times, reducing unnecessary billing costs during idle periods.',
+    techStack: ['AWS Lambda', 'RDS', 'IAM', 'CloudFormation', 'CloudWatch'],
+    // githubUrl: 'https://github.com/username/multi-cloud-infra',
     category: 'devops'
   },
   {
@@ -36,7 +36,7 @@ export const projects: Project[] = [
     title: 'CI/CD Pipeline Optimization',
     description: 'Reduced deployment time by 70% using advanced CI/CD techniques and containerization.',
     techStack: ['Jenkins', 'Docker', 'AWS', 'Bash', 'Monitoring'],
-    githubUrl: 'https://github.com/username/cicd-optimization',
+    // githubUrl: 'https://github.com/username/cicd-optimization',
     category: 'devops'
   },
   {
@@ -230,53 +230,54 @@ export const certificates: Certificate[] = [
 export const volunteering: Volunteering[] = [
   {
     id: '1',
-    organization: 'Code for Good',
-    role: 'Technical Lead',
-    duration: '2022 - Present',
-    description: 'Leading development teams to create technology solutions for non-profit organizations.',
+    organization: 'Amazon Web Services (AWS)',
+    role: 'AWS Cloud Club Captain - ITUM',
+    duration: '2025 - Present',
+    description: 'Selected as the AWS Cloud Club Captain for the Institute of Technology, University of Moratuwa. Led technical workshops, cloud study sessions, and helped peers get started with AWS fundamentals.',
     impact: [
-      'Developed 3 web applications for local charities',
-      'Mentored 15+ junior developers',
-      'Reduced operational costs by 40% through automation'
+      'Organized cloud bootcamps, webinars, and lab sessions',
+      'Mentored students on AWS best practices and certifications',
+      'Coordinated with AWS community leaders to run cloud events'
     ],
-    skills: ['React', 'Node.js', 'Leadership', 'Project Management', 'Mentoring']
+    skills: ['Team coordination', 'Public speaking', 'Event planning', 'Mentorship', 'Time management', 'Community building']
   },
   {
     id: '2',
-    organization: 'Tech Mentorship Program',
-    role: 'Senior Mentor',
-    duration: '2021 - Present',
-    description: 'Providing technical guidance and career advice to students and early-career professionals.',
+    organization: 'Microsoft',
+    role: 'Microsoft Learn Student Ambassador (MLSA)',
+    duration: '2024 - Present',
+    description: 'Microsoft Learn Student Ambassador (MLSA) is a program that provides students with the opportunity to learn about Microsoft technologies and become ambassadors for Microsoft. I was selected as a Microsoft Learn Student Ambassador for the Institute of Technology, University of Moratuwa.',
     impact: [
-      'Mentored 25+ students in software development',
-      'Conducted 50+ technical workshops',
-      'Helped 8 mentees secure their first tech jobs'
+      'Participated in Microsoft Learn Student Ambassador program',
+      'Attended Microsoft events and webinars',
+      'Promoted open-source contribution and learning culture'
     ],
-    skills: ['Teaching', 'Communication', 'Career Development', 'Technical Writing']
+    skills: ['Azure Functions', 'CI/CD pipelines', 'Technical presentation', 'Support for juniors', 'Hosting events', 'Managing student groups']
   },
-  {
-    id: '3',
-    organization: 'Open Source Community',
-    role: 'Contributor & Maintainer',
-    duration: '2020 - Present',
-    description: 'Active contributor to various open-source projects, focusing on DevOps tools and developer experience.',
-    impact: [
-      'Contributed to 10+ open-source projects',
-      'Maintained 3 popular developer tools',
-      'Created documentation used by 1000+ developers'
-    ],
-    skills: ['Git', 'Documentation', 'Community Building', 'Code Review']
-  },
+  // {
+  //   id: '3',
+  //   organization: 'Open Source Community',
+  //   role: 'Contributor & Maintainer',
+  //   duration: '2020 - Present',
+  //   description: 'Active contributor to various open-source projects, focusing on DevOps tools and developer experience.',
+  //   impact: [
+  //     'Contributed to 10+ open-source projects',
+  //     'Maintained 3 popular developer tools',
+  //     'Created documentation used by 1000+ developers'
+  //   ],
+  //   skills: ['Git', 'Documentation', 'Community Building', 'Code Review']
+  // },
   {
     id: '4',
-    organization: 'Local Developer Meetup',
-    role: 'Organizer & Speaker',
+    organization: 'Bakinigahwela Undergraduates Association',
+    role: 'Vice President',
     duration: '2021 - Present',
-    description: 'Organizing monthly tech meetups and delivering technical presentations on modern development practices.',
+    description: 'Actively involved in planning, coordinating, and managing various academic, technical, and cultural events to support student engagement and leadership.',
     impact: [
-      'Organized 20+ successful meetups',
-      'Delivered 15 technical presentations',
-      'Built a community of 200+ developers'
+      'Assisted the President in leading the student body and committees',
+      'Coordinated events such as workshops, tech talks, and competitions',
+      'Supported students through mentoring and organizing awareness sessions',
+      'Collaborated with external speakers, sponsors, and university staff'
     ],
     skills: ['Public Speaking', 'Event Planning', 'Networking', 'Community Management']
   }

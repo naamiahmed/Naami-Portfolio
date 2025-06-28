@@ -101,24 +101,24 @@ export const blogPosts: BlogPost[] = [
 export const education: Education[] = [
   {
     id: '1',
-    course: 'Bachelor of Science in Computer Science',
-    university: 'University of Technology',
-    year: '2020-2024',
-    description: 'Specialized in Software Engineering and Cloud Computing'
+    course: 'BSc (Hons) Computing Science in Software Engineering (TOP UP)',
+    university: 'Kingston University (Esoft)',
+    year: 'Apr 2025 - Present',
+    // description: 'Specialized in Software Engineering and Cloud Computing'
   },
   {
     id: '2',
-    course: 'AWS Certified Solutions Architect',
-    university: 'Amazon Web Services',
-    year: '2023',
-    description: 'Professional certification in cloud architecture and services'
+    course: 'National Diploma in Technology (NDT)- Information Technology',
+    university: 'Institute of Technology, University of Moratuwa',
+    year: 'Dec 2022 - Present',
+    // description: 'Professional certification in cloud architecture and services'
   },
   {
     id: '3',
-    course: 'Certified Kubernetes Application Developer',
-    university: 'Cloud Native Computing Foundation',
-    year: '2023',
-    description: 'Expertise in Kubernetes application development and deployment'
+    course: 'Diploma in Computer Science',
+    university: 'KDMC Nenasala Training Centre - Kalmunai',
+    year: 'Mar 2022 - Mar 2023',
+    // description: 'Expertise in Kubernetes application development and deployment'
   }
 ];
 
@@ -236,15 +236,13 @@ export const volunteering: Volunteering[] = [
 ];
 
 export const personalInfo = {
-  name: 'Alex Johnson',
+  name: 'Naami Ahmed',
   title: 'Full-Stack & DevOps Enthusiast',
   summary: 'Passionate about building scalable solutions and optimizing development workflows.',
-  email: 'alex.johnson@example.com',
-  linkedin: 'https://linkedin.com/in/alexjohnson',
-  github: 'https://github.com/alexjohnson',
-  about: `I'm a dedicated software engineer with a strong foundation in both development and DevOps practices. 
-  My journey began with a Computer Science degree where I discovered my passion for creating efficient, 
-  scalable solutions. I love the intersection of development and operations, finding innovative ways to 
-  streamline processes and improve system reliability. When I'm not coding, you'll find me exploring 
-  new cloud technologies or contributing to open-source projects.`
+  email: 'mailto:naamiahmed27@gmail.com',
+  linkedin: 'https://www.linkedin.com/in/naami-ahmed/',
+  github: 'https://github.com/naamiahmed',
+  about: `Hello! I'm Naami Ahmed, an enthusiastic IT undergraduate at the Institute of Technology, University of Moratuwa, Sri Lanka. I specialize in DevOps, Full-Stack Web Development, and Cloud Technologies.
+I’m passionate about building scalable software and systems, contributing to open-source, and learning modern cloud-native tools. My goal is to become a skilled software engineer who can create impactful digital solutions.
+`
 };

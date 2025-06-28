@@ -79,10 +79,10 @@ const Hero: React.FC = () => {
 
             {/* CTA Button */}
             <button 
-              onClick={scrollToAbout}
+              onClick={() => window.open('https://drive.google.com/file/d/1RXe1kNi0SUwlEmemiJaT8QXCcMS5GY9D/view?usp=sharing', '_blank')}
               className="bg-gray-900 dark:bg-white text-white dark:text-gray-900 px-8 py-4 rounded-lg font-semibold hover:bg-gray-800 dark:hover:bg-gray-100 transition-all duration-300 shadow-lg hover:shadow-xl hover:-translate-y-1"
             >
-              View My Work
+              View My Resume
             </button>
           </div>
         </div>

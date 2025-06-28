@@ -1,6 +1,5 @@
 export interface Skill {
   name: string;
-  level: 'Beginner' | 'Intermediate' | 'Advanced' | 'Expert';
 }
 
 export interface Project {
@@ -29,6 +28,39 @@ export interface Education {
   university: string;
   year: string;
   description?: string;
+}
+
+export interface Experience {
+  id: string;
+  position: string;
+  company: string;
+  location: string;
+  duration: string;
+  description: string;
+  achievements: string[];
+  technologies: string[];
+  categories: ('devops' | 'development' | 'fullstack')[];
+}
+
+export interface Certificate {
+  id: string;
+  name: string;
+  issuer: string;
+  issueDate: string;
+  expiryDate?: string;
+  credentialId?: string;
+  credentialUrl?: string;
+  category: 'devops' | 'development' | 'other';
+}
+
+export interface Volunteering {
+  id: string;
+  organization: string;
+  role: string;
+  duration: string;
+  description: string;
+  impact: string[];
+  skills: string[];
 }
 
 export type ToggleState = 'devops' | 'development';

@@ -1,6 +1,7 @@
 import React from 'react';
-import { Github, Linkedin, Mail, User, ChevronDown } from 'lucide-react';
+import { Github, Linkedin, Mail, ChevronDown } from 'lucide-react';
 import { personalInfo } from '../data/portfolio';
+import profileImage from '../assets/profile-image.jpg';
 
 const Hero: React.FC = () => {
   const scrollToAbout = () => {
@@ -17,11 +18,28 @@ const Hero: React.FC = () => {
           {/* Left side - Professional Image */}
           <div className="flex justify-center lg:justify-start animate-fade-in-left">
             <div className="relative">
-              <div className="w-80 h-80 lg:w-96 lg:h-96 bg-gradient-to-br from-gray-200 to-gray-300 dark:from-gray-700 dark:to-gray-600 rounded-2xl flex items-center justify-center shadow-2xl transition-colors duration-300">
-                <User className="w-32 h-32 text-gray-500 dark:text-gray-400 opacity-60" />
+              <div className="w-80 h-80 lg:w-96 lg:h-96 bg-gradient-to-br from-gray-200 to-gray-300 dark:from-gray-700 dark:to-gray-600 rounded-2xl overflow-hidden shadow-2xl transition-colors duration-300">
+                {/* Professional headshot image */}
+                <img
+                  src={profileImage}
+                  alt="Professional headshot"
+                  className="w-full h-full object-cover"
+                  onError={(e) => {
+                    // Fallback to placeholder if image fails to load
+                    const target = e.target as HTMLImageElement;
+                    target.style.display = 'none';
+                    target.parentElement!.innerHTML = `
+                      <div class="w-full h-full flex items-center justify-center">
+                        <svg class="w-32 h-32 text-gray-500 dark:text-gray-400 opacity-60" fill="currentColor" viewBox="0 0 24 24">
+                          <path d="M12 12c2.21 0 4-1.79 4-4s-1.79-4-4-4-4 1.79-4 4 1.79 4 4 4zm0 2c-2.67 0-8 1.34-8 4v2h16v-2c0-2.66-5.33-4-8-4z"/>
+                        </svg>
+                      </div>
+                    `;
+                  }}
+                />
               </div>
               <div className="absolute -bottom-4 -right-4 w-24 h-24 bg-gray-900 dark:bg-white rounded-xl flex items-center justify-center shadow-lg transition-colors duration-300">
-                <span className="text-white dark:text-gray-900 font-bold text-2xl">AJ</span>
+                <span className="text-white dark:text-gray-900 font-bold text-2xl"></span>
               </div>
             </div>
           </div>
@@ -62,10 +80,10 @@ const Hero: React.FC = () => {
 
             {/* CTA Button */}
             <button 
-              onClick={scrollToAbout}
+              onClick={() => window.open('https://drive.google.com/file/d/1RXe1kNi0SUwlEmemiJaT8QXCcMS5GY9D/view?usp=sharing', '_blank')}
               className="bg-gray-900 dark:bg-white text-white dark:text-gray-900 px-8 py-4 rounded-lg font-semibold hover:bg-gray-800 dark:hover:bg-gray-100 transition-all duration-300 shadow-lg hover:shadow-xl hover:-translate-y-1"
             >
-              View My Work
+              View My Resume
             </button>
           </div>
         </div>

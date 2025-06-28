@@ -288,7 +288,7 @@ export const personalInfo = {
   name: 'Naami Ahmed',
   title: 'Full-Stack & DevOps Enthusiast',
   summary: 'Passionate about building scalable solutions and optimizing development workflows.',
-  email: 'naamiahmed@gmail.com',
+  email: 'naamiahmed27@gmail.com',
   linkedin: 'https://linkedin.com/in/naamiahmed',
   github: 'https://github.com/naamiahmed',
   about: `Hello! I'm Naami Ahmed, an enthusiastic IT undergraduate at the Institute of Technology, University of Moratuwa, Sri Lanka. I specialize in DevOps, Full-Stack Web Development, and Cloud Technologies.

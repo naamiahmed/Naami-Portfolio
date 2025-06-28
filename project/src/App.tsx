@@ -1,6 +1,7 @@
-import React, { useState } from 'react';
+import React, { useState, useEffect } from 'react';
 import { ToggleState } from './types';
 import { ThemeProvider } from './contexts/ThemeContext';
+import { useGoogleAnalytics } from './hooks/useGoogleAnalytics';
 import Navbar from './components/Navbar';
 import Hero from './components/Hero';
 import About from './components/About';
@@ -15,10 +16,41 @@ import Contact from './components/Contact';
 
 function App() {
   const [activeToggle, setActiveToggle] = useState<ToggleState>('devops');
+  const { trackPageView, trackEvent } = useGoogleAnalytics();
+
+  // Track initial page view
+  useEffect(() => {
+    trackPageView('Naami Ahmed - Portfolio', window.location.href);
+  }, [trackPageView]);
 
   const handleToggle = (state: ToggleState) => {
     setActiveToggle(state);
+    // Track toggle interactions
+    trackEvent('toggle_section', 'navigation', state);
   };
+
+  // Track section visibility when scrolling
+  useEffect(() => {
+    const observer = new IntersectionObserver(
+      (entries) => {
+        entries.forEach((entry) => {
+          if (entry.isIntersecting) {
+            const sectionName = entry.target.id;
+            if (sectionName) {
+              trackEvent('section_view', 'engagement', sectionName);
+            }
+          }
+        });
+      },
+      { threshold: 0.5 }
+    );
+
+    // Observe all sections
+    const sections = document.querySelectorAll('section[id]');
+    sections.forEach((section) => observer.observe(section));
+
+    return () => observer.disconnect();
+  }, [trackEvent]);
 
   return (
     <ThemeProvider>

@@ -84,7 +84,7 @@ const Volunteering: React.FC = () => {
         </div>
 
         {/* Community Stats */}
-        <div className="mt-16">
+        {/* <div className="mt-16">
           <div className={`text-center mb-8 ${isDark ? 'text-white' : 'text-gray-900'}`}>
             <h3 className="text-2xl font-bold mb-2">Community Impact Summary</h3>
             <p className={`text-lg ${isDark ? 'text-gray-300' : 'text-gray-600'}`}>
@@ -137,7 +137,7 @@ const Volunteering: React.FC = () => {
               </div>
             </div>
           </div>
-        </div>
+        </div> */}
       </div>
     </section>
   );

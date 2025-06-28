@@ -1,6 +1,7 @@
 import React from 'react';
 import { Github, Linkedin, Mail, ChevronDown } from 'lucide-react';
 import { personalInfo } from '../data/portfolio';
+import profileImage from '../assets/profile-image.jpg';
 
 const Hero: React.FC = () => {
   const scrollToAbout = () => {
@@ -18,9 +19,9 @@ const Hero: React.FC = () => {
           <div className="flex justify-center lg:justify-start animate-fade-in-left">
             <div className="relative">
               <div className="w-80 h-80 lg:w-96 lg:h-96 bg-gradient-to-br from-gray-200 to-gray-300 dark:from-gray-700 dark:to-gray-600 rounded-2xl overflow-hidden shadow-2xl transition-colors duration-300">
-                {/* Replace 'profile-image.jpg' with your actual image filename */}
+                {/* Professional headshot image */}
                 <img
-                  src="/profile-image.jpg"
+                  src={profileImage}
                   alt="Professional headshot"
                   className="w-full h-full object-cover"
                   onError={(e) => {
@@ -38,7 +39,7 @@ const Hero: React.FC = () => {
                 />
               </div>
               <div className="absolute -bottom-4 -right-4 w-24 h-24 bg-gray-900 dark:bg-white rounded-xl flex items-center justify-center shadow-lg transition-colors duration-300">
-                <span className="text-white dark:text-gray-900 font-bold text-2xl">AJ</span>
+                <span className="text-white dark:text-gray-900 font-bold text-2xl"></span>
               </div>
             </div>
           </div>

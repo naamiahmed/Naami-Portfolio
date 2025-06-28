@@ -1,25 +1,34 @@
 import { Skill, Project, BlogPost, Education, Experience, Certificate, Volunteering } from '../types';
 
 export const devopsSkills: Skill[] = [
-  { name: 'Docker', level: 'Advanced' },
-  { name: 'AWS', level: 'Advanced' },
-  { name: 'Kubernetes', level: 'Intermediate' },
-  { name: 'CI/CD', level: 'Advanced' },
-  { name: 'Linux', level: 'Expert' },
-  { name: 'GitHub Actions', level: 'Advanced' },
-  { name: 'Terraform', level: 'Intermediate' },
-  { name: 'Jenkins', level: 'Advanced' },
+  { name: 'Docker' },
+  { name: 'Kubernetes' },
+  { name: 'Nginx' },
+  { name: 'Jenkins' },
+  { name: 'GitHub Actions' },
+  { name: 'AWS' },
+  { name: 'Google Cloud' },
+  { name: 'Azure' },
 ];
 
 export const developmentSkills: Skill[] = [
-  { name: 'React', level: 'Advanced' },
-  { name: 'Node.js', level: 'Advanced' },
-  { name: 'TypeScript', level: 'Advanced' },
-  { name: 'Spring Boot', level: 'Intermediate' },
-  { name: 'MongoDB', level: 'Advanced' },
-  { name: 'Flutter', level: 'Intermediate' },
-  { name: 'PostgreSQL', level: 'Advanced' },
-  { name: 'Python', level: 'Intermediate' },
+  { name: 'HTML' },
+  { name: 'CSS' },
+  { name: 'JavaScript' },
+  { name: 'React' },
+  { name: 'Flutter (Dart)' },
+  { name: 'TypeScript' },
+  { name: 'PHP' },
+  { name: 'Node.js' },
+  { name: 'Express.js' },
+  { name: 'Java' },
+  { name: 'Python' },
+  { name: 'MySQL' },
+  { name: 'MongoDB' },
+  { name: 'Git' },
+  { name: 'GitHub' },
+  { name: 'VSCode' },
+  { name: 'Figma' },
 ];
 
 export const projects: Project[] = [
@@ -62,39 +71,39 @@ export const projects: Project[] = [
 export const blogPosts: BlogPost[] = [
   {
     id: '1',
-    title: 'Mastering Docker Multi-Stage Builds',
-    summary: 'Learn how to optimize your Docker images using multi-stage builds and reduce image size by up to 80%.',
+    title: '⚠️ What Happens to Your AWS RDS Instances After Account Suspension?',
+    summary: 'Have you ever wondered what happens to your AWS resources if your account gets suspended — especially your RDS databases?',
     coverImage: 'https://images.pexels.com/photos/1181298/pexels-photo-1181298.jpeg?auto=compress&cs=tinysrgb&w=800',
-    readMoreUrl: '#',
+    readMoreUrl: 'https://dev.to/naamiahmed/what-happens-to-your-aws-rds-instances-after-account-suspensionauthor-naami-ahmed-456c',
     category: 'devops',
-    publishDate: '2024-01-15'
+    publishDate: '2025-06-27'
   },
   {
     id: '2',
-    title: 'Kubernetes Best Practices',
-    summary: 'Essential security and performance practices for production Kubernetes deployments.',
+    title: 'Nginx Configuration on AWS EC2 Deployment',
+    summary: 'This guide explains how to configure an EC2 instance, install Nginx, and set up auto-deployment using GitHub Actions.',
     coverImage: 'https://images.pexels.com/photos/1181673/pexels-photo-1181673.jpeg?auto=compress&cs=tinysrgb&w=800',
-    readMoreUrl: '#',
+    readMoreUrl: 'https://dev.to/naamiahmed/nginx-configuration-on-aws-ec2-deployment-4fbd',
     category: 'devops',
     publishDate: '2024-01-08'
   },
   {
     id: '3',
-    title: 'Building Scalable React Applications',
-    summary: 'Architecture patterns and best practices for building maintainable React applications at scale.',
+    title: 'Automating AWS RDS Management Using IAM, Lambda, CloudWatch, and EventBridge',
+    summary: 'In cloud computing, cost and resource optimization are critical for efficient infrastructure management. AWS provides various services that help automate database management, enhance security, and ensure high availability.',
     coverImage: 'https://images.pexels.com/photos/1181677/pexels-photo-1181677.jpeg?auto=compress&cs=tinysrgb&w=800',
-    readMoreUrl: '#',
-    category: 'development',
-    publishDate: '2024-01-22'
+    readMoreUrl: 'https://medium.com/@naamiahmed/automating-aws-rds-management-using-iam-lambda-cloudwatch-and-eventbridge-6a4aadab6388',
+    category: 'devops',
+    publishDate: '2025-02-28'
   },
   {
     id: '4',
-    title: 'Modern API Design with Node.js',
-    summary: 'Design patterns and tools for creating robust, scalable APIs using Node.js and TypeScript.',
+    title: 'How Java Code Runs on a Computer: From Source Code to Execution',
+    summary: 'Java is a powerful, platform-independent programming language known for its "write once, run anywhere" capability. But how exactly does Java code go from plain text written by a programmer to an executable program running on any computer?',
     coverImage: 'https://images.pexels.com/photos/1181271/pexels-photo-1181271.jpeg?auto=compress&cs=tinysrgb&w=800',
-    readMoreUrl: '#',
+    readMoreUrl: 'https://medium.com/@naamiahmed/how-java-code-runs-on-a-computer-from-source-code-to-execution-b040ad9397d8',
     category: 'development',
-    publishDate: '2024-01-10'
+    publishDate: '2024-11-12'
   }
 ];
 
@@ -172,59 +181,51 @@ export const experience: Experience[] = [
 export const certificates: Certificate[] = [
   {
     id: '1',
-    name: 'AWS Certified Solutions Architect - Associate',
+    name: 'AWS Cloud Club Captain',
     issuer: 'Amazon Web Services',
-    issueDate: '2023-06-15',
-    expiryDate: '2026-06-15',
-    credentialId: 'AWS-123456789',
-    credentialUrl: 'https://aws.amazon.com/verification',
-    category: 'cloud'
+    issueDate: '2025-05-01',
+    // expiryDate: '2026-06-15',
+    // credentialId: 'AWS-123456789',
+    credentialUrl: 'https://www.credly.com/badges/df4185c6-be20-4f6d-b19c-98b962e2bdb6/public_url',
+    category: 'devops'
   },
   {
     id: '2',
-    name: 'Certified Kubernetes Application Developer (CKAD)',
-    issuer: 'Cloud Native Computing Foundation',
-    issueDate: '2023-08-20',
-    credentialId: 'CKAD-987654321',
-    credentialUrl: 'https://www.cncf.io/certification/ckad/',
+    name: 'Getting Started with DevOps on AWS',
+    issuer: 'Amazon Web Services',
+    issueDate: '2024-08-07',
+    // credentialId: 'CKAD-987654321',
+    credentialUrl: 'https://drive.google.com/file/d/1j4dfFSX3sY4ACGOIgp2-WM2xdUtCzGzz/view',
     category: 'devops'
   },
   {
     id: '3',
-    name: 'Docker Certified Associate',
-    issuer: 'Docker Inc.',
-    issueDate: '2023-04-10',
-    expiryDate: '2026-04-10',
-    credentialId: 'DCA-456789123',
+    name: 'DevOps Foundations: Continuous Delivery/Continuous Integration',
+    issuer: 'LinkedIn Learning',
+    issueDate: '2024-07-27',
+    // expiryDate: '2026-04-10',
+    credentialUrl: 'https://www.linkedin.com/learning/certificates/2cf0b9a591f37862b6b36f85391d08f61010a6d50f42f020b1c3561443a3f04c',
     category: 'devops'
   },
   {
     id: '4',
-    name: 'Microsoft Certified: Azure Developer Associate',
+    name: 'Microsoft Learn Student Ambassador',
     issuer: 'Microsoft',
-    issueDate: '2023-11-05',
-    expiryDate: '2026-11-05',
-    credentialId: 'AZ-204-789123456',
-    credentialUrl: 'https://www.microsoft.com/en-us/learning/certification-verification.aspx',
-    category: 'cloud'
+    issueDate: '2025-01-05',
+    // expiryDate: '2026-11-05',
+    // credentialId: 'AZ-204-789123456',
+    credentialUrl: 'https://mvp.microsoft.com/studentambassadors/certificate/1500eca9-440f-4b57-bb57-8928f9744751',
+    category: 'devops'
   },
   {
     id: '5',
-    name: 'Google Cloud Professional Cloud Developer',
+    name: 'Manage Kubernetes in Google Cloud',
     issuer: 'Google Cloud',
-    issueDate: '2023-09-12',
-    expiryDate: '2026-09-12',
-    credentialId: 'GCP-PCD-321654987',
-    category: 'cloud'
+    issueDate: '2024-08-15',
+    // expiryDate: '2026-09-12',
+    credentialUrl: 'https://www.credly.com/badges/e86148c9-618e-4fd8-bdbe-ea1ee45e9b8b/public_url',
+    category: 'devops'
   },
-  {
-    id: '6',
-    name: 'Certified Information Systems Security Professional (CISSP)',
-    issuer: 'ISC²',
-    issueDate: '2023-12-01',
-    credentialId: 'CISSP-147258369',
-    category: 'security'
-  }
 ];
 
 export const volunteering: Volunteering[] = [

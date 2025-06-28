@@ -7,7 +7,7 @@ const Certificates: React.FC = () => {
   const { isDark } = useTheme();
   const [activeFilter, setActiveFilter] = useState<string>('all');
 
-  const categories = ['all', 'devops', 'cloud', 'development', 'security', 'other'];
+  const categories = ['all', 'devops', 'development', 'other'];
   
   const filteredCertificates = activeFilter === 'all' 
     ? certificates 

@@ -1,6 +1,5 @@
 export interface Skill {
   name: string;
-  level: 'Beginner' | 'Intermediate' | 'Advanced' | 'Expert';
 }
 
 export interface Project {
@@ -51,7 +50,7 @@ export interface Certificate {
   expiryDate?: string;
   credentialId?: string;
   credentialUrl?: string;
-  category: 'devops' | 'development' | 'cloud' | 'security' | 'other';
+  category: 'devops' | 'development' | 'other';
 }
 
 export interface Volunteering {

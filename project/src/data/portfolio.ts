@@ -1,4 +1,4 @@
-import { Skill, Project, BlogPost, Education } from '../types';
+import { Skill, Project, BlogPost, Education, Certificate, Volunteering } from '../types';
 
 export const devopsSkills: Skill[] = [
   { name: 'Docker', level: 'Advanced' },
@@ -119,6 +119,119 @@ export const education: Education[] = [
     university: 'Cloud Native Computing Foundation',
     year: '2023',
     description: 'Expertise in Kubernetes application development and deployment'
+  }
+];
+
+export const certificates: Certificate[] = [
+  {
+    id: '1',
+    name: 'AWS Certified Solutions Architect - Associate',
+    issuer: 'Amazon Web Services',
+    issueDate: '2023-06-15',
+    expiryDate: '2026-06-15',
+    credentialId: 'AWS-123456789',
+    credentialUrl: 'https://aws.amazon.com/verification',
+    category: 'cloud'
+  },
+  {
+    id: '2',
+    name: 'Certified Kubernetes Application Developer (CKAD)',
+    issuer: 'Cloud Native Computing Foundation',
+    issueDate: '2023-08-20',
+    credentialId: 'CKAD-987654321',
+    credentialUrl: 'https://www.cncf.io/certification/ckad/',
+    category: 'devops'
+  },
+  {
+    id: '3',
+    name: 'Docker Certified Associate',
+    issuer: 'Docker Inc.',
+    issueDate: '2023-04-10',
+    expiryDate: '2026-04-10',
+    credentialId: 'DCA-456789123',
+    category: 'devops'
+  },
+  {
+    id: '4',
+    name: 'Microsoft Certified: Azure Developer Associate',
+    issuer: 'Microsoft',
+    issueDate: '2023-11-05',
+    expiryDate: '2026-11-05',
+    credentialId: 'AZ-204-789123456',
+    credentialUrl: 'https://www.microsoft.com/en-us/learning/certification-verification.aspx',
+    category: 'cloud'
+  },
+  {
+    id: '5',
+    name: 'Google Cloud Professional Cloud Developer',
+    issuer: 'Google Cloud',
+    issueDate: '2023-09-12',
+    expiryDate: '2026-09-12',
+    credentialId: 'GCP-PCD-321654987',
+    category: 'cloud'
+  },
+  {
+    id: '6',
+    name: 'Certified Information Systems Security Professional (CISSP)',
+    issuer: 'ISC²',
+    issueDate: '2023-12-01',
+    credentialId: 'CISSP-147258369',
+    category: 'security'
+  }
+];
+
+export const volunteering: Volunteering[] = [
+  {
+    id: '1',
+    organization: 'Code for Good',
+    role: 'Technical Lead',
+    duration: '2022 - Present',
+    description: 'Leading development teams to create technology solutions for non-profit organizations.',
+    impact: [
+      'Developed 3 web applications for local charities',
+      'Mentored 15+ junior developers',
+      'Reduced operational costs by 40% through automation'
+    ],
+    skills: ['React', 'Node.js', 'Leadership', 'Project Management', 'Mentoring']
+  },
+  {
+    id: '2',
+    organization: 'Tech Mentorship Program',
+    role: 'Senior Mentor',
+    duration: '2021 - Present',
+    description: 'Providing technical guidance and career advice to students and early-career professionals.',
+    impact: [
+      'Mentored 25+ students in software development',
+      'Conducted 50+ technical workshops',
+      'Helped 8 mentees secure their first tech jobs'
+    ],
+    skills: ['Teaching', 'Communication', 'Career Development', 'Technical Writing']
+  },
+  {
+    id: '3',
+    organization: 'Open Source Community',
+    role: 'Contributor & Maintainer',
+    duration: '2020 - Present',
+    description: 'Active contributor to various open-source projects, focusing on DevOps tools and developer experience.',
+    impact: [
+      'Contributed to 10+ open-source projects',
+      'Maintained 3 popular developer tools',
+      'Created documentation used by 1000+ developers'
+    ],
+    skills: ['Git', 'Documentation', 'Community Building', 'Code Review']
+  },
+  {
+    id: '4',
+    organization: 'Local Developer Meetup',
+    role: 'Organizer & Speaker',
+    duration: '2021 - Present',
+    description: 'Organizing monthly tech meetups and delivering technical presentations on modern development practices.',
+    impact: [
+      'Organized 20+ successful meetups',
+      'Delivered 15 technical presentations',
+      'Built a community of 200+ developers'
+    ],
+    skills: ['Public Speaking', 'Event Planning', 'Networking', 'Community Management']
   }
 ];
 

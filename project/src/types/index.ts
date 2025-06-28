@@ -31,6 +31,27 @@ export interface Education {
   description?: string;
 }
 
+export interface Certificate {
+  id: string;
+  name: string;
+  issuer: string;
+  issueDate: string;
+  expiryDate?: string;
+  credentialId?: string;
+  credentialUrl?: string;
+  category: 'devops' | 'development' | 'cloud' | 'security' | 'other';
+}
+
+export interface Volunteering {
+  id: string;
+  organization: string;
+  role: string;
+  duration: string;
+  description: string;
+  impact: string[];
+  skills: string[];
+}
+
 export type ToggleState = 'devops' | 'development';
 
 export interface ThemeContextType {

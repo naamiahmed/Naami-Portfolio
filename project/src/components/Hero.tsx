@@ -1,5 +1,5 @@
 import React from 'react';
-import { Github, Linkedin, Mail, ChevronDown } from 'lucide-react';
+import { Github, Linkedin, Mail, ChevronDown, Briefcase } from 'lucide-react';
 import { personalInfo } from '../data/portfolio';
 import profileImage from '../assets/profile-image.jpg';
 
@@ -8,6 +8,13 @@ const Hero: React.FC = () => {
     const aboutSection = document.querySelector('#about');
     if (aboutSection) {
       aboutSection.scrollIntoView({ behavior: 'smooth' });
+    }
+  };
+
+  const scrollToServices = () => {
+    const servicesSection = document.querySelector('#services');
+    if (servicesSection) {
+      servicesSection.scrollIntoView({ behavior: 'smooth' });
     }
   };
 
@@ -38,9 +45,9 @@ const Hero: React.FC = () => {
                   }}
                 />
               </div>
-              <div className="absolute -bottom-4 -right-4 w-24 h-24 bg-gray-900 dark:bg-white rounded-xl flex items-center justify-center shadow-lg transition-colors duration-300">
+              {/* <div className="absolute -bottom-4 -right-4 w-24 h-24 bg-gray-900 dark:bg-white rounded-xl flex items-center justify-center shadow-lg transition-colors duration-300">
                 <span className="text-white dark:text-gray-900 font-bold text-2xl"></span>
-              </div>
+              </div> */}
             </div>
           </div>
 
@@ -78,13 +85,22 @@ const Hero: React.FC = () => {
               </a>
             </div>
 
-            {/* CTA Button */}
-            <button 
-              onClick={() => window.open('https://drive.google.com/file/d/1RXe1kNi0SUwlEmemiJaT8QXCcMS5GY9D/view?usp=sharing', '_blank')}
-              className="bg-gray-900 dark:bg-white text-white dark:text-gray-900 px-8 py-4 rounded-lg font-semibold hover:bg-gray-800 dark:hover:bg-gray-100 transition-all duration-300 shadow-lg hover:shadow-xl hover:-translate-y-1"
-            >
-              View My Resume
-            </button>
+            {/* CTA Buttons */}
+            <div className="flex flex-col sm:flex-row gap-4 justify-center lg:justify-start">
+              <button 
+                onClick={() => window.open('https://drive.google.com/file/d/1RXe1kNi0SUwlEmemiJaT8QXCcMS5GY9D/view?usp=sharing', '_blank')}
+                className="bg-gray-900 dark:bg-white text-white dark:text-gray-900 px-8 py-4 rounded-lg font-semibold hover:bg-gray-800 dark:hover:bg-gray-100 transition-all duration-300 shadow-lg hover:shadow-xl hover:-translate-y-1"
+              >
+                View My Resume
+              </button>
+              <button 
+                onClick={scrollToServices}
+                className="bg-blue-600 hover:bg-blue-700 text-white px-8 py-4 rounded-lg font-semibold transition-all duration-300 shadow-lg hover:shadow-xl hover:-translate-y-1 flex items-center justify-center space-x-2"
+              >
+                <Briefcase className="w-5 h-5" />
+                <span>My Services</span>
+              </button>
+            </div>
           </div>
         </div>
 

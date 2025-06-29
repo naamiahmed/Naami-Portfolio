@@ -1,5 +1,5 @@
 import React, { useState } from 'react';
-import { Mail, Linkedin, Send, MapPin, CheckCircle, AlertCircle, Loader2, Facebook, Instagram, ExternalLink } from 'lucide-react';
+import { Mail, Linkedin, Send, MapPin, CheckCircle, AlertCircle, Loader2, Facebook, Instagram, ExternalLink, Youtube } from 'lucide-react';
 import { personalInfo } from '../data/portfolio';
 import { useGoogleAnalytics } from '../hooks/useGoogleAnalytics';
 
@@ -18,6 +18,7 @@ const Contact: React.FC = () => {
   const socialLinks = {
     facebook: 'https://facebook.com/naamiahmed27',
     instagram: 'https://instagram.com/naamiahmed27',
+    youtube: 'https://youtube.com/@NaamiAhmed-27',
     medium: 'https://medium.com/@naamiahmed',
     devto: 'https://dev.to/naamiahmed',
   };
@@ -128,7 +129,7 @@ const Contact: React.FC = () => {
                   </div>
                   <div>
                     <p className="font-medium text-gray-900 dark:text-white transition-colors duration-300">Location</p>
-                    <p className="text-gray-600 dark:text-gray-400 transition-colors duration-300">San Francisco, CA</p>
+                    <p className="text-gray-600 dark:text-gray-400 transition-colors duration-300">Sri Lanka, Colombo</p>
                   </div>
                 </div>
               </div>
@@ -170,6 +171,23 @@ const Contact: React.FC = () => {
                   <div className="flex-1">
                     <p className="font-medium text-gray-900 dark:text-white transition-colors duration-300">Instagram</p>
                     <p className="text-sm text-gray-600 dark:text-gray-400 transition-colors duration-300">Follow me</p>
+                  </div>
+                  <ExternalLink className="w-4 h-4 text-gray-400" />
+                </a>
+
+                <a
+                  href={socialLinks.youtube}
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  onClick={() => handleSocialLinkClick('youtube')}
+                  className="flex items-center space-x-3 p-3 bg-white dark:bg-gray-900 rounded-lg hover:shadow-md transition-all duration-300 hover:-translate-y-1"
+                >
+                  <div className="w-10 h-10 bg-red-100 dark:bg-red-900/20 rounded-lg flex items-center justify-center transition-colors duration-300">
+                    <Youtube className="w-5 h-5 text-red-600 dark:text-red-400" />
+                  </div>
+                  <div className="flex-1">
+                    <p className="font-medium text-gray-900 dark:text-white transition-colors duration-300">YouTube</p>
+                    <p className="text-sm text-gray-600 dark:text-gray-400 transition-colors duration-300">Subscribe</p>
                   </div>
                   <ExternalLink className="w-4 h-4 text-gray-400" />
                 </a>

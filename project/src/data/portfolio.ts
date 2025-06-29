@@ -1,4 +1,4 @@
-import { Skill, Project, BlogPost, Education, Experience, Certificate, Volunteering } from '../types';
+import { Skill, Project, BlogPost, Education, Experience, Certificate, Volunteering, Service } from '../types';
 
 export const devopsSkills: Skill[] = [
   { name: 'Docker' },
@@ -111,7 +111,7 @@ export const education: Education[] = [
   {
     id: '1',
     course: 'BSc (Hons) Computing Science in Software Engineering (TOP UP)',
-    university: 'Kingston University (Esoft)',
+    university: 'Kingston University',
     year: 'Apr 2025 - Present',
     // description: 'Specialized in Software Engineering and Cloud Computing'
   },
@@ -281,6 +281,69 @@ export const volunteering: Volunteering[] = [
       'Collaborated with external speakers, sponsors, and university staff'
     ],
     skills: ['Public Speaking', 'Event Planning', 'Networking', 'Community Management']
+  }
+];
+
+export const services: Service[] = [
+  {
+    id: '1',
+    title: 'Web Development',
+    description: 'Full-stack web applications using modern technologies like React, Node.js, and TypeScript.',
+    icon: '💻',
+    features: [
+      'Responsive web design',
+      'Frontend development with React/Next.js',
+      'Backend API development',
+      'Database design and optimization',
+      'Performance optimization',
+      'SEO optimization'
+    ],
+    category: 'web-development'
+  },
+  {
+    id: '2',
+    title: 'Mobile App Development',
+    description: 'Cross-platform mobile applications using React Native, Flutter, and native development.',
+    icon: '📱',
+    features: [
+      'Cross-platform development (iOS & Android)',
+      'React Native applications',
+      'Flutter development',
+      'Native iOS/Android apps',
+      'App store optimization',
+      'Performance optimization'
+    ],
+    category: 'mobile-development'
+  },
+  {
+    id: '3',
+    title: 'DevOps & Cloud Solutions',
+    description: 'Infrastructure automation, CI/CD pipelines, and cloud deployment solutions.',
+    icon: '☁️',
+    features: [
+      'AWS/Azure/GCP cloud infrastructure',
+      'Docker containerization',
+      'Kubernetes orchestration',
+      'CI/CD pipeline setup',
+      'Infrastructure as Code (Terraform)',
+      'Monitoring and logging'
+    ],
+    category: 'devops'
+  },
+  {
+    id: '4',
+    title: 'Training & Mentorship',
+    description: 'Personalized training sessions and mentorship for developers and teams.',
+    icon: '📚',
+    features: [
+      'Web development workshops',
+      'DevOps fundamentals training',
+      'Cloud computing tutorials',
+      'Best practices guidance',
+      'Code review sessions',
+      'Career development advice'
+    ],
+    category: 'training'
   }
 ];
 

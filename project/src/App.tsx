@@ -7,6 +7,7 @@ import Hero from './components/Hero';
 import About from './components/About';
 import Education from './components/Education';
 import Experience from './components/Experience';
+import Services from './components/Services';
 import Certificates from './components/Certificates';
 import Skills from './components/Skills';
 import Projects from './components/Projects';
@@ -60,6 +61,7 @@ function App() {
         <About />
         <Education />
         <Experience />
+        <Services />
         <Certificates />
         <Skills activeToggle={activeToggle} onToggle={handleToggle} />
         <Projects activeToggle={activeToggle} onToggle={handleToggle} />

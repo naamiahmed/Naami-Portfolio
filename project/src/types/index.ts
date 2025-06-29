@@ -63,6 +63,16 @@ export interface Volunteering {
   skills: string[];
 }
 
+export interface Service {
+  id: string;
+  title: string;
+  description: string;
+  icon: string;
+  features: string[];
+  price?: string;
+  category: 'web-development' | 'devops' | 'mobile-development' | 'training';
+}
+
 export type ToggleState = 'devops' | 'development';
 
 export interface ThemeContextType {

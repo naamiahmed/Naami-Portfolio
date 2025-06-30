@@ -352,7 +352,7 @@ export const personalInfo = {
   title: 'Full-Stack & DevOps Enthusiast',
   summary: 'Passionate about building scalable solutions and optimizing development workflows.',
   email: 'naamiahmed27@gmail.com',
-  linkedin: 'https://linkedin.com/in/naamiahmed',
+  linkedin: 'https://linkedin.com/in/naami-ahmed',
   github: 'https://github.com/naamiahmed',
   about: `Hello! I'm Naami Ahmed, an enthusiastic IT undergraduate at the Institute of Technology, University of Moratuwa, Sri Lanka. I specialize in DevOps, Full-Stack Web Development, and Cloud Technologies.
 I'm passionate about building scalable software and systems, contributing to open-source, and learning modern cloud-native tools. My goal is to become a skilled software engineer who can create impactful digital solutions.

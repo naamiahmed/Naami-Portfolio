@@ -242,11 +242,11 @@ export const volunteering: Volunteering[] = [
     ],
     skills: ['Team coordination', 'Public speaking', 'Event planning', 'Mentorship', 'Time management', 'Community building'],
     photos: [
-      '/src/assets/AWS_Cloud_Club_Captain.png',
-      '/src/assets/AWS_CD_01.jpeg',
-      '/src/assets/AWS_CD_02.jpeg',
-      '/src/assets/AWS_CC_Meetup.png',
-      '/src/assets/AWS_CD_03.jpeg'
+      '/assets/AWS_Cloud_Club_Captain.png',
+      '/assets/AWS_CD_01.jpeg',
+      '/assets/AWS_CD_02.jpeg',
+      '/assets/AWS_CC_Meetup.png',
+      '/assets/AWS_CD_03.jpeg'
     ]
   },
   {

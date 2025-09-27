@@ -1,7 +1,7 @@
 import React from 'react';
 import { Github, Linkedin, Mail, ChevronDown, Briefcase } from 'lucide-react';
 import { personalInfo } from '../data/portfolio';
-import profileImage from '../assets/profile-image.jpg';
+// Profile image is now served from public assets
 
 const Hero: React.FC = () => {
   const scrollToAbout = () => {
@@ -28,7 +28,7 @@ const Hero: React.FC = () => {
               <div className="w-80 h-80 lg:w-96 lg:h-96 bg-gradient-to-br from-gray-200 to-gray-300 dark:from-gray-700 dark:to-gray-600 rounded-2xl overflow-hidden shadow-2xl transition-colors duration-300">
                 {/* Professional headshot image */}
                 <img
-                  src={profileImage}
+                  src="/assets/profile-image.jpg"
                   alt="Professional headshot"
                   className="w-full h-full object-cover"
                   onError={(e) => {

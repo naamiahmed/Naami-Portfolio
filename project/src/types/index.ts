@@ -61,6 +61,7 @@ export interface Volunteering {
   description: string;
   impact: string[];
   skills: string[];
+  photos?: string[];
 }
 
 export interface Service {

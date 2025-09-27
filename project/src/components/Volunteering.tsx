@@ -1,7 +1,7 @@
 import React from 'react';
-import type { Volunteering as VolunteeringType } from '../types';
 import { volunteering } from '../data/portfolio';
 import { useTheme } from '../contexts/ThemeContext';
+import PhotoGallery from './PhotoGallery';
 
 const Volunteering: React.FC = () => {
   const { isDark } = useTheme();
@@ -58,6 +58,11 @@ const Volunteering: React.FC = () => {
                   </div>
                 </div>
               </div>
+
+              {/* Photo Gallery */}
+              {volunteer.photos && volunteer.photos.length > 0 && (
+                <PhotoGallery photos={volunteer.photos} isDark={isDark} />
+              )}
 
               <p className={`text-base mb-4 ${isDark ? 'text-gray-300' : 'text-gray-600'}`}>
                 {volunteer.description}

@@ -240,7 +240,14 @@ export const volunteering: Volunteering[] = [
       'Mentored students on AWS best practices and certifications',
       'Coordinated with AWS community leaders to run cloud events'
     ],
-    skills: ['Team coordination', 'Public speaking', 'Event planning', 'Mentorship', 'Time management', 'Community building']
+    skills: ['Team coordination', 'Public speaking', 'Event planning', 'Mentorship', 'Time management', 'Community building'],
+    photos: [
+      '/src/assets/AWS_Cloud_Club_Captain.png',
+      '/src/assets/AWS_CD_01.jpeg',
+      '/src/assets/AWS_CD_02.jpeg',
+      '/src/assets/AWS_CC_Meetup.png',
+      '/src/assets/AWS_CD_03.jpeg'
+    ]
   },
   {
     id: '2',
@@ -253,7 +260,12 @@ export const volunteering: Volunteering[] = [
       'Attended Microsoft events and webinars',
       'Promoted open-source contribution and learning culture'
     ],
-    skills: ['Azure Functions', 'CI/CD pipelines', 'Technical presentation', 'Support for juniors', 'Hosting events', 'Managing student groups']
+    skills: ['Azure Functions', 'CI/CD pipelines', 'Technical presentation', 'Support for juniors', 'Hosting events', 'Managing student groups'],
+    photos: [
+      'https://images.pexels.com/photos/1181271/pexels-photo-1181271.jpeg?auto=compress&cs=tinysrgb&w=400',
+      'https://images.pexels.com/photos/1181298/pexels-photo-1181298.jpeg?auto=compress&cs=tinysrgb&w=400',
+      'https://images.pexels.com/photos/1181673/pexels-photo-1181673.jpeg?auto=compress&cs=tinysrgb&w=400'
+    ]
   },
   // {
   //   id: '3',
@@ -280,7 +292,12 @@ export const volunteering: Volunteering[] = [
       'Supported students through mentoring and organizing awareness sessions',
       'Collaborated with external speakers, sponsors, and university staff'
     ],
-    skills: ['Public Speaking', 'Event Planning', 'Networking', 'Community Management']
+    skills: ['Public Speaking', 'Event Planning', 'Networking', 'Community Management'],
+    photos: [
+      'https://images.pexels.com/photos/1181677/pexels-photo-1181677.jpeg?auto=compress&cs=tinysrgb&w=400',
+      'https://images.pexels.com/photos/1181271/pexels-photo-1181271.jpeg?auto=compress&cs=tinysrgb&w=400',
+      'https://images.pexels.com/photos/1181298/pexels-photo-1181298.jpeg?auto=compress&cs=tinysrgb&w=400'
+    ]
   }
 ];
 

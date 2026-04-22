@@ -13,11 +13,26 @@ const Projects: React.FC<ProjectsProps> = ({ activeToggle, onToggle }) => {
   const filteredProjects = projects.filter(project => project.category === activeToggle);
 
   return (
-    <section id="projects" className="py-20 bg-gray-50 dark:bg-gray-800 transition-colors duration-300">
-      <div className="max-w-6xl mx-auto px-4">
+    <section id="projects" className="py-20 relative bg-blue-gradient overflow-hidden">
+      {/* Floating Particles */}
+      {[...Array(5)].map((_, i) => (
+        <div
+          key={i}
+          className={`particle particle-${i + 1}`}
+          style={{
+            left: `${Math.random() * 100}%`,
+            animationDelay: `${i * 1.5}s`
+          }}
+        ></div>
+      ))}
+      
+      {/* Grid Pattern Overlay */}
+      <div className="absolute inset-0 grid-pattern -z-30 opacity-40 dark:opacity-20"></div>
+      
+      <div className="max-w-6xl mx-auto px-4 relative z-10">
         <div className="text-center mb-12 animate-fade-in-up">
           <h2 className="text-4xl font-bold text-gray-900 dark:text-white mb-4 transition-colors duration-300">Projects</h2>
-          <div className="w-20 h-1 bg-gray-900 dark:bg-white mx-auto mb-8 transition-colors duration-300"></div>
+          <div className="w-20 h-1 bg-gradient-to-r from-sky-600 to-purple-600 mx-auto mb-8 transition-colors duration-300"></div>
         </div>
 
         <ToggleButton activeState={activeToggle} onToggle={onToggle} />
@@ -26,7 +41,7 @@ const Projects: React.FC<ProjectsProps> = ({ activeToggle, onToggle }) => {
           {filteredProjects.map((project, index) => (
             <div
               key={project.id}
-              className="bg-white dark:bg-gray-900 rounded-xl shadow-md overflow-hidden hover:shadow-lg transition-all duration-300 hover:-translate-y-1 animate-fade-in-up"
+              className="bg-white dark:bg-gray-800 rounded-xl shadow-md overflow-hidden hover:shadow-xl transition-all duration-300 hover:-translate-y-2 animate-fade-in-up border border-blue-200 dark:border-sky-900 hover:border-blue-400 dark:hover:border-sky-700"
               style={{ animationDelay: `${index * 200}ms` }}
             >
               <div className="p-6">

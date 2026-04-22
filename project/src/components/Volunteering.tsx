@@ -7,13 +7,29 @@ const Volunteering: React.FC = () => {
   const { isDark } = useTheme();
 
   return (
-    <section id="volunteering" className={`py-16 ${isDark ? 'bg-gray-900' : 'bg-white'}`}>
-      <div className="max-w-6xl mx-auto px-4 sm:px-6 lg:px-8">
+    <section id="volunteering" className="py-16 relative bg-blue-gradient overflow-hidden">
+      {/* Floating Particles */}
+      {[...Array(5)].map((_, i) => (
+        <div
+          key={i}
+          className={`particle particle-${i + 1}`}
+          style={{
+            left: `${Math.random() * 100}%`,
+            animationDelay: `${i * 1.5}s`
+          }}
+        ></div>
+      ))}
+      
+      {/* Grid Pattern Overlay */}
+      <div className="absolute inset-0 grid-pattern -z-30 opacity-40 dark:opacity-20"></div>
+      
+      <div className="max-w-6xl mx-auto px-4 sm:px-6 lg:px-8 relative z-10">
         <div className="text-center mb-12">
-          <h2 className={`text-3xl font-bold mb-4 ${isDark ? 'text-white' : 'text-gray-900'}`}>
+          <h2 className="text-3xl font-bold mb-4 text-gray-900 dark:text-white">
             Volunteering & Community Impact
           </h2>
-          <p className={`text-lg ${isDark ? 'text-gray-300' : 'text-gray-600'}`}>
+          <div className="w-20 h-1 bg-gradient-to-r from-sky-600 to-purple-600 mx-auto mb-4"></div>
+          <p className="text-lg text-gray-600 dark:text-gray-300">
             Contributing to the tech community through mentorship, open source, and social impact projects
           </p>
         </div>
@@ -22,21 +38,17 @@ const Volunteering: React.FC = () => {
           {volunteering.map((volunteer) => (
             <div
               key={volunteer.id}
-              className={`rounded-lg p-6 transition-all duration-300 hover:shadow-xl ${
-                isDark 
-                  ? 'bg-gray-800 hover:bg-gray-700 border border-gray-700' 
-                  : 'bg-gray-50 hover:bg-white border border-gray-200'
-              }`}
+              className="rounded-lg p-6 transition-all duration-300 hover:shadow-xl bg-white dark:bg-gray-800 border border-blue-200 dark:border-sky-900 hover:border-blue-400 dark:hover:border-sky-700"
             >
               <div className="flex flex-col lg:flex-row lg:items-start lg:justify-between mb-4">
                 <div className="flex-1">
-                  <h3 className={`text-xl font-semibold mb-1 ${isDark ? 'text-white' : 'text-gray-900'}`}>
+                  <h3 className="text-xl font-semibold mb-1 text-gray-900 dark:text-white">
                     {volunteer.role}
                   </h3>
-                  <p className={`text-lg font-medium text-blue-600 dark:text-blue-400 mb-2`}>
+                  <p className="text-lg font-medium text-rose-600 dark:text-rose-400 mb-2">
                     {volunteer.organization}
                   </p>
-                  <p className={`text-sm ${isDark ? 'text-gray-400' : 'text-gray-500'} mb-3`}>
+                  <p className="text-sm text-gray-500 dark:text-gray-400 mb-3">
                     {volunteer.duration}
                   </p>
                 </div>
@@ -46,11 +58,7 @@ const Volunteering: React.FC = () => {
                     {volunteer.skills.map((skill, index) => (
                       <span
                         key={index}
-                        className={`px-3 py-1 rounded-full text-xs font-medium ${
-                          isDark 
-                            ? 'bg-gray-700 text-gray-300 border border-gray-600' 
-                            : 'bg-white text-gray-700 border border-gray-300'
-                        }`}
+                        className="px-3 py-1 rounded-full text-xs font-medium bg-white dark:bg-gray-700 text-gray-700 dark:text-gray-300 border border-rose-300 dark:border-rose-700"
                       >
                         {skill}
                       </span>

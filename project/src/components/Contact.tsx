@@ -76,11 +76,26 @@ const Contact: React.FC = () => {
   };
 
   return (
-    <section id="contact" className="py-20 bg-gray-50 dark:bg-gray-800 transition-colors duration-300">
-      <div className="max-w-6xl mx-auto px-4">
+    <section id="contact" className="py-20 relative bg-blue-gradient overflow-hidden">
+      {/* Floating Particles */}
+      {[...Array(5)].map((_, i) => (
+        <div
+          key={i}
+          className={`particle particle-${i + 1}`}
+          style={{
+            left: `${Math.random() * 100}%`,
+            animationDelay: `${i * 1.5}s`
+          }}
+        ></div>
+      ))}
+      
+      {/* Grid Pattern Overlay */}
+      <div className="absolute inset-0 grid-pattern -z-30 opacity-40 dark:opacity-20"></div>
+      
+      <div className="max-w-6xl mx-auto px-4 relative z-10">
         <div className="text-center mb-12 animate-fade-in-up">
           <h2 className="text-4xl font-bold text-gray-900 dark:text-white mb-4 transition-colors duration-300">Let's Connect</h2>
-          <div className="w-20 h-1 bg-gray-900 dark:bg-white mx-auto mb-4 transition-colors duration-300"></div>
+          <div className="w-20 h-1 bg-gradient-to-r from-sky-600 to-purple-600 mx-auto mb-4 transition-colors duration-300"></div>
           <p className="text-gray-600 dark:text-gray-400 max-w-2xl mx-auto transition-colors duration-300">
             I'm always interested in new opportunities and collaboration. 
             Feel free to reach out if you'd like to discuss a project or just say hello!

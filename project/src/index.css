@@ -13,6 +13,121 @@
   }
 }
 
+/* Floating Particle Animations */
+@keyframes particle-float-1 {
+  0% {
+    transform: translateY(0) translateX(0) scale(1);
+    opacity: 0.6;
+  }
+  50% {
+    opacity: 0.3;
+  }
+  100% {
+    transform: translateY(-100vh) translateX(50px) scale(0.8);
+    opacity: 0;
+  }
+}
+
+@keyframes particle-float-2 {
+  0% {
+    transform: translateY(0) translateX(0) scale(1);
+    opacity: 0.5;
+  }
+  50% {
+    opacity: 0.25;
+  }
+  100% {
+    transform: translateY(-100vh) translateX(-60px) scale(0.7);
+    opacity: 0;
+  }
+}
+
+@keyframes particle-float-3 {
+  0% {
+    transform: translateY(0) translateX(0) scale(1);
+    opacity: 0.4;
+  }
+  50% {
+    opacity: 0.2;
+  }
+  100% {
+    transform: translateY(-100vh) translateX(80px) scale(0.9);
+    opacity: 0;
+  }
+}
+
+@keyframes particle-float-4 {
+  0% {
+    transform: translateY(0) translateX(0) scale(1);
+    opacity: 0.5;
+  }
+  50% {
+    opacity: 0.25;
+  }
+  100% {
+    transform: translateY(-100vh) translateX(-40px) scale(0.8);
+    opacity: 0;
+  }
+}
+
+@keyframes particle-float-5 {
+  0% {
+    transform: translateY(0) translateX(0) scale(1);
+    opacity: 0.45;
+  }
+  50% {
+    opacity: 0.2;
+  }
+  100% {
+    transform: translateY(-100vh) translateX(70px) scale(0.85);
+    opacity: 0;
+  }
+}
+
+.particle {
+  position: absolute;
+  bottom: -10px;
+  width: 4px;
+  height: 4px;
+  background: rgba(51, 65, 85, 0.4);
+  dark-mode-background: rgba(100, 150, 200, 0.3);
+  border-radius: 50%;
+  pointer-events: none;
+}
+
+.particle-1 { animation: particle-float-1 8s ease-in infinite; }
+.particle-2 { animation: particle-float-2 10s ease-in infinite; }
+.particle-3 { animation: particle-float-3 12s ease-in infinite; }
+.particle-4 { animation: particle-float-4 9s ease-in infinite; }
+.particle-5 { animation: particle-float-5 11s ease-in infinite; }
+
+.dark .particle {
+  background: rgba(100, 150, 200, 0.3);
+}
+
+/* Unified Blue Gradient Background for all sections */
+.bg-blue-gradient {
+  @apply bg-gradient-to-br from-sky-50 via-blue-50 to-purple-50 dark:from-slate-900 dark:via-sky-900 dark:to-slate-900 transition-colors duration-300;
+  background-attachment: fixed;
+  position: relative;
+  overflow: hidden;
+}
+
+/* Subtle grid pattern overlay */
+.grid-pattern {
+  background-image: 
+    linear-gradient(rgba(148, 163, 184, 0.03) 1px, transparent 1px),
+    linear-gradient(90deg, rgba(148, 163, 184, 0.03) 1px, transparent 1px);
+  background-size: 50px 50px;
+}
+
+.dark .grid-pattern {
+  background-image: 
+    linear-gradient(rgba(51, 65, 85, 0.1) 1px, transparent 1px),
+    linear-gradient(90deg, rgba(51, 65, 85, 0.1) 1px, transparent 1px);
+  background-size: 50px 50px;
+}
+
 /* Custom scrollbar */
 ::-webkit-scrollbar {
   width: 8px;

@@ -110,9 +110,9 @@ export const blogPosts: BlogPost[] = [
 export const education: Education[] = [
   {
     id: '1',
-    course: 'BSc (Hons) Computing Science in Software Engineering (TOP UP)',
-    university: 'Kingston University',
-    year: 'Apr 2025 - Present',
+    course: 'BSc (Hons) Computing and Infomation Technology',
+    university: 'Wrexharm University',
+    year: 'Sep 2025 - Sep 2026',
     // description: 'Specialized in Software Engineering and Cloud Computing'
   },
   {
@@ -149,11 +149,27 @@ export const experience: Experience[] = [
   //   category: 'devops'
   // },
   {
+    id: '1',
+    position: 'Associate Software Engineer',
+    company: 'EverestX Technologies',
+    location: 'Sri Lanka, Colombo',
+    duration: 'Mar 2025 - Present',
+    description: 'Working as a DevOps and Cloud Engineer, focusing on AWS infrastructure optimization and cost management. Designed and implemented automated solutions for cloud resource optimization, reducing infrastructure costs through serverless automation and intelligent resource scheduling.',
+    achievements: [
+      'Implemented AWS RDS automated start/stop scheduling using Lambda and CloudWatch, reducing database costs by optimizing idle periods',
+      'Designed cost optimization strategies leveraging AWS services (EC2, RDS, Lambda, CloudFormation)',
+      'Automated infrastructure deployment and scaling using Infrastructure as Code (IaC) principles',
+      'Optimized cloud resource utilization through monitoring and performance analysis'
+    ],
+    technologies: ['AWS', 'AWS Lambda', 'RDS', 'CloudWatch', 'CloudFormation', 'EC2', 'IAM', 'Terraform', 'Docker', 'Bash', 'Python'],
+    categories: ['devops']
+  },
+  {
     id: '2',
     position: 'Intern Software Engineer',
     company: 'EverestX Technologies',
     location: 'Sri Lanka, Colombo',
-    duration: 'Jan 2025 - Present',
+    duration: 'Jan 2025 - Feb 2025',
     description: 'Developed and maintained web applications using React with TypeScript for a scalable and efficient frontend. Worked on cloud infrastructure, utilizing AWS RDS, Lambda, EC2, and Nginx for deployment and backend optimization.',
     achievements: [
     ],
@@ -366,7 +382,7 @@ export const services: Service[] = [
 
 export const personalInfo = {
   name: 'Naami Ahmed',
-  title: 'Full-Stack & DevOps Enthusiast',
+  title: 'Cloud & DevOps Engineer',
   summary: 'Passionate about building scalable solutions and optimizing development workflows.',
   email: 'naamiahmed27@gmail.com',
   linkedin: 'https://linkedin.com/in/naami-ahmed',

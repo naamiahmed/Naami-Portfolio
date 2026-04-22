@@ -24,13 +24,29 @@ const Experience: React.FC = () => {
   };
 
   return (
-    <section id="experience" className={`py-16 ${isDark ? 'bg-gray-800' : 'bg-gray-50'}`}>
-      <div className="max-w-6xl mx-auto px-4 sm:px-6 lg:px-8">
+    <section id="experience" className="py-16 relative bg-blue-gradient overflow-hidden">
+      {/* Floating Particles */}
+      {[...Array(5)].map((_, i) => (
+        <div
+          key={i}
+          className={`particle particle-${i + 1}`}
+          style={{
+            left: `${Math.random() * 100}%`,
+            animationDelay: `${i * 1.5}s`
+          }}
+        ></div>
+      ))}
+      
+      {/* Grid Pattern Overlay */}
+      <div className="absolute inset-0 grid-pattern -z-30 opacity-40 dark:opacity-20"></div>
+      
+      <div className="max-w-6xl mx-auto px-4 sm:px-6 lg:px-8 relative z-10">
         <div className="text-center mb-12">
-          <h2 className={`text-3xl font-bold mb-4 ${isDark ? 'text-white' : 'text-gray-900'}`}>
+          <h2 className="text-3xl font-bold mb-4 text-gray-900 dark:text-white">
             Professional Experience
           </h2>
-          <p className={`text-lg ${isDark ? 'text-gray-300' : 'text-gray-600'}`}>
+          <div className="w-20 h-1 bg-gradient-to-r from-sky-600 to-purple-600 mx-auto mb-4"></div>
+          <p className="text-lg text-gray-600 dark:text-gray-300">
             My journey in software development and DevOps engineering
           </p>
         </div>
@@ -43,8 +59,8 @@ const Experience: React.FC = () => {
               onClick={() => setActiveFilter(category)}
               className={`px-4 py-2 rounded-full text-sm font-medium transition-all duration-200 ${
                 activeFilter === category
-                  ? 'bg-blue-600 text-white shadow-lg'
-                  : `${isDark ? 'bg-gray-700 text-gray-300 hover:bg-gray-600' : 'bg-white text-gray-700 hover:bg-gray-100'} border border-gray-300 dark:border-gray-600`
+                  ? 'bg-gradient-to-r from-blue-600 to-purple-600 text-white shadow-lg hover:shadow-xl'
+                  : 'bg-white dark:bg-gray-800 text-gray-700 dark:text-gray-300 hover:border-blue-400 dark:hover:border-purple-400 border border-gray-300 dark:border-gray-600'
               }`}
             >
               {category.charAt(0).toUpperCase() + category.slice(1)}
@@ -57,14 +73,10 @@ const Experience: React.FC = () => {
           {filteredExperience.map((exp, index) => (
             <div
               key={exp.id}
-              className={`relative rounded-lg p-6 transition-all duration-300 hover:shadow-xl ${
-                isDark 
-                  ? 'bg-gray-700 hover:bg-gray-600 border border-gray-600' 
-                  : 'bg-white hover:bg-gray-50 border border-gray-200'
-              }`}
+              className="relative rounded-lg p-6 transition-all duration-300 hover:shadow-xl bg-white dark:bg-gray-800 border border-blue-200 dark:border-sky-900 hover:border-blue-400 dark:hover:border-sky-700"
             >
               {/* Timeline indicator */}
-              <div className="absolute left-0 top-8 w-4 h-4 bg-blue-600 rounded-full transform -translate-x-2"></div>
+              <div className="absolute left-0 top-8 w-4 h-4 bg-gradient-to-r from-blue-600 to-purple-600 rounded-full transform -translate-x-2"></div>
               
               <div className="ml-6">
                 {/* Header */}
@@ -76,7 +88,7 @@ const Experience: React.FC = () => {
                       </span>
                     </div>
                     
-                    <h3 className={`text-xl font-semibold mb-1 ${isDark ? 'text-white' : 'text-gray-900'}`}>
+                    <h3 className="text-xl font-semibold mb-1 text-gray-900 dark:text-white">
                       {exp.position}
                     </h3>
                     

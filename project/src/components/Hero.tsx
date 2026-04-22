@@ -19,8 +19,24 @@ const Hero: React.FC = () => {
   };
 
   return (
-    <section className="min-h-screen flex items-center justify-center bg-gradient-to-br from-gray-50 to-gray-100 dark:from-gray-900 dark:to-gray-800 px-4 pt-16 transition-colors duration-300">
-      <div className="max-w-6xl mx-auto">
+    <section className="min-h-screen flex items-center justify-center relative overflow-hidden px-4 pt-16 bg-blue-gradient transition-colors duration-300">
+      {/* Floating Particles */}
+      {[...Array(5)].map((_, i) => (
+        <div
+          key={i}
+          className={`particle particle-${i + 1}`}
+          style={{
+            left: `${Math.random() * 100}%`,
+            animationDelay: `${i * 1.5}s`
+          }}
+        ></div>
+      ))}
+      
+      {/* Grid Pattern Overlay */}
+      <div className="absolute inset-0 grid-pattern -z-30 opacity-40 dark:opacity-20"></div>
+      
+      {/* Content Container */}
+      <div className="max-w-6xl mx-auto relative z-10">
         <div className="grid grid-cols-1 lg:grid-cols-2 gap-12 items-center">
           {/* Left side - Professional Image */}
           <div className="flex justify-center lg:justify-start animate-fade-in-left">
@@ -88,14 +104,14 @@ const Hero: React.FC = () => {
             {/* CTA Buttons */}
             <div className="flex flex-col sm:flex-row gap-4 justify-center lg:justify-start">
               <button 
-                onClick={() => window.open('https://drive.google.com/file/d/1RXe1kNi0SUwlEmemiJaT8QXCcMS5GY9D/view?usp=sharing', '_blank')}
-                className="bg-gray-900 dark:bg-white text-white dark:text-gray-900 px-8 py-4 rounded-lg font-semibold hover:bg-gray-800 dark:hover:bg-gray-100 transition-all duration-300 shadow-lg hover:shadow-xl hover:-translate-y-1"
+                onClick={() => window.open('https://drive.google.com/file/d/1sptf09a95miNCJ0zwkCg9pRuKiq26xDb/view?usp=sharing', '_blank')}
+                className="bg-gradient-to-r from-blue-600 to-cyan-600 hover:from-blue-700 hover:to-cyan-700 text-white px-8 py-4 rounded-lg font-semibold transition-all duration-300 shadow-lg hover:shadow-xl hover:-translate-y-1"
               >
                 View My Resume
               </button>
               <button 
                 onClick={scrollToServices}
-                className="bg-blue-600 hover:bg-blue-700 text-white px-8 py-4 rounded-lg font-semibold transition-all duration-300 shadow-lg hover:shadow-xl hover:-translate-y-1 flex items-center justify-center space-x-2"
+                className="bg-gradient-to-r from-emerald-600 to-teal-600 hover:from-emerald-700 hover:to-teal-700 text-white px-8 py-4 rounded-lg font-semibold transition-all duration-300 shadow-lg hover:shadow-xl hover:-translate-y-1 flex items-center justify-center space-x-2"
               >
                 <Briefcase className="w-5 h-5" />
                 <span>My Services</span>
@@ -105,8 +121,8 @@ const Hero: React.FC = () => {
         </div>
 
         {/* Scroll Indicator */}
-        <div className="absolute bottom-8 left-1/2 transform -translate-x-1/2 animate-bounce">
-          <button onClick={scrollToAbout} className="text-gray-500 dark:text-gray-400 hover:text-gray-700 dark:hover:text-gray-300 transition-colors duration-300">
+        <div className="absolute bottom-8 left-1/2 transform -translate-x-1/2 animate-bounce z-20">
+          <button onClick={scrollToAbout} className="text-blue-600 dark:text-cyan-400 hover:text-blue-700 dark:hover:text-cyan-300 transition-colors duration-300">
             <ChevronDown className="w-6 h-6" />
           </button>
         </div>

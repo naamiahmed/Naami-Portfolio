@@ -32,13 +32,29 @@ const Certificates: React.FC = () => {
   };
 
   return (
-    <section id="certificates" className={`py-16 ${isDark ? 'bg-gray-800' : 'bg-gray-50'}`}>
-      <div className="max-w-6xl mx-auto px-4 sm:px-6 lg:px-8">
+    <section id="certificates" className="py-16 relative bg-blue-gradient overflow-hidden">
+      {/* Floating Particles */}
+      {[...Array(5)].map((_, i) => (
+        <div
+          key={i}
+          className={`particle particle-${i + 1}`}
+          style={{
+            left: `${Math.random() * 100}%`,
+            animationDelay: `${i * 1.5}s`
+          }}
+        ></div>
+      ))}
+      
+      {/* Grid Pattern Overlay */}
+      <div className="absolute inset-0 grid-pattern -z-30 opacity-40 dark:opacity-20"></div>
+      
+      <div className="max-w-6xl mx-auto px-4 sm:px-6 lg:px-8 relative z-10">
         <div className="text-center mb-12">
-          <h2 className={`text-3xl font-bold mb-4 ${isDark ? 'text-white' : 'text-gray-900'}`}>
+          <h2 className="text-3xl font-bold mb-4 text-gray-900 dark:text-white">
             Professional Certifications
           </h2>
-          <p className={`text-lg ${isDark ? 'text-gray-300' : 'text-gray-600'}`}>
+          <div className="w-20 h-1 bg-gradient-to-r from-sky-600 to-purple-600 mx-auto mb-4"></div>
+          <p className="text-lg text-gray-600 dark:text-gray-300">
             Industry-recognized certifications that validate my expertise and commitment to continuous learning
           </p>
         </div>
@@ -65,11 +81,7 @@ const Certificates: React.FC = () => {
           {filteredCertificates.map((certificate) => (
             <div
               key={certificate.id}
-              className={`rounded-lg p-6 transition-all duration-300 hover:shadow-xl ${
-                isDark 
-                  ? 'bg-gray-700 hover:bg-gray-600 border border-gray-600' 
-                  : 'bg-white hover:bg-gray-50 border border-gray-200'
-              }`}
+              className="rounded-lg p-6 transition-all duration-300 hover:shadow-xl bg-white dark:bg-gray-800 border border-blue-200 dark:border-sky-900 hover:border-blue-400 dark:hover:border-sky-700"
             >
               <div className="flex items-start justify-between mb-4">
                 <span className={`px-3 py-1 rounded-full text-xs font-medium ${getCategoryColor(certificate.category)}`}>

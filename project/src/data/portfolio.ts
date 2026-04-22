@@ -110,9 +110,9 @@ export const blogPosts: BlogPost[] = [
 export const education: Education[] = [
   {
     id: '1',
-    course: 'BSc (Hons) Computing Science in Software Engineering (TOP UP)',
-    university: 'Kingston University',
-    year: 'Apr 2025 - Present',
+    course: 'BSc (Hons) Computing and Infomation Technology',
+    university: 'Wrexharm University',
+    year: 'Sep 2025 - Sep 2026',
     // description: 'Specialized in Software Engineering and Cloud Computing'
   },
   {

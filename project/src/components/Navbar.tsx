@@ -8,19 +8,26 @@ const Navbar: React.FC = () => {
   const [isMenuOpen, setIsMenuOpen] = useState(false);
   const [isDropdownOpen, setIsDropdownOpen] = useState(false);
 
-  const mainNavItems = [
-    { label: 'About', href: '#about' },
-    { label: 'Education', href: '#education' },
-    { label: 'Experience', href: '#experience' },
-    { label: 'Services', href: '#services' },
-    { label: 'Contact', href: '#contact' },
+  type NavItem = {
+    label: string;
+    type: 'page' | 'anchor';
+    href: string;
+  };
+
+  const mainNavItems: NavItem[] = [
+    { label: 'Gallery', type: 'page', href: '/gallery.html' },
+    { label: 'Buy me a Coffee', type: 'page', href: '/buy-me-a-coffee.html' },
+    { label: 'Collaboration', type: 'page', href: '/collaboration.html' },
+    { label: 'Contact', type: 'page', href: '/contact.html' },
   ];
 
   const dropdownItems = [
-    { label: 'Certificates', href: '#certificates' },
+    { label: 'Education', href: '#education' },
+    { label: 'Experience', href: '#experience' },
+    { label: 'Certification', href: '#certificates' },
     { label: 'Skills', href: '#skills' },
     { label: 'Projects', href: '#projects' },
-    { label: 'Blog', href: '#blog' },
+    { label: 'Blogs', href: '#blog' },
     { label: 'Volunteering', href: '#volunteering' },
   ];
 
@@ -31,6 +38,20 @@ const Navbar: React.FC = () => {
     }
     setIsMenuOpen(false);
     setIsDropdownOpen(false);
+  };
+
+  const openNewPage = (href: string) => {
+    window.open(href, '_blank', 'noopener,noreferrer');
+    setIsMenuOpen(false);
+    setIsDropdownOpen(false);
+  };
+
+  const handleNavClick = (item: NavItem) => {
+    if (item.type === 'page') {
+      openNewPage(item.href);
+    } else {
+      scrollToSection(item.href);
+    }
   };
 
   return (
@@ -50,7 +71,7 @@ const Navbar: React.FC = () => {
               {mainNavItems.map((item) => (
                 <button
                   key={item.label}
-                  onClick={() => scrollToSection(item.href)}
+                  onClick={() => handleNavClick(item)}
                   className="text-gray-700 dark:text-gray-300 hover:text-gray-900 dark:hover:text-white px-3 py-2 text-sm font-medium transition-colors duration-200"
                 >
                   {item.label}
@@ -68,7 +89,7 @@ const Navbar: React.FC = () => {
                 </button>
                 
                 {isDropdownOpen && (
-                  <div className="absolute right-0 mt-2 w-48 bg-white dark:bg-gray-800 rounded-md shadow-lg border border-gray-200 dark:border-gray-700 py-1 z-50">
+                  <div className="absolute right-0 mt-2 w-48 max-h-64 overflow-y-auto bg-white dark:bg-gray-800 rounded-md shadow-lg border border-gray-200 dark:border-gray-700 py-1 z-50">
                     {dropdownItems.map((item) => (
                       <button
                         key={item.label}
@@ -113,7 +134,7 @@ const Navbar: React.FC = () => {
               {mainNavItems.map((item) => (
                 <button
                   key={item.label}
-                  onClick={() => scrollToSection(item.href)}
+                  onClick={() => handleNavClick(item)}
                   className="block w-full text-left px-3 py-2 text-base font-medium text-gray-700 dark:text-gray-300 hover:text-gray-900 dark:hover:text-white hover:bg-gray-50 dark:hover:bg-gray-800 rounded-md transition-colors duration-200"
                 >
                   {item.label}
@@ -121,7 +142,7 @@ const Navbar: React.FC = () => {
               ))}
               
               {/* Mobile Dropdown */}
-              <div className="border-t border-gray-200 dark:border-gray-700 pt-2 mt-2">
+              <div className="border-t border-gray-200 dark:border-gray-700 pt-2 mt-2 max-h-72 overflow-y-auto">
                 <div className="px-3 py-2 text-sm font-medium text-gray-500 dark:text-gray-400">
                   More
                 </div>

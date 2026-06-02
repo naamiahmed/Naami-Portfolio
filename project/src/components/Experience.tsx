@@ -36,17 +36,43 @@ const EducationExperience: React.FC = () => {
 
           <div className="relative mt-8 space-y-5 border-l border-blue-500/30 pl-6">
             <TimelineItem
-              year="2023 - Present"
-              logo="🎓"
+              year="2025 - 2026"
+              logo={
+  <img
+    src="/assets/other/wrexham.jpg"
+    alt="Wrexham University"
+    className="h-12 w-12 object-contain"
+  />
+}
+              title="Bsc (Hons) Computing - Information Technology"
+              institute="whrexham University - UK"
+              meta="Information Technology • Sri Lanka"
+              status="Completed"
+            />          
+            <TimelineItem
+              year="2022 - 2025"
+              logo={
+  <img
+    src="/assets/other/uom-logo.png"
+    alt="ITUM"
+    className="h-15 w-12 object-contain"
+  />
+}
               title="National Diploma in Technology - IT"
               institute="Institute of Technology, University of Moratuwa"
               meta="Information Technology • Sri Lanka"
-              status="Ongoing"
+              status="Completed"
             />
 
             <TimelineItem
               year="2022 - 2023"
-              logo="💻"
+              logo={
+  <img
+    src="/assets/other/nensala.png"
+    alt="Nenasala"
+    className="h-12 w-12 object-contain"
+  />
+}
               title="Diploma in Computer Science"
               institute="KDMC Nenasala"
               meta="Computer Science Fundamentals"
@@ -63,9 +89,9 @@ const EducationExperience: React.FC = () => {
             />
           </div>
 
-          <SectionTitle icon={<Award />} title="Continuous Learning" className="mt-10" />
+          {/* <SectionTitle icon={<Award />} title="Continuous Learning" className="mt-10" /> */}
 
-          <div className="mt-5 grid grid-cols-2 gap-4 sm:grid-cols-3 lg:grid-cols-5">
+          {/* <div className="mt-5 grid grid-cols-2 gap-4 sm:grid-cols-3 lg:grid-cols-5">
             {[
               ["aws", "AWS Cloud Practitioner", "AWS", "Preparing"],
               ["☁️", "AWS Solutions Architect", "AWS", "Preparing"],
@@ -85,7 +111,7 @@ const EducationExperience: React.FC = () => {
                 <p className="mt-2 text-xs text-slate-300">{year}</p>
               </div>
             ))}
-          </div>
+          </div> */}
 
           <QuoteBox text="I believe learning never stops. Every day is an opportunity to grow, unlearn, and relearn." />
         </div>
@@ -105,10 +131,33 @@ const EducationExperience: React.FC = () => {
           <SectionTitle icon={<Briefcase />} title="Experience Timeline" />
 
           <div className="relative mt-8 space-y-5 border-l border-blue-500/30 pl-6">
+
             <ExperienceItem
               year="Present"
               duration="2025 - Present"
-              icon={<Code2 />}
+                icon={
+    <img
+      src="/assets/other/evx-logo-.png"
+      alt="EverestX Technology"
+      className="h-14 w-14 object-contain"
+    />
+  }
+              title="Associate Software Engineer"
+              company="EverestX Technology"
+              desc="Working on real-world software features using React, Angular, Spring Boot, AWS, Docker, Nginx and deployment workflows."
+              status="Ongoing"
+              location="Remote"
+            />          
+            <ExperienceItem
+              year="Present"
+              duration="2025 - 2026"
+                icon={
+    <img
+      src="/assets/other/evx-logo-.png"
+      alt="EverestX Technology"
+      className="h-14 w-14 object-contain"
+    />
+  }
               title="Intern Software Engineer"
               company="EverestX Technology"
               desc="Working on real-world software features using React, Angular, Spring Boot, AWS, Docker, Nginx and deployment workflows."
@@ -119,9 +168,15 @@ const EducationExperience: React.FC = () => {
             <ExperienceItem
               year="2025"
               duration="May 2025 - Present"
-              icon={<Cloud />}
+                icon={
+    <img
+      src="/assets/devops_icons/AWS.png"
+      alt="EverestX Technology"
+      className="h-10 w-10 object-contain"
+    />
+  }
               title="AWS Cloud Club Captain"
-              company="AWS Cloud Club ITUM"
+              company="AWS"
               desc="Organizing cloud learning sessions, building community, and helping students learn AWS and cloud fundamentals."
               status="Ongoing"
               location="Sri Lanka"
@@ -130,15 +185,21 @@ const EducationExperience: React.FC = () => {
             <ExperienceItem
               year="2024 - 2025"
               duration="Community Journey"
-              icon={<Mic />}
-              title="Community Speaker"
+              icon={
+    <img
+      src="/assets/other/ms_logo.jpg"
+      alt="EverestX Technology"
+      className="h-14 w-14 object-contain"
+    />
+  }
+              title="Microsoft Student Ambassador"
               company="Tech Communities"
               desc="Speaking at meetups, sessions, and community events about cloud, DevOps, software engineering and career growth."
               status="Active"
               location="Sri Lanka"
             />
 
-            <ExperienceItem
+            {/* <ExperienceItem
               year="2024"
               duration="Project Based"
               icon={<Rocket />}
@@ -147,9 +208,9 @@ const EducationExperience: React.FC = () => {
               desc="Built web and mobile apps using React, Flutter, Node.js, Express, MongoDB, SQL and cloud deployment practices."
               status="Completed"
               location="Sri Lanka"
-            />
+            /> */}
           </div>
-
+{/* 
           <div className="mt-8 rounded-2xl border border-white/10 bg-white/5 p-6">
             <h3 className="mb-5 text-xl font-black">What I Bring to the Table</h3>
 
@@ -160,7 +221,7 @@ const EducationExperience: React.FC = () => {
               <Stat icon={<Users />} value="1K+" label="People Impacted" />
               <Stat icon={<Mic />} value="10+" label="Community Sessions" />
             </div>
-          </div>
+          </div> */}
 
           <QuoteBox text="Experience is not just about the time you put in, but the impact you create along the way." />
         </div>
@@ -246,7 +307,7 @@ const TimelineItem = ({
   status,
 }: {
   year: string;
-  logo: string;
+  logo: React.ReactNode;
   title: string;
   institute: string;
   meta: string;
@@ -259,7 +320,7 @@ const TimelineItem = ({
 
     <div className="rounded-2xl border border-white/10 bg-white/5 p-5">
       <div className="flex gap-4">
-        <div className="grid h-16 w-16 shrink-0 place-items-center rounded-xl bg-white/5 text-3xl">
+        <div className="grid h-16 w-16 shrink-0 place-items-center rounded-xl bg-white/5">
           {logo}
         </div>
 

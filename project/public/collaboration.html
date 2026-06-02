@@ -4,25 +4,766 @@
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>Collaboration | Naami Ahmed</title>
-    <meta name="description" content="Collaborate with Naami Ahmed on projects and ideas." />
+    <meta name="description" content="Collaborate with Naami Ahmed on projects, mentorship, and learning sessions." />
+
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800;900&family=Permanent+Marker&display=swap" rel="stylesheet" />
+
     <style>
-      body { margin: 0; font-family: Inter, system-ui, sans-serif; background: #eff6ff; color: #1e3a8a; }
-      .page { max-width: 760px; margin: 0 auto; padding: 2rem; }
-      a { color: #1e3a8a; text-decoration: none; border-bottom: 1px solid currentColor; }
-      a:hover { opacity: 0.8; }
-      .hero { padding: 3rem 0; }
-      .button { display: inline-block; margin-top: 1rem; background: #2563eb; color: white; padding: 0.85rem 1.4rem; border-radius: 9999px; text-decoration: none; }
+      * {
+        margin: 0;
+        padding: 0;
+        box-sizing: border-box;
+      }
+
+      body {
+        font-family: "Inter", system-ui, sans-serif;
+        background: #06111f;
+        color: #fff;
+        overflow-x: hidden;
+      }
+
+      a {
+        text-decoration: none;
+        color: inherit;
+      }
+
+      .page {
+        min-height: 100vh;
+        background:
+          radial-gradient(circle at 65% 20%, rgba(37, 99, 235, 0.22), transparent 30%),
+          radial-gradient(circle at 15% 50%, rgba(14, 165, 233, 0.1), transparent 32%),
+          linear-gradient(180deg, #07111f 0%, #06111f 100%);
+        position: relative;
+        overflow: hidden;
+      }
+
+      .page::before,
+      .page::after {
+        content: "";
+        position: absolute;
+        width: 160px;
+        height: 240px;
+        background-image: radial-gradient(#f97316 1.4px, transparent 1.4px);
+        background-size: 22px 22px;
+        opacity: 0.32;
+      }
+
+      .page::before {
+        left: -10px;
+        top: 85px;
+      }
+
+      .page::after {
+        right: -20px;
+        top: 240px;
+      }
+
+      .navbar {
+        height: 70px;
+        border-bottom: 1px solid rgba(255, 255, 255, 0.1);
+        background: rgba(11, 20, 36, 0.92);
+        backdrop-filter: blur(18px);
+        position: sticky;
+        top: 0;
+        z-index: 50;
+      }
+
+      .nav-inner {
+        max-width: 1280px;
+        height: 100%;
+        margin: auto;
+        padding: 0 24px;
+        display: flex;
+        justify-content: space-between;
+        align-items: center;
+      }
+
+      .logo {
+        font-size: 22px;
+        font-weight: 900;
+      }
+
+      .nav-links {
+        display: flex;
+        gap: 42px;
+        font-size: 14px;
+        font-weight: 700;
+        color: #e5e7eb;
+      }
+
+      .nav-links a:hover,
+      .nav-links .active {
+        color: #ff7a18;
+      }
+
+      .nav-links .active {
+        position: relative;
+      }
+
+      .nav-links .active::after {
+        content: "";
+        position: absolute;
+        left: 0;
+        bottom: -26px;
+        width: 100%;
+        height: 2px;
+        background: #ff7a18;
+      }
+
+      .theme-btn {
+        width: 42px;
+        height: 42px;
+        border-radius: 12px;
+        border: 1px solid rgba(255, 255, 255, 0.1);
+        background: rgba(255, 255, 255, 0.06);
+        color: white;
+        font-size: 20px;
+      }
+
+      .container {
+        max-width: 1280px;
+        margin: auto;
+        padding: 58px 24px 42px;
+        position: relative;
+        z-index: 2;
+      }
+
+      .hero-grid {
+        display: grid;
+        grid-template-columns: 1fr 1fr;
+        gap: 60px;
+        align-items: center;
+      }
+
+      .badge {
+        display: inline-flex;
+        align-items: center;
+        gap: 10px;
+        padding: 10px 18px;
+        border-radius: 999px;
+        border: 1px solid rgba(59, 130, 246, 0.35);
+        background: rgba(255, 255, 255, 0.05);
+        color: #fff;
+        font-weight: 800;
+      }
+
+      .badge span {
+        color: #38bdf8;
+      }
+
+      .title {
+        margin-top: 28px;
+        font-size: clamp(46px, 5vw, 68px);
+        line-height: 1;
+        font-weight: 900;
+        letter-spacing: -1.5px;
+      }
+
+      .marker {
+        display: block;
+        margin-top: 10px;
+        font-family: "Permanent Marker", cursive;
+        color: #ff6b00;
+        font-size: clamp(48px, 5.5vw, 72px);
+        font-weight: 400;
+        transform: rotate(-2deg);
+      }
+
+      .description {
+        margin-top: 28px;
+        max-width: 570px;
+        font-size: 19px;
+        line-height: 1.6;
+        color: #e5e7eb;
+      }
+
+      .mini-features {
+        margin-top: 34px;
+        display: grid;
+        grid-template-columns: repeat(3, 1fr);
+        gap: 28px;
+      }
+
+      .mini-item {
+        display: flex;
+        gap: 16px;
+      }
+
+      .mini-icon {
+        width: 54px;
+        height: 54px;
+        border-radius: 12px;
+        border: 1px solid rgba(59, 130, 246, 0.35);
+        background: rgba(255, 255, 255, 0.05);
+        display: grid;
+        place-items: center;
+        color: #38bdf8;
+        font-size: 25px;
+        flex-shrink: 0;
+      }
+
+      .mini-item h3 {
+        font-size: 15px;
+        margin-bottom: 8px;
+      }
+
+      .mini-item p {
+        font-size: 14px;
+        line-height: 1.5;
+        color: #d1d5db;
+      }
+
+      .image-area {
+        position: relative;
+        min-height: 450px;
+        display: flex;
+        justify-content: center;
+        align-items: flex-end;
+      }
+
+      .orbit {
+        position: absolute;
+        width: 480px;
+        height: 420px;
+        border-radius: 50%;
+        border: 1px solid rgba(37, 99, 235, 0.25);
+        background: radial-gradient(circle, rgba(37, 99, 235, 0.12), transparent 65%);
+      }
+
+      .orbit::before {
+        content: "";
+        position: absolute;
+        inset: 30px;
+        border-radius: 50%;
+        border: 1px dashed rgba(249, 115, 22, 0.55);
+      }
+
+      .person {
+        position: relative;
+        z-index: 2;
+        height: 440px;
+        object-fit: contain;
+        filter: drop-shadow(0 25px 70px rgba(37, 99, 235, 0.45));
+      }
+
+      .float-card {
+        position: absolute;
+        z-index: 4;
+        display: flex;
+        align-items: center;
+        gap: 14px;
+        padding: 18px 22px;
+        border-radius: 14px;
+        border: 1px solid rgba(255, 255, 255, 0.16);
+        background: rgba(15, 23, 42, 0.76);
+        backdrop-filter: blur(16px);
+        font-weight: 800;
+      }
+
+      .float-card small {
+        display: block;
+        margin-top: 6px;
+        color: #e5e7eb;
+        font-weight: 700;
+      }
+
+      .float-icon {
+        color: #ff7a18;
+        font-size: 30px;
+      }
+
+      .float-card.project {
+        left: 8%;
+        top: 8%;
+      }
+
+      .float-card.mentor {
+        right: 0;
+        top: 20%;
+      }
+
+      .float-card.learning {
+        right: -5%;
+        bottom: 26%;
+      }
+
+      .section-heading {
+        margin: 18px 0 28px;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        gap: 24px;
+        font-size: 28px;
+        font-weight: 900;
+      }
+
+      .section-heading::before,
+      .section-heading::after {
+        content: "";
+        height: 1px;
+        flex: 1;
+        background: linear-gradient(90deg, transparent, rgba(255, 255, 255, 0.16), transparent);
+      }
+
+      .section-heading span {
+        color: #ff7a18;
+      }
+
+      .cards {
+        display: grid;
+        grid-template-columns: repeat(3, 1fr);
+        gap: 18px;
+      }
+
+      .card {
+        min-height: 300px;
+        border: 1px solid rgba(255, 255, 255, 0.16);
+        background: rgba(15, 23, 42, 0.66);
+        backdrop-filter: blur(16px);
+        border-radius: 16px;
+        padding: 30px;
+      }
+
+      .card-icon {
+        width: 62px;
+        height: 62px;
+        border-radius: 50%;
+        border: 1px solid rgba(255, 255, 255, 0.12);
+        background: rgba(255, 255, 255, 0.05);
+        display: grid;
+        place-items: center;
+        font-size: 30px;
+        margin-bottom: 18px;
+      }
+
+      .orange {
+        color: #ff7a18;
+      }
+
+      .blue {
+        color: #3b82f6;
+      }
+
+      .purple {
+        color: #a855f7;
+      }
+
+      .card h2 {
+        font-size: 24px;
+        margin-bottom: 12px;
+      }
+
+      .card h2 span {
+        color: #ff7a18;
+      }
+
+      .card p {
+        color: #d1d5db;
+        line-height: 1.6;
+        margin-bottom: 24px;
+      }
+
+      .list {
+        list-style: none;
+        display: grid;
+        gap: 14px;
+        margin-bottom: 28px;
+      }
+
+      .list li {
+        color: #e5e7eb;
+        display: flex;
+        gap: 10px;
+      }
+
+      .list li::before {
+        content: "✓";
+        width: 18px;
+        height: 18px;
+        border-radius: 50%;
+        display: grid;
+        place-items: center;
+        background: #ff7a18;
+        color: #07111f;
+        font-size: 12px;
+        font-weight: 900;
+        flex-shrink: 0;
+      }
+
+      .card.blue-card .list li::before {
+        background: #2563eb;
+        color: white;
+      }
+
+      .card.purple-card .list li::before {
+        background: #9333ea;
+        color: white;
+      }
+
+      .btn {
+        display: inline-flex;
+        align-items: center;
+        gap: 12px;
+        padding: 13px 22px;
+        border-radius: 10px;
+        font-weight: 900;
+        border: 1px solid currentColor;
+      }
+
+      .btn.orange {
+        color: #ff7a18;
+      }
+
+      .btn.blue {
+        color: #3b82f6;
+      }
+
+      .btn.purple {
+        color: #c084fc;
+      }
+
+      .cta {
+        margin-top: 18px;
+        border: 1px solid rgba(255, 255, 255, 0.14);
+        background: rgba(37, 99, 235, 0.12);
+        border-radius: 16px;
+        padding: 24px 28px;
+        display: flex;
+        align-items: center;
+        justify-content: space-between;
+        gap: 20px;
+      }
+
+      .cta-left {
+        display: flex;
+        align-items: center;
+        gap: 22px;
+      }
+
+      .telegram {
+        width: 62px;
+        height: 62px;
+        border-radius: 50%;
+        background: linear-gradient(135deg, #2563eb, #0ea5e9);
+        display: grid;
+        place-items: center;
+        font-size: 32px;
+      }
+
+      .cta h2 {
+        font-size: 22px;
+        margin-bottom: 8px;
+      }
+
+      .cta p {
+        color: #d1d5db;
+      }
+
+      .cta-btn {
+        background: linear-gradient(90deg, #2563eb, #1d4ed8);
+        color: white;
+        padding: 15px 32px;
+        border-radius: 10px;
+        font-weight: 900;
+        white-space: nowrap;
+      }
+
+      @media (max-width: 980px) {
+        .nav-links {
+          display: none;
+        }
+
+        .hero-grid {
+          grid-template-columns: 1fr;
+          gap: 30px;
+        }
+
+        .left {
+          text-align: center;
+          order: 2;
+        }
+
+        .image-area {
+          order: 1;
+          min-height: 430px;
+        }
+
+        .description {
+          margin-left: auto;
+          margin-right: auto;
+        }
+
+        .mini-features,
+        .cards {
+          grid-template-columns: 1fr;
+        }
+
+        .mini-item {
+          justify-content: center;
+          text-align: left;
+        }
+
+        .cta {
+          flex-direction: column;
+          text-align: center;
+        }
+
+        .cta-left {
+          flex-direction: column;
+        }
+      }
+
+      @media (max-width: 620px) {
+        .container {
+          padding: 40px 16px 30px;
+        }
+
+        .logo {
+          font-size: 18px;
+        }
+
+        .title {
+          font-size: 44px;
+        }
+
+        .marker {
+          font-size: 46px;
+        }
+
+        .description {
+          font-size: 16px;
+        }
+
+        .image-area {
+          min-height: 395px;
+        }
+
+        .orbit {
+          width: 320px;
+          height: 320px;
+        }
+
+        .person {
+          height: 350px;
+        }
+
+        .float-card {
+          padding: 10px 12px;
+          gap: 8px;
+          font-size: 12px;
+          border-radius: 12px;
+        }
+
+        .float-card small {
+          font-size: 10px;
+        }
+
+        .float-icon {
+          font-size: 20px;
+        }
+
+        .float-card.project {
+          left: 0;
+          top: 4%;
+        }
+
+        .float-card.mentor {
+          right: 0;
+          top: 15%;
+        }
+
+        .float-card.learning {
+          right: 0;
+          bottom: 16%;
+        }
+
+        .section-heading {
+          font-size: 22px;
+          gap: 10px;
+        }
+
+        .card {
+          padding: 24px;
+        }
+
+        .cta-btn {
+          width: 100%;
+          text-align: center;
+        }
+      }
     </style>
   </head>
+
   <body>
-    <div class="page">
-      <header class="hero">
-        <h1>Collaboration</h1>
-        <p>Let's work together on meaningful projects, open source contributions, or design and development initiatives.</p>
-      </header>
-      <p>For collaboration inquiries, please use the contact form on the portfolio homepage or email directly.</p>
-      <p style="margin-top: 2rem;"><a class="button" href="/contact.html">Go to Contact</a></p>
-      <p style="margin-top: 2rem;"><a href="/">← Back to portfolio</a></p>
-    </div>
+    <main class="page">
+      <nav class="navbar">
+        <div class="nav-inner">
+          <a href="/" class="logo">Naami Ahmed</a>
+
+          <div class="nav-links">
+            <a href="/gallery.html">Gallery</a>
+            <a href="/buy-me-a-coffee.html">Buy me a Coffee</a>
+            <a href="/collaboration.html" class="active">Collaboration</a>
+            <a href="/contact.html">Contact</a>
+            <a href="#">More⌄</a>
+          </div>
+
+          <button class="theme-btn">☼</button>
+        </div>
+      </nav>
+
+      <section class="container">
+        <div class="hero-grid">
+          <div class="left">
+            <div class="badge"><span>♚</span> Collaboration</div>
+
+            <h1 class="title">
+              Let’s Build
+              <span class="marker">Something Amazing</span>
+            </h1>
+
+            <p class="description">
+              I love working with passionate people to build impactful projects,
+              share knowledge, and grow together. Let’s create, learn, and make
+              a real difference.
+            </p>
+
+            <div class="mini-features">
+              <div class="mini-item">
+                <div class="mini-icon">🚀</div>
+                <div>
+                  <h3>Real Impact</h3>
+                  <p>Build meaningful projects together</p>
+                </div>
+              </div>
+
+              <div class="mini-item">
+                <div class="mini-icon">🎓</div>
+                <div>
+                  <h3>Share & Learn</h3>
+                  <p>Exchange ideas and grow faster</p>
+                </div>
+              </div>
+
+              <div class="mini-item">
+                <div class="mini-icon">👥</div>
+                <div>
+                  <h3>Stronger Together</h3>
+                  <p>Collaborate, support and lift each other</p>
+                </div>
+              </div>
+            </div>
+          </div>
+
+          <div class="image-area">
+            <div class="orbit"></div>
+
+            <img
+              class="person"
+              src="/assets/naami-removebg01.png"
+              alt="Naami Ahmed"
+            />
+
+            <div class="float-card project">
+              <div class="float-icon">&lt;/&gt;</div>
+              <div>
+                Project
+                <small>Collaboration</small>
+              </div>
+            </div>
+
+            <div class="float-card mentor">
+              <div class="float-icon">👥</div>
+              <div>
+                Mentorship
+                <small>(1:1 or 1: Many)</small>
+              </div>
+            </div>
+
+            <div class="float-card learning">
+              <div class="float-icon purple">📖</div>
+              <div>
+                Learning
+                <small>Together</small>
+              </div>
+            </div>
+          </div>
+        </div>
+
+        <h2 class="section-heading">
+          Ways We Can Work <span>Together</span>
+        </h2>
+
+        <div class="cards">
+          <div class="card">
+            <div class="card-icon orange">&lt;/&gt;</div>
+            <h2>Project <span>Collaboration</span></h2>
+            <p>
+              Have an idea or project? Let’s team up and build something
+              impactful for real-world users and communities.
+            </p>
+
+            <ul class="list">
+              <li>Web / DevOps / Cloud Projects</li>
+              <li>Open Source Contributions</li>
+              <li>Community Impact Initiatives</li>
+            </ul>
+
+            <a href="/contact.html" class="btn orange">Propose a Project →</a>
+          </div>
+
+          <div class="card blue-card">
+            <div class="card-icon blue">👥</div>
+            <h2>Mentorship</h2>
+            <p>
+              Get guidance, clarity, and support to grow in your career or
+              skills. Choose what works best for you.
+            </p>
+
+            <ul class="list">
+              <li>1:1 Mentorship Personalized</li>
+              <li>1: Many Mentorship Group Sessions</li>
+              <li>Career & Skill Growth Guidance</li>
+            </ul>
+
+            <a href="/contact.html" class="btn blue">Book a Session →</a>
+          </div>
+
+          <div class="card purple-card">
+            <div class="card-icon purple">📖</div>
+            <h2>Learning <span class="purple">Together</span></h2>
+            <p>
+              Let’s learn and grow together through study sessions, tech
+              discussions, and knowledge sharing.
+            </p>
+
+            <ul class="list">
+              <li>Study Groups</li>
+              <li>Tech Talks & Discussions</li>
+              <li>Workshops & Q&A Sessions</li>
+            </ul>
+
+            <a href="/contact.html" class="btn purple">
+              Join a Learning Session →
+            </a>
+          </div>
+        </div>
+
+        <div class="cta">
+          <div class="cta-left">
+            <div class="telegram">✈</div>
+            <div>
+              <h2>Have something in mind?</h2>
+              <p>
+                Let’s connect and explore how we can collaborate and create
+                something awesome together!
+              </p>
+            </div>
+          </div>
+
+          <a href="/contact.html" class="cta-btn">Get In Touch 💬</a>
+        </div>
+      </section>
+    </main>
   </body>
 </html>

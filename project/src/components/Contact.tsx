@@ -1,349 +1,533 @@
-import React, { useState } from 'react';
-import { Mail, Linkedin, Send, MapPin, CheckCircle, AlertCircle, Loader2, Facebook, Instagram, ExternalLink, Youtube } from 'lucide-react';
-import { personalInfo } from '../data/portfolio';
-import { useGoogleAnalytics } from '../hooks/useGoogleAnalytics';
+import React, { useState } from "react";
+import {
+  Mail,
+  Linkedin,
+  Send,
+  MapPin,
+  CheckCircle,
+  AlertCircle,
+  Loader2,
+  Facebook,
+  Instagram,
+  ExternalLink,
+  Youtube,
+  Github,
+  Calendar,
+  MessageCircle,
+  User,
+  Tag,
+  Lock,
+  Quote,
+} from "lucide-react";
+import { personalInfo } from "../data/portfolio";
+import { useGoogleAnalytics } from "../hooks/useGoogleAnalytics";
 
 const Contact: React.FC = () => {
   const [formData, setFormData] = useState({
-    name: '',
-    email: '',
-    message: ''
+    name: "",
+    email: "",
+    subject: "",
+    message: "",
   });
+
   const [isSubmitting, setIsSubmitting] = useState(false);
-  const [submitStatus, setSubmitStatus] = useState<'idle' | 'success' | 'error'>('idle');
-  const [submitMessage, setSubmitMessage] = useState('');
+  const [submitStatus, setSubmitStatus] = useState<"idle" | "success" | "error">("idle");
+  const [submitMessage, setSubmitMessage] = useState("");
   const { trackEvent } = useGoogleAnalytics();
 
-  // Social media links - you can update these with your actual profiles
   const socialLinks = {
-    facebook: 'https://facebook.com/naamiahmed27',
-    instagram: 'https://instagram.com/naamiahmed27',
-    youtube: 'https://youtube.com/@NaamiAhmed-27',
-    medium: 'https://medium.com/@naamiahmed',
-    devto: 'https://dev.to/naamiahmed',
+    facebook: "https://facebook.com/naamiahmed27",
+    instagram: "https://instagram.com/naamiahmed27",
+    youtube: "https://youtube.com/@NaamiAhmed-27",
+    medium: "https://medium.com/@naamiahmed",
+    devto: "https://dev.to/naamiahmed",
+    github: "https://github.com/naamiahmed",
+    calendly: "https://calendly.com/naamiahmed",
   };
 
   const handleSubmit = async (e: React.FormEvent) => {
     e.preventDefault();
     setIsSubmitting(true);
-    setSubmitStatus('idle');
-    setSubmitMessage('');
+    setSubmitStatus("idle");
+    setSubmitMessage("");
 
-    // Track form submission attempt
-    trackEvent('form_submit', 'contact', 'contact_form');
+    trackEvent("form_submit", "contact", "contact_form");
 
     try {
-      const response = await fetch('https://formspree.io/f/xzzgykpg', {
-        method: 'POST',
-        headers: {
-          'Content-Type': 'application/json',
-        },
-        body: JSON.stringify({
-          name: formData.name,
-          email: formData.email,
-          message: formData.message,
-        }),
+      const response = await fetch("https://formspree.io/f/xzzgykpg", {
+        method: "POST",
+        headers: { "Content-Type": "application/json" },
+        body: JSON.stringify(formData),
       });
 
       if (response.ok) {
-        setSubmitStatus('success');
-        setSubmitMessage('Thank you! Your message has been sent successfully.');
-        setFormData({ name: '', email: '', message: '' });
-        // Track successful form submission
-        trackEvent('form_success', 'contact', 'contact_form');
+        setSubmitStatus("success");
+        setSubmitMessage("Thank you! Your message has been sent successfully.");
+        setFormData({ name: "", email: "", subject: "", message: "" });
+        trackEvent("form_success", "contact", "contact_form");
       } else {
-        throw new Error('Failed to send message');
+        throw new Error("Failed to send message");
       }
-    } catch (error) {
-      setSubmitStatus('error');
-      setSubmitMessage('Sorry, there was an error sending your message. Please try again.');
-      // Track form submission error
-      trackEvent('form_error', 'contact', 'contact_form');
+    } catch {
+      setSubmitStatus("error");
+      setSubmitMessage("Sorry, there was an error sending your message. Please try again.");
+      trackEvent("form_error", "contact", "contact_form");
     } finally {
       setIsSubmitting(false);
     }
   };
 
-  const handleChange = (e: React.ChangeEvent<HTMLInputElement | HTMLTextAreaElement>) => {
-    setFormData({
-      ...formData,
-      [e.target.name]: e.target.value
-    });
+  const handleChange = (
+    e: React.ChangeEvent<HTMLInputElement | HTMLTextAreaElement>
+  ) => {
+    setFormData({ ...formData, [e.target.name]: e.target.value });
   };
 
   const handleSocialLinkClick = (platform: string) => {
-    trackEvent('social_link_click', 'engagement', platform);
+    trackEvent("social_link_click", "engagement", platform);
   };
 
   return (
-    <section id="contact" className="py-20 relative bg-blue-gradient overflow-hidden">
-      {/* Floating Particles */}
-      {[...Array(5)].map((_, i) => (
-        <div
-          key={i}
-          className={`particle particle-${i + 1}`}
-          style={{
-            left: `${Math.random() * 100}%`,
-            animationDelay: `${i * 1.5}s`
-          }}
-        ></div>
-      ))}
-      
-      {/* Grid Pattern Overlay */}
-      <div className="absolute inset-0 grid-pattern -z-30 opacity-40 dark:opacity-20"></div>
-      
-      <div className="max-w-6xl mx-auto px-4 relative z-10">
-        <div className="text-center mb-12 animate-fade-in-up">
-          <h2 className="text-4xl font-bold text-gray-900 dark:text-white mb-4 transition-colors duration-300">Let's Connect</h2>
-          <div className="w-20 h-1 bg-gradient-to-r from-sky-600 to-purple-600 mx-auto mb-4 transition-colors duration-300"></div>
-          <p className="text-gray-600 dark:text-gray-400 max-w-2xl mx-auto transition-colors duration-300">
-            I'm always interested in new opportunities and collaboration. 
-            Feel free to reach out if you'd like to discuss a project or just say hello!
-          </p>
-        </div>
+    <section
+      id="contact"
+      className="relative overflow-hidden bg-[#06111f] px-4 py-16 text-white sm:px-6 lg:px-8"
+    >
+      {/* Background */}
+      <div className="pointer-events-none absolute inset-0 bg-[radial-gradient(circle_at_70%_18%,rgba(37,99,235,0.22),transparent_30%),radial-gradient(circle_at_15%_45%,rgba(14,165,233,0.10),transparent_35%)]" />
 
-        <div className="grid grid-cols-1 lg:grid-cols-2 gap-12">
-          {/* Contact Info */}
-          <div className="space-y-8 animate-fade-in-left">
-            <div>
-              <h3 className="text-2xl font-semibold text-gray-900 dark:text-white mb-6 transition-colors duration-300">
-                Get in Touch
-              </h3>
-              <div className="space-y-4">
-                <a
-                  href={`mailto:${personalInfo.email}`}
-                  onClick={() => trackEvent('email_click', 'contact', 'email')}
-                  className="flex items-center space-x-4 p-4 bg-white dark:bg-gray-900 rounded-lg hover:shadow-md transition-all duration-300 hover:-translate-y-1"
-                >
-                  <div className="w-12 h-12 bg-gray-100 dark:bg-gray-700 rounded-lg flex items-center justify-center transition-colors duration-300">
-                    <Mail className="w-6 h-6 text-gray-700 dark:text-gray-300" />
-                  </div>
-                  <div>
-                    <p className="font-medium text-gray-900 dark:text-white transition-colors duration-300">Email</p>
-                    <p className="text-gray-600 dark:text-gray-400 transition-colors duration-300">{personalInfo.email}</p>
-                  </div>
-                </a>
+      {/* Dotted decorations */}
+      <div className="pointer-events-none absolute left-0 top-20 h-56 w-40 opacity-30 [background-image:radial-gradient(#ff6b00_1.5px,transparent_1.5px)] [background-size:22px_22px]" />
+      <div className="pointer-events-none absolute right-0 top-28 h-56 w-40 opacity-20 [background-image:radial-gradient(#ff6b00_1.5px,transparent_1.5px)] [background-size:22px_22px]" />
 
-                <a
-                  href={personalInfo.linkedin}
-                  onClick={() => trackEvent('social_link_click', 'engagement', 'linkedin')}
-                  className="flex items-center space-x-4 p-4 bg-white dark:bg-gray-900 rounded-lg hover:shadow-md transition-all duration-300 hover:-translate-y-1"
-                >
-                  <div className="w-12 h-12 bg-gray-100 dark:bg-gray-700 rounded-lg flex items-center justify-center transition-colors duration-300">
-                    <Linkedin className="w-6 h-6 text-gray-700 dark:text-gray-300" />
-                  </div>
-                  <div>
-                    <p className="font-medium text-gray-900 dark:text-white transition-colors duration-300">LinkedIn</p>
-                    <p className="text-gray-600 dark:text-gray-400 transition-colors duration-300">Connect with me</p>
-                  </div>
-                </a>
-
-                <div className="flex items-center space-x-4 p-4 bg-white dark:bg-gray-900 rounded-lg transition-all duration-300">
-                  <div className="w-12 h-12 bg-gray-100 dark:bg-gray-700 rounded-lg flex items-center justify-center transition-colors duration-300">
-                    <MapPin className="w-6 h-6 text-gray-700 dark:text-gray-300" />
-                  </div>
-                  <div>
-                    <p className="font-medium text-gray-900 dark:text-white transition-colors duration-300">Location</p>
-                    <p className="text-gray-600 dark:text-gray-400 transition-colors duration-300">Sri Lanka, Colombo</p>
-                  </div>
-                </div>
-              </div>
+      <div className="relative z-10 mx-auto max-w-7xl">
+        {/* Top Section */}
+        <div className="grid grid-cols-1 gap-10 lg:grid-cols-[0.9fr_1.1fr]">
+          {/* Left */}
+          <div>
+            <div className="inline-flex items-center gap-2 rounded-full border border-white/10 bg-white/5 px-4 py-2 text-sm font-bold">
+              <Mail className="h-4 w-4 text-orange-400" />
+              Let’s Connect
             </div>
 
-            {/* Social Media Links */}
-            <div>
-              <h3 className="text-xl font-semibold text-gray-900 dark:text-white mb-4 transition-colors duration-300">
-                Follow Me
-              </h3>
-              <div className="grid grid-cols-2 gap-4">
-                <a
-                  href={socialLinks.facebook}
-                  target="_blank"
-                  rel="noopener noreferrer"
-                  onClick={() => handleSocialLinkClick('facebook')}
-                  className="flex items-center space-x-3 p-3 bg-white dark:bg-gray-900 rounded-lg hover:shadow-md transition-all duration-300 hover:-translate-y-1"
-                >
-                  <div className="w-10 h-10 bg-blue-100 dark:bg-blue-900/20 rounded-lg flex items-center justify-center transition-colors duration-300">
-                    <Facebook className="w-5 h-5 text-blue-600 dark:text-blue-400" />
-                  </div>
-                  <div className="flex-1">
-                    <p className="font-medium text-gray-900 dark:text-white transition-colors duration-300">Facebook</p>
-                    <p className="text-sm text-gray-600 dark:text-gray-400 transition-colors duration-300">Follow me</p>
-                  </div>
-                  <ExternalLink className="w-4 h-4 text-gray-400" />
-                </a>
+            <h2 className="mt-6 text-4xl font-black leading-tight sm:text-5xl lg:text-6xl">
+              Let’s Build
+            </h2>
 
-                <a
-                  href={socialLinks.instagram}
-                  target="_blank"
-                  rel="noopener noreferrer"
-                  onClick={() => handleSocialLinkClick('instagram')}
-                  className="flex items-center space-x-3 p-3 bg-white dark:bg-gray-900 rounded-lg hover:shadow-md transition-all duration-300 hover:-translate-y-1"
-                >
-                  <div className="w-10 h-10 bg-pink-100 dark:bg-pink-900/20 rounded-lg flex items-center justify-center transition-colors duration-300">
-                    <Instagram className="w-5 h-5 text-pink-600 dark:text-pink-400" />
-                  </div>
-                  <div className="flex-1">
-                    <p className="font-medium text-gray-900 dark:text-white transition-colors duration-300">Instagram</p>
-                    <p className="text-sm text-gray-600 dark:text-gray-400 transition-colors duration-300">Follow me</p>
-                  </div>
-                  <ExternalLink className="w-4 h-4 text-gray-400" />
-                </a>
+            <h3
+              className="mt-1 text-4xl text-orange-500 sm:text-5xl lg:text-6xl"
+              style={{ fontFamily: "'Permanent Marker', cursive" }}
+            >
+              Something Amazing
+            </h3>
 
-                <a
-                  href={socialLinks.youtube}
-                  target="_blank"
-                  rel="noopener noreferrer"
-                  onClick={() => handleSocialLinkClick('youtube')}
-                  className="flex items-center space-x-3 p-3 bg-white dark:bg-gray-900 rounded-lg hover:shadow-md transition-all duration-300 hover:-translate-y-1"
-                >
-                  <div className="w-10 h-10 bg-red-100 dark:bg-red-900/20 rounded-lg flex items-center justify-center transition-colors duration-300">
-                    <Youtube className="w-5 h-5 text-red-600 dark:text-red-400" />
-                  </div>
-                  <div className="flex-1">
-                    <p className="font-medium text-gray-900 dark:text-white transition-colors duration-300">YouTube</p>
-                    <p className="text-sm text-gray-600 dark:text-gray-400 transition-colors duration-300">Subscribe</p>
-                  </div>
-                  <ExternalLink className="w-4 h-4 text-gray-400" />
-                </a>
+            <h2 className="text-4xl font-black leading-tight sm:text-5xl lg:text-6xl">
+              Together!
+            </h2>
 
-                <a
-                  href={socialLinks.medium}
-                  target="_blank"
-                  rel="noopener noreferrer"
-                  onClick={() => handleSocialLinkClick('medium')}
-                  className="flex items-center space-x-3 p-3 bg-white dark:bg-gray-900 rounded-lg hover:shadow-md transition-all duration-300 hover:-translate-y-1"
-                >
-                  <div className="w-10 h-10 bg-green-100 dark:bg-green-900/20 rounded-lg flex items-center justify-center transition-colors duration-300">
-                    <svg className="w-5 h-5 text-green-600 dark:text-green-400" viewBox="0 0 24 24" fill="currentColor">
-                      <path d="M13.54 12a6.8 6.8 0 01-6.77 6.82A6.8 6.8 0 010 12a6.8 6.8 0 016.77-6.82A6.8 6.8 0 0113.54 12zM20.96 12c0 3.54-1.51 6.42-3.38 6.42-1.87 0-3.39-2.88-3.39-6.42s1.52-6.42 3.39-6.42 3.38 2.88 3.38 6.42M24 12c0 3.17-.53 5.75-1.19 5.75-.66 0-1.19-2.58-1.19-5.75s.53-5.75 1.19-5.75C23.47 6.25 24 8.83 24 12z"/>
-                    </svg>
-                  </div>
-                  <div className="flex-1">
-                    <p className="font-medium text-gray-900 dark:text-white transition-colors duration-300">Medium</p>
-                    <p className="text-sm text-gray-600 dark:text-gray-400 transition-colors duration-300">Read my articles</p>
-                  </div>
-                  <ExternalLink className="w-4 h-4 text-gray-400" />
-                </a>
+            <p className="mt-5 max-w-xl text-base leading-7 text-slate-300 sm:text-lg">
+              Have a project idea, collaboration opportunity, mentorship request,
+              or just want to say hello? I’d love to hear from you.
+            </p>
 
-                <a
-                  href={socialLinks.devto}
-                  target="_blank"
-                  rel="noopener noreferrer"
-                  onClick={() => handleSocialLinkClick('devto')}
-                  className="flex items-center space-x-3 p-3 bg-white dark:bg-gray-900 rounded-lg hover:shadow-md transition-all duration-300 hover:-translate-y-1"
-                >
-                  <div className="w-10 h-10 bg-gray-100 dark:bg-gray-700 rounded-lg flex items-center justify-center transition-colors duration-300">
-                    <svg className="w-5 h-5 text-gray-700 dark:text-gray-300" viewBox="0 0 24 24" fill="currentColor">
-                      <path d="M7.42 10.05c-.18-.16-.46-.23-.84-.23H6l.02 2.44.04 2.45h.53c.38 0 .65-.08.83-.23.19-.15.28-.38.28-.68 0-.3-.09-.53-.28-.68zM0 4.94v14.12h24V4.94H0zM8.56 15.3c-.44.58-1.06.88-1.86.88-.8 0-1.42-.3-1.86-.88-.44-.58-.66-1.34-.66-2.28 0-.94.22-1.7.66-2.28.44-.58 1.06-.88 1.86-.88.8 0 1.42.3 1.86.88.44.58.66 1.34.66 2.28 0 .94-.22 1.7-.66 2.28zm2.43-5.92c-.19-.15-.47-.23-.84-.23h-.56v4.6h.56c.37 0 .65-.08.84-.23.19-.15.28-.38.28-.68 0-.3-.09-.53-.28-.68zM13.98 15.3c-.44.58-1.06.88-1.86.88-.8 0-1.42-.3-1.86-.88-.44-.58-.66-1.34-.66-2.28 0-.94.22-1.7.66-2.28.44-.58 1.06-.88 1.86-.88.8 0 1.42.3 1.86.88.44.58.66 1.34.66 2.28 0 .94-.22 1.7-.66 2.28zm2.43-5.92c-.19-.15-.47-.23-.84-.23h-.56v4.6h.56c.37 0 .65-.08.84-.23.19-.15.28-.38.28-.68 0-.3-.09-.53-.28-.68z"/>
-                    </svg>
-                  </div>
-                  <div className="flex-1">
-                    <p className="font-medium text-gray-900 dark:text-white transition-colors duration-300">Dev.to</p>
-                    <p className="text-sm text-gray-600 dark:text-gray-400 transition-colors duration-300">Read my posts</p>
-                  </div>
-                  <ExternalLink className="w-4 h-4 text-gray-400" />
-                </a>
+            <div className="mt-8">
+              <h3 className="mb-5 text-xl font-black">Get in Touch</h3>
+
+              <div className="space-y-4">
+                <ContactInfoCard
+                  icon={<Mail />}
+                  title="Email"
+                  value={personalInfo.email}
+                  href={`mailto:${personalInfo.email}`}
+                  onClick={() => trackEvent("email_click", "contact", "email")}
+                />
+
+                <ContactInfoCard
+                  icon={<MapPin />}
+                  title="Location"
+                  value="Colombo, Sri Lanka"
+                />
+
+                <ContactInfoCard
+                  icon={<Linkedin />}
+                  title="LinkedIn"
+                  value="linkedin.com/in/naami-ahmed"
+                  href={personalInfo.linkedin}
+                  onClick={() => handleSocialLinkClick("linkedin")}
+                />
+
+                <ContactInfoCard
+                  icon={<Github />}
+                  title="GitHub"
+                  value="github.com/naamiahmed"
+                  href={socialLinks.github}
+                  onClick={() => handleSocialLinkClick("github")}
+                />
               </div>
             </div>
           </div>
 
-          {/* Contact Form */}
-          <div className="bg-white dark:bg-gray-900 rounded-xl shadow-md p-8 animate-fade-in-right transition-colors duration-300">
-            <h3 className="text-2xl font-semibold text-gray-900 dark:text-white mb-6 transition-colors duration-300">
-              Send Message
-            </h3>
-            
-            {/* Status Messages */}
-            {submitStatus === 'success' && (
-              <div className="mb-6 p-4 bg-green-50 dark:bg-green-900/20 border border-green-200 dark:border-green-800 rounded-lg flex items-center space-x-3">
-                <CheckCircle className="w-5 h-5 text-green-600 dark:text-green-400" />
-                <p className="text-green-800 dark:text-green-200">{submitMessage}</p>
+          {/* Form */}
+          <div className="rounded-3xl border border-white/10 bg-white/5 p-5 backdrop-blur-xl sm:p-8">
+            <div className="mb-7 flex flex-col gap-4 sm:flex-row sm:items-center">
+              <div className="grid h-16 w-16 place-items-center rounded-full border border-blue-500/30 bg-blue-500/10 text-blue-400">
+                <Send className="h-8 w-8" />
               </div>
+
+              <div>
+                <h3 className="text-2xl font-black sm:text-3xl">
+                  Send Me a Message
+                </h3>
+                <p className="mt-2 text-slate-300">
+                  Fill out the form and I’ll get back to you as soon as possible.
+                </p>
+              </div>
+            </div>
+
+            {submitStatus === "success" && (
+              <StatusBox
+                type="success"
+                icon={<CheckCircle />}
+                message={submitMessage}
+              />
             )}
 
-            {submitStatus === 'error' && (
-              <div className="mb-6 p-4 bg-red-50 dark:bg-red-900/20 border border-red-200 dark:border-red-800 rounded-lg flex items-center space-x-3">
-                <AlertCircle className="w-5 h-5 text-red-600 dark:text-red-400" />
-                <p className="text-red-800 dark:text-red-200">{submitMessage}</p>
-              </div>
+            {submitStatus === "error" && (
+              <StatusBox
+                type="error"
+                icon={<AlertCircle />}
+                message={submitMessage}
+              />
             )}
-            
-            <form onSubmit={handleSubmit} className="space-y-6">
-              <div>
-                <label htmlFor="name" className="block text-sm font-medium text-gray-700 dark:text-gray-300 mb-2 transition-colors duration-300">
-                  Name
-                </label>
-                <input
-                  type="text"
-                  id="name"
+
+            <form onSubmit={handleSubmit} className="space-y-4">
+              <div className="grid grid-cols-1 gap-4 sm:grid-cols-2">
+                <InputField
+                  icon={<User />}
                   name="name"
+                  placeholder="Your Name"
                   value={formData.name}
                   onChange={handleChange}
-                  required
                   disabled={isSubmitting}
-                  className="w-full px-4 py-3 border border-gray-300 dark:border-gray-600 rounded-lg focus:ring-2 focus:ring-gray-500 focus:border-transparent transition-all duration-300 bg-white dark:bg-gray-800 text-gray-900 dark:text-white disabled:opacity-50 disabled:cursor-not-allowed"
-                  placeholder="Your name"
+                  required
                 />
-              </div>
 
-              <div>
-                <label htmlFor="email" className="block text-sm font-medium text-gray-700 dark:text-gray-300 mb-2 transition-colors duration-300">
-                  Email
-                </label>
-                <input
+                <InputField
+                  icon={<Mail />}
                   type="email"
-                  id="email"
                   name="email"
+                  placeholder="Your Email"
                   value={formData.email}
                   onChange={handleChange}
-                  required
                   disabled={isSubmitting}
-                  className="w-full px-4 py-3 border border-gray-300 dark:border-gray-600 rounded-lg focus:ring-2 focus:ring-gray-500 focus:border-transparent transition-all duration-300 bg-white dark:bg-gray-800 text-gray-900 dark:text-white disabled:opacity-50 disabled:cursor-not-allowed"
-                  placeholder="your.email@example.com"
+                  required
                 />
               </div>
 
-              <div>
-                <label htmlFor="message" className="block text-sm font-medium text-gray-700 dark:text-gray-300 mb-2 transition-colors duration-300">
-                  Message
-                </label>
+              <InputField
+                icon={<Tag />}
+                name="subject"
+                placeholder="Subject"
+                value={formData.subject}
+                onChange={handleChange}
+                disabled={isSubmitting}
+                required
+              />
+
+              <label className="flex min-h-[160px] items-start gap-3 rounded-xl border border-white/10 bg-slate-950/30 px-4 py-4 transition focus-within:border-blue-500/50">
+                <MessageCircle className="mt-1 h-5 w-5 shrink-0 text-slate-300" />
                 <textarea
-                  id="message"
                   name="message"
                   value={formData.message}
                   onChange={handleChange}
                   required
-                  rows={6}
                   disabled={isSubmitting}
-                  className="w-full px-4 py-3 border border-gray-300 dark:border-gray-600 rounded-lg focus:ring-2 focus:ring-gray-500 focus:border-transparent transition-all duration-300 resize-none bg-white dark:bg-gray-800 text-gray-900 dark:text-white disabled:opacity-50 disabled:cursor-not-allowed"
-                  placeholder="Tell me about your project or just say hello..."
+                  placeholder="Your Message"
+                  rows={6}
+                  className="w-full resize-none bg-transparent text-white outline-none placeholder:text-slate-400 disabled:opacity-50"
                 />
-              </div>
+              </label>
 
               <button
                 type="submit"
                 disabled={isSubmitting}
-                className="w-full bg-gray-900 dark:bg-white text-white dark:text-gray-900 py-3 px-6 rounded-lg font-semibold hover:bg-gray-800 dark:hover:bg-gray-100 transition-all duration-300 flex items-center justify-center space-x-2 shadow-lg hover:shadow-xl hover:-translate-y-1 disabled:opacity-50 disabled:cursor-not-allowed disabled:hover:transform-none"
+                className="flex w-full items-center justify-center gap-3 rounded-xl bg-gradient-to-r from-blue-500 to-blue-700 px-6 py-4 font-black text-white shadow-lg shadow-blue-500/20 transition hover:-translate-y-1 hover:shadow-blue-500/40 disabled:cursor-not-allowed disabled:opacity-60 disabled:hover:translate-y-0"
               >
                 {isSubmitting ? (
                   <>
-                    <Loader2 className="w-5 h-5 animate-spin" />
-                    <span>Sending...</span>
+                    <Loader2 className="h-5 w-5 animate-spin" />
+                    Sending...
                   </>
                 ) : (
                   <>
-                    <Send className="w-5 h-5" />
-                    <span>Send Message</span>
+                    <Send className="h-5 w-5" />
+                    Send Message
                   </>
                 )}
               </button>
             </form>
+
+            <p className="mt-5 flex items-center justify-center gap-2 text-sm text-slate-300">
+              <Lock className="h-4 w-4" />
+              Your information is safe with me.
+            </p>
           </div>
+        </div>
+
+        {/* Bottom Card */}
+        <div className="mt-10 grid overflow-hidden rounded-3xl border border-white/10 bg-blue-500/10 backdrop-blur-xl lg:grid-cols-[1fr_1fr_0.9fr]">
+          <div className="p-6 sm:p-8">
+            <div className="mb-5 grid h-20 w-20 place-items-center rounded-full bg-orange-500/10 text-orange-400">
+              <Calendar className="h-10 w-10" />
+            </div>
+
+            <h3 className="text-2xl font-black">Let’s Connect!</h3>
+
+            <p className="mt-3 leading-7 text-slate-300">
+              I’m always open to discussing new projects, creative ideas, or
+              opportunities to be part of your vision.
+            </p>
+
+            <a
+              href={socialLinks.calendly}
+              target="_blank"
+              rel="noopener noreferrer"
+              onClick={() => handleSocialLinkClick("calendly")}
+              className="mt-6 inline-flex items-center gap-2 rounded-full border border-orange-500/50 px-5 py-3 text-sm font-black text-orange-400 transition hover:bg-orange-500 hover:text-white"
+            >
+              Schedule a Call <ExternalLink className="h-4 w-4" />
+            </a>
+          </div>
+
+          <div className="border-y border-white/10 p-6 sm:p-8 lg:border-x lg:border-y-0">
+            <h3 className="mb-5 text-2xl font-black">Available For</h3>
+
+            <ul className="space-y-4 text-slate-300">
+              {[
+                "Project Collaboration",
+                "Speaking Engagements",
+                "Mentorship & Guidance",
+                "Open Source Contributions",
+                "Tech Communities & Events",
+              ].map((item) => (
+                <li key={item} className="flex items-center gap-3">
+                  <CheckCircle className="h-5 w-5 text-orange-400" />
+                  {item}
+                </li>
+              ))}
+            </ul>
+          </div>
+
+          <div className="relative flex min-h-[260px] justify-center overflow-hidden">
+            <div className="absolute bottom-[-80px] h-80 w-80 rounded-full border border-blue-500/30 bg-blue-500/10" />
+            <img
+              src="/assets/naami-removebg01.png"
+              alt="Naami Ahmed"
+              className="relative z-10 h-72 self-end object-contain drop-shadow-[0_25px_60px_rgba(37,99,235,0.35)]"
+            />
+          </div>
+        </div>
+
+        {/* Social Links */}
+        <div className="mt-10">
+          <h3 className="mb-5 text-center text-2xl font-black">Follow Me</h3>
+
+          <div className="grid grid-cols-1 gap-4 sm:grid-cols-2 lg:grid-cols-3">
+            <SocialCard
+              icon={<Facebook />}
+              title="Facebook"
+              subtitle="Follow me"
+              href={socialLinks.facebook}
+              onClick={() => handleSocialLinkClick("facebook")}
+              color="text-blue-400"
+            />
+
+            <SocialCard
+              icon={<Instagram />}
+              title="Instagram"
+              subtitle="Follow my journey"
+              href={socialLinks.instagram}
+              onClick={() => handleSocialLinkClick("instagram")}
+              color="text-pink-400"
+            />
+
+            <SocialCard
+              icon={<Youtube />}
+              title="YouTube"
+              subtitle="Subscribe"
+              href={socialLinks.youtube}
+              onClick={() => handleSocialLinkClick("youtube")}
+              color="text-red-400"
+            />
+
+            <SocialCard
+              icon={<Linkedin />}
+              title="LinkedIn"
+              subtitle="Connect professionally"
+              href={personalInfo.linkedin}
+              onClick={() => handleSocialLinkClick("linkedin")}
+              color="text-blue-400"
+            />
+
+            <SocialCard
+              icon={<Github />}
+              title="GitHub"
+              subtitle="View my code"
+              href={socialLinks.github}
+              onClick={() => handleSocialLinkClick("github")}
+              color="text-slate-200"
+            />
+
+            <SocialCard
+              icon={<ExternalLink />}
+              title="Medium / Dev.to"
+              subtitle="Read my articles"
+              href={socialLinks.medium}
+              onClick={() => handleSocialLinkClick("medium")}
+              color="text-green-400"
+            />
+          </div>
+        </div>
+
+        {/* Footer Note */}
+        <div className="mt-10 flex flex-col gap-4 rounded-3xl border border-white/10 bg-white/5 p-6 text-center backdrop-blur-xl sm:flex-row sm:items-center sm:justify-center">
+          <Quote className="mx-auto h-8 w-8 shrink-0 text-orange-400 sm:mx-0" />
+          <p className="text-slate-200">
+            Thanks for stopping by! Let’s create something impactful together.
+          </p>
+          <span
+            className="text-xl text-orange-500"
+            style={{ fontFamily: "'Permanent Marker', cursive" }}
+          >
+            Naami Ahmed
+          </span>
         </div>
       </div>
     </section>
   );
 };
+
+const ContactInfoCard = ({
+  icon,
+  title,
+  value,
+  href,
+  onClick,
+}: {
+  icon: React.ReactNode;
+  title: string;
+  value: string;
+  href?: string;
+  onClick?: () => void;
+}) => {
+  const content = (
+    <div className="flex items-center gap-4 rounded-2xl border border-white/10 bg-white/5 p-4 transition hover:-translate-y-1 hover:border-blue-500/40">
+      <div className="grid h-12 w-12 shrink-0 place-items-center rounded-xl bg-blue-500/10 text-blue-400">
+        {icon}
+      </div>
+      <div className="min-w-0">
+        <p className="font-black text-white">{title}</p>
+        <p className="truncate text-sm text-sky-400">{value}</p>
+      </div>
+    </div>
+  );
+
+  return href ? (
+    <a href={href} target={href.startsWith("http") ? "_blank" : undefined} rel="noopener noreferrer" onClick={onClick}>
+      {content}
+    </a>
+  ) : (
+    content
+  );
+};
+
+const InputField = ({
+  icon,
+  type = "text",
+  name,
+  placeholder,
+  value,
+  onChange,
+  disabled,
+  required,
+}: {
+  icon: React.ReactNode;
+  type?: string;
+  name: string;
+  placeholder: string;
+  value: string;
+  onChange: (e: React.ChangeEvent<HTMLInputElement>) => void;
+  disabled?: boolean;
+  required?: boolean;
+}) => (
+  <label className="flex h-14 items-center gap-3 rounded-xl border border-white/10 bg-slate-950/30 px-4 transition focus-within:border-blue-500/50">
+    <span className="text-slate-300">{icon}</span>
+    <input
+      type={type}
+      name={name}
+      value={value}
+      onChange={onChange}
+      required={required}
+      disabled={disabled}
+      placeholder={placeholder}
+      className="w-full bg-transparent text-white outline-none placeholder:text-slate-400 disabled:opacity-50"
+    />
+  </label>
+);
+
+const StatusBox = ({
+  type,
+  icon,
+  message,
+}: {
+  type: "success" | "error";
+  icon: React.ReactNode;
+  message: string;
+}) => (
+  <div
+    className={`mb-5 flex items-center gap-3 rounded-xl border p-4 ${
+      type === "success"
+        ? "border-green-500/30 bg-green-500/10 text-green-300"
+        : "border-red-500/30 bg-red-500/10 text-red-300"
+    }`}
+  >
+    {icon}
+    <p>{message}</p>
+  </div>
+);
+
+const SocialCard = ({
+  icon,
+  title,
+  subtitle,
+  href,
+  onClick,
+  color,
+}: {
+  icon: React.ReactNode;
+  title: string;
+  subtitle: string;
+  href: string;
+  onClick?: () => void;
+  color: string;
+}) => (
+  <a
+    href={href}
+    target="_blank"
+    rel="noopener noreferrer"
+    onClick={onClick}
+    className="flex items-center gap-4 rounded-2xl border border-white/10 bg-white/5 p-4 transition hover:-translate-y-1 hover:border-orange-500/40"
+  >
+    <div className={`grid h-12 w-12 place-items-center rounded-xl bg-white/5 ${color}`}>
+      {icon}
+    </div>
+
+    <div className="flex-1">
+      <p className="font-black text-white">{title}</p>
+      <p className="text-sm text-slate-400">{subtitle}</p>
+    </div>
+
+    <ExternalLink className="h-4 w-4 text-slate-500" />
+  </a>
+);
 
 export default Contact;

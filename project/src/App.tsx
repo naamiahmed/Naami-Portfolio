@@ -9,7 +9,7 @@ import About from './components/About';
 import Experience from './components/Experience';
 import Services from './components/Services';
 import Certificates from './components/Certificates';
-import Skills from './components/Skills';
+// import Skills from './components/Skills';
 import Projects from './components/Projects';
 import Blog from './components/Blog';
 import Volunteering from './components/Volunteering';
@@ -69,25 +69,25 @@ function App() {
           {/* </div> */}
         {/* </div> */}
 
-        <Services />
+        {/* <Services /> */}
 
-        <div className="grid grid-cols-1 xl:grid-cols-2 gap-8 px-4 xl:px-0">
-          <div className="animate-fade-in-left">
+        {/* <div className="grid grid-cols-1 xl:grid-cols-2 gap-8 px-4 xl:px-0">
+          <div className="animate-fade-in-left"> */}
             <Certificates />
-          </div>
+          {/* </div>
           <div className="animate-fade-in-right">
             <Skills activeToggle={activeToggle} onToggle={handleToggle} />
           </div>
-        </div>
+        </div> */}
 
-        <div className="grid grid-cols-1 xl:grid-cols-2 gap-8 px-4 xl:px-0">
-          <div className="animate-fade-in-left">
+        {/* <div className="grid grid-cols-1 xl:grid-cols-2 gap-8 px-4 xl:px-0"> */}
+          {/* <div className="animate-fade-in-left"> */}
             <Projects activeToggle={activeToggle} onToggle={handleToggle} />
-          </div>
-          <div className="animate-fade-in-right">
+          {/* </div> */}
+          {/* <div className="animate-fade-in-right"> */}
             <Blog activeToggle={activeToggle} onToggle={handleToggle} />
-          </div>
-        </div>
+          {/* </div> */}
+        {/* </div> */}
 
         <Volunteering />
         <Contact />

@@ -1,0 +1,824 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Gallery | Naami Ahmed</title>
+    <meta name="description" content="Gallery page for Naami Ahmed's community and tech event moments." />
+
+    <link
+      href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800;900&family=Permanent+Marker&display=swap"
+      rel="stylesheet"
+    />
+
+    <style>
+      * {
+        margin: 0;
+        padding: 0;
+        box-sizing: border-box;
+      }
+
+      body {
+        font-family: "Inter", system-ui, sans-serif;
+        background: #06111f;
+        color: #ffffff;
+        overflow-x: hidden;
+      }
+
+      a {
+        color: inherit;
+        text-decoration: none;
+      }
+
+      .page {
+        min-height: 100vh;
+        position: relative;
+        overflow: hidden;
+        background:
+          radial-gradient(circle at 70% 20%, rgba(37, 99, 235, 0.18), transparent 30%),
+          radial-gradient(circle at 20% 45%, rgba(14, 165, 233, 0.1), transparent 34%),
+          linear-gradient(180deg, #07111f 0%, #06111f 100%);
+      }
+
+      .page::before,
+      .page::after {
+        content: "";
+        position: absolute;
+        width: 160px;
+        height: 230px;
+        background-image: radial-gradient(#ff6b00 1.4px, transparent 1.4px);
+        background-size: 22px 22px;
+        opacity: 0.38;
+        z-index: 0;
+      }
+
+      .page::before {
+        left: -15px;
+        top: 78px;
+      }
+
+      .page::after {
+        right: -20px;
+        top: 78px;
+      }
+
+      .navbar {
+        height: 70px;
+        border-bottom: 1px solid rgba(255, 255, 255, 0.1);
+        background: rgba(11, 20, 36, 0.92);
+        backdrop-filter: blur(18px);
+        position: sticky;
+        top: 0;
+        z-index: 50;
+      }
+
+      .nav-inner {
+        max-width: 1280px;
+        height: 100%;
+        margin: auto;
+        padding: 0 24px;
+        display: flex;
+        align-items: center;
+        justify-content: space-between;
+      }
+
+      .logo {
+        font-size: 22px;
+        font-weight: 900;
+      }
+
+      .nav-links {
+        display: flex;
+        gap: 42px;
+        font-size: 14px;
+        font-weight: 700;
+        color: #e5e7eb;
+      }
+
+      .nav-links a:hover,
+      .nav-links .active {
+        color: #ff7a18;
+      }
+
+      .nav-links .active {
+        position: relative;
+      }
+
+      .nav-links .active::after {
+        content: "";
+        position: absolute;
+        left: 0;
+        bottom: -26px;
+        width: 100%;
+        height: 2px;
+        background: #ff7a18;
+      }
+
+      .theme-btn {
+        width: 42px;
+        height: 42px;
+        border-radius: 12px;
+        border: 1px solid rgba(255, 255, 255, 0.1);
+        background: rgba(255, 255, 255, 0.06);
+        color: white;
+        font-size: 20px;
+        cursor: pointer;
+      }
+
+      .container {
+        max-width: 1280px;
+        margin: auto;
+        padding: 36px 24px 32px;
+        position: relative;
+        z-index: 2;
+      }
+
+      .hero {
+        display: grid;
+        grid-template-columns: 1fr 1.35fr;
+        gap: 60px;
+        align-items: center;
+        padding-bottom: 34px;
+      }
+
+      .badge {
+        display: inline-flex;
+        align-items: center;
+        gap: 10px;
+        padding: 10px 18px;
+        border-radius: 999px;
+        border: 1px solid rgba(255, 255, 255, 0.12);
+        background: rgba(255, 255, 255, 0.05);
+        font-weight: 800;
+      }
+
+      .badge span {
+        color: #ff7a18;
+      }
+
+      .title {
+        margin-top: 22px;
+        font-size: clamp(42px, 4vw, 54px);
+        line-height: 1.05;
+        font-weight: 900;
+        letter-spacing: -1px;
+      }
+
+      .marker {
+        display: block;
+        font-family: "Permanent Marker", cursive;
+        color: #ff6b00;
+        font-size: clamp(44px, 4.8vw, 62px);
+        font-weight: 400;
+        transform: rotate(-2deg);
+      }
+
+      .description {
+        margin-top: 18px;
+        max-width: 560px;
+        color: #e5e7eb;
+        font-size: 17px;
+        line-height: 1.6;
+      }
+
+      .stats {
+        display: grid;
+        grid-template-columns: repeat(4, 1fr);
+        gap: 16px;
+      }
+
+      .stat {
+        min-height: 130px;
+        border-radius: 16px;
+        border: 1px solid rgba(255, 255, 255, 0.12);
+        background: rgba(15, 23, 42, 0.62);
+        backdrop-filter: blur(16px);
+        display: grid;
+        place-items: center;
+        text-align: center;
+        padding: 18px;
+      }
+
+      .stat-icon {
+        color: #ff7a18;
+        font-size: 30px;
+        margin-bottom: 10px;
+      }
+
+      .stat h2 {
+        color: #ff7a18;
+        font-size: 30px;
+        margin-bottom: 6px;
+      }
+
+      .stat p {
+        color: #e5e7eb;
+        font-size: 14px;
+      }
+
+      .line {
+        height: 1px;
+        background: rgba(255, 255, 255, 0.1);
+        margin-bottom: 20px;
+      }
+
+      .filters {
+        display: flex;
+        flex-wrap: wrap;
+        gap: 14px;
+        margin-bottom: 22px;
+      }
+
+      .filter {
+        padding: 12px 20px;
+        border-radius: 12px;
+        border: 1px solid rgba(255, 255, 255, 0.12);
+        background: rgba(255, 255, 255, 0.04);
+        color: #f8fafc;
+        font-weight: 700;
+        cursor: pointer;
+        transition: 0.25s ease;
+      }
+
+      .filter:hover,
+      .filter.active {
+        border-color: #ff6b00;
+        background: linear-gradient(90deg, #ff7a18, #ff5a00);
+      }
+
+      .gallery-grid {
+        display: grid;
+        grid-template-columns: repeat(4, 1fr);
+        gap: 14px;
+      }
+
+      .photo-card {
+        overflow: hidden;
+        border-radius: 12px;
+        border: 1px solid rgba(255, 255, 255, 0.12);
+        background: rgba(15, 23, 42, 0.7);
+        cursor: pointer;
+        transition: 0.25s ease;
+      }
+
+      .photo-card:hover {
+        transform: translateY(-5px);
+        border-color: rgba(255, 122, 24, 0.5);
+      }
+
+      .photo {
+        height: 145px;
+        background-size: cover;
+        background-position: center;
+      }
+
+      .photo-card-body {
+        padding: 14px 16px;
+      }
+
+      .photo-card h3 {
+        font-size: 15px;
+        margin-bottom: 10px;
+      }
+
+      .count {
+        color: #e5e7eb;
+        font-size: 13px;
+      }
+
+      .cta {
+        margin: 26px auto 0;
+        max-width: 1080px;
+        border-radius: 16px;
+        border: 1px solid rgba(255, 255, 255, 0.12);
+        background: rgba(37, 99, 235, 0.1);
+        padding: 22px 28px;
+        display: flex;
+        align-items: center;
+        justify-content: space-between;
+        gap: 22px;
+      }
+
+      .cta-left {
+        display: flex;
+        align-items: center;
+        gap: 20px;
+      }
+
+      .calendar {
+        width: 58px;
+        height: 58px;
+        border-radius: 50%;
+        background: rgba(255, 122, 24, 0.14);
+        color: #ff7a18;
+        display: grid;
+        place-items: center;
+        font-size: 30px;
+        flex-shrink: 0;
+      }
+
+      .cta h2 {
+        font-size: 20px;
+        margin-bottom: 6px;
+      }
+
+      .cta p {
+        color: #d1d5db;
+      }
+
+      .cta-btn {
+        padding: 15px 28px;
+        border-radius: 10px;
+        background: linear-gradient(90deg, #ff7a18, #ff5a00);
+        color: #fff;
+        font-weight: 900;
+        white-space: nowrap;
+      }
+
+      .modal {
+        position: fixed;
+        inset: 0;
+        z-index: 100;
+        background: rgba(2, 6, 23, 0.85);
+        backdrop-filter: blur(12px);
+        display: none;
+        align-items: center;
+        justify-content: center;
+        padding: 24px;
+      }
+
+      .modal.active {
+        display: flex;
+      }
+
+      .modal-content {
+        width: min(1100px, 100%);
+        max-height: 88vh;
+        overflow-y: auto;
+        border-radius: 20px;
+        border: 1px solid rgba(255, 255, 255, 0.14);
+        background: #081525;
+        padding: 24px;
+      }
+
+      .modal-header {
+        display: flex;
+        align-items: center;
+        justify-content: space-between;
+        margin-bottom: 22px;
+        gap: 16px;
+      }
+
+      .modal-header h2 {
+        font-size: 26px;
+      }
+
+      .modal-close {
+        width: 42px;
+        height: 42px;
+        border-radius: 12px;
+        border: 1px solid rgba(255, 255, 255, 0.14);
+        background: rgba(255, 255, 255, 0.06);
+        color: white;
+        font-size: 30px;
+        cursor: pointer;
+      }
+
+      .modal-grid {
+        display: grid;
+        grid-template-columns: repeat(3, 1fr);
+        gap: 14px;
+      }
+
+      .modal-photo {
+        height: 220px;
+        border-radius: 14px;
+        background-size: cover;
+        background-position: center;
+        border: 1px solid rgba(255, 255, 255, 0.12);
+      }
+
+      @media (max-width: 1050px) {
+        .nav-links {
+          display: none;
+        }
+
+        .hero {
+          grid-template-columns: 1fr;
+          text-align: center;
+          gap: 34px;
+        }
+
+        .description {
+          margin-left: auto;
+          margin-right: auto;
+        }
+
+        .stats {
+          grid-template-columns: repeat(2, 1fr);
+        }
+
+        .gallery-grid {
+          grid-template-columns: repeat(2, 1fr);
+        }
+
+        .filters {
+          justify-content: center;
+        }
+      }
+
+      @media (max-width: 640px) {
+        .container {
+          padding: 30px 16px;
+        }
+
+        .logo {
+          font-size: 18px;
+        }
+
+        .title {
+          font-size: 40px;
+        }
+
+        .marker {
+          font-size: 42px;
+        }
+
+        .description {
+          font-size: 15px;
+        }
+
+        .stats {
+          grid-template-columns: 1fr 1fr;
+          gap: 10px;
+        }
+
+        .stat {
+          min-height: 110px;
+          padding: 14px;
+        }
+
+        .stat h2 {
+          font-size: 24px;
+        }
+
+        .filter {
+          width: 100%;
+          text-align: center;
+        }
+
+        .gallery-grid {
+          grid-template-columns: 1fr;
+        }
+
+        .photo {
+          height: 210px;
+        }
+
+        .cta {
+          flex-direction: column;
+          text-align: center;
+          padding: 22px;
+        }
+
+        .cta-left {
+          flex-direction: column;
+        }
+
+        .cta-btn {
+          width: 100%;
+          text-align: center;
+        }
+
+        .modal {
+          padding: 12px;
+        }
+
+        .modal-content {
+          padding: 16px;
+        }
+
+        .modal-header h2 {
+          font-size: 20px;
+        }
+
+        .modal-grid {
+          grid-template-columns: 1fr;
+        }
+
+        .modal-photo {
+          height: 240px;
+        }
+      }
+    </style>
+  </head>
+
+  <body>
+    <main class="page">
+      <nav class="navbar">
+        <div class="nav-inner">
+          <a href="/" class="logo">Naami Ahmed</a>
+
+          <div class="nav-links">
+            <a href="/gallery.html" class="active">Gallery</a>
+            <a href="/buy-me-a-coffee.html">Buy me a Coffee</a>
+            <a href="/collaboration.html">Collaboration</a>
+            <a href="/contact.html">Contact</a>
+            <a href="#">More⌄</a>
+          </div>
+
+          <button class="theme-btn">☼</button>
+        </div>
+      </nav>
+
+      <section class="container">
+        <div class="hero">
+          <div>
+            <div class="badge"><span>▧</span> Gallery</div>
+
+            <h1 class="title">
+              Moments that
+              <span class="marker">Inspire & Connect.</span>
+            </h1>
+
+            <p class="description">
+              A collection of unforgettable moments from events, meetups, and
+              communities I’m part of.
+            </p>
+          </div>
+
+          <div class="stats">
+            <div class="stat">
+              <div class="stat-icon">👥</div>
+              <h2>30+</h2>
+              <p>Events Attended</p>
+            </div>
+
+            <div class="stat">
+              <div class="stat-icon">📸</div>
+              <h2>1000+</h2>
+              <p>Moments Captured</p>
+            </div>
+
+            <div class="stat">
+              <div class="stat-icon">👥</div>
+              <h2>5000+</h2>
+              <p>Connections Made</p>
+            </div>
+
+            <div class="stat">
+              <div class="stat-icon">🌐</div>
+              <h2>10+</h2>
+              <p>Communities</p>
+            </div>
+          </div>
+        </div>
+
+        <div class="line"></div>
+
+        <div class="filters">
+          <button class="filter active" data-filter="all">All Events</button>
+          <button class="filter" data-filter="aws-community-day">👥 AWS Community Day</button>
+          <button class="filter" data-filter="aws-meetups">👥 AWS Meetups</button>
+          <button class="filter" data-filter="aws-student-community-day">👥 AWS Student Community Day</button>
+          <button class="filter" data-filter="microsoft">👥 Microsoft Student Ambassadors</button>
+          <button class="filter" data-filter="kcd">👥 KCD</button>
+          <button class="filter" data-filter="other">••• Other Tech Events</button>
+        </div>
+
+        <div class="gallery-grid">
+          <article class="photo-card" data-category="aws-community-day" data-album="awsCommunityDay">
+            <div class="photo" style="background-image: url('/assets/gallery/aws-community-day-2024.jpg')"></div>
+            <div class="photo-card-body">
+              <h3>AWS Community Day Sri Lanka</h3>
+              <p class="count">▧ 24 Photos</p>
+            </div>
+          </article>
+
+          <article class="photo-card" data-category="aws-meetups" data-album="awsMeetups">
+            <div class="photo" style="background-image: url('/assets/gallery/aws-cloud-club-meetup.jpg')"></div>
+            <div class="photo-card-body">
+              <h3>AWS Cloud Club Meetup</h3>
+              <p class="count">▧ 18 Photos</p>
+            </div>
+          </article>
+
+          <article class="photo-card" data-category="aws-student-community-day" data-album="awsStudentCommunityDay">
+            <div class="photo" style="background-image: url('/assets/gallery/aws-student-community-day.jpg')"></div>
+            <div class="photo-card-body">
+              <h3>AWS Student Community Day</h3>
+              <p class="count">▧ 32 Photos</p>
+            </div>
+          </article>
+
+          <article class="photo-card" data-category="aws-meetups" data-album="awsUserGroupMeetup">
+            <div class="photo" style="background-image: url('/assets/gallery/aws-user-group-meetup.jpg')"></div>
+            <div class="photo-card-body">
+              <h3>AWS User Group Meetup</h3>
+              <p class="count">▧ 16 Photos</p>
+            </div>
+          </article>
+
+          <article class="photo-card" data-category="microsoft" data-album="microsoftMeetup">
+            <div class="photo" style="background-image: url('/assets/gallery/microsoft-student-ambassador.jpg')"></div>
+            <div class="photo-card-body">
+              <h3>Microsoft Student Ambassador Meetup</h3>
+              <p class="count">▧ 20 Photos</p>
+            </div>
+          </article>
+
+          <article class="photo-card" data-category="kcd" data-album="kcd">
+            <div class="photo" style="background-image: url('/assets/gallery/kcd.jpg')"></div>
+            <div class="photo-card-body">
+              <h3>Kubernetes Community Days (KCD)</h3>
+              <p class="count">▧ 22 Photos</p>
+            </div>
+          </article>
+
+          <article class="photo-card" data-category="other" data-album="devopsCloudMeetup">
+            <div class="photo" style="background-image: url('/assets/gallery/devops-cloud-meetup.jpg')"></div>
+            <div class="photo-card-body">
+              <h3>DevOps & Cloud Meetup</h3>
+              <p class="count">▧ 15 Photos</p>
+            </div>
+          </article>
+
+          <article class="photo-card" data-category="other" data-album="otherTechEvents">
+            <div class="photo" style="background-image: url('/assets/gallery/other-tech-events.jpg')"></div>
+            <div class="photo-card-body">
+              <h3>Other Tech Events</h3>
+              <p class="count">▧ 28 Photos</p>
+            </div>
+          </article>
+        </div>
+
+        <div class="cta">
+          <div class="cta-left">
+            <div class="calendar">▣</div>
+            <div>
+              <h2>Be Part of the Next Moment!</h2>
+              <p>
+                Join me at upcoming events and let’s create more amazing memories together.
+              </p>
+            </div>
+          </div>
+
+          <a href="/contact.html" class="cta-btn">See Upcoming Events →</a>
+        </div>
+
+        <div class="modal" id="galleryModal">
+          <div class="modal-content">
+            <div class="modal-header">
+              <h2 id="modalTitle">Album Photos</h2>
+              <button class="modal-close" id="modalClose">×</button>
+            </div>
+
+            <div class="modal-grid" id="modalGrid"></div>
+          </div>
+        </div>
+      </section>
+    </main>
+
+    <script>
+      const albums = {
+        awsCommunityDay: {
+          title: "AWS Community Day Sri Lanka",
+          photos: [
+            "/assets/gallery/aws-community-day-2024.jpg",
+            "/assets/gallery/aws-community-day-2024-2.jpg",
+            "/assets/gallery/aws-community-day-2024-3.jpg",
+            "/assets/gallery/aws-community-day-2024-4.jpg",
+          ],
+        },
+
+        awsMeetups: {
+          title: "AWS Cloud Club Meetup",
+          photos: [
+            "/assets/gallery/aws-cloud-club-meetup.jpg",
+            "/assets/gallery/aws-meetup-2.jpg",
+            "/assets/gallery/aws-meetup-3.jpg",
+            "/assets/gallery/aws-meetup-4.jpg",
+          ],
+        },
+
+        awsStudentCommunityDay: {
+          title: "AWS Student Community Day",
+          photos: [
+            "/assets/gallery/aws-student-community-day.jpg",
+            "/assets/gallery/aws-student-community-day-2.jpg",
+            "/assets/gallery/aws-student-community-day-3.jpg",
+            "/assets/gallery/aws-student-community-day-4.jpg",
+          ],
+        },
+
+        awsUserGroupMeetup: {
+          title: "AWS User Group Meetup",
+          photos: [
+            "/assets/gallery/aws-user-group-meetup.jpg",
+            "/assets/gallery/aws-user-group-meetup-2.jpg",
+            "/assets/gallery/aws-user-group-meetup-3.jpg",
+          ],
+        },
+
+        microsoftMeetup: {
+          title: "Microsoft Student Ambassador Meetup",
+          photos: [
+            "/assets/gallery/microsoft-student-ambassador.jpg",
+            "/assets/gallery/microsoft-student-ambassador-2.jpg",
+            "/assets/gallery/microsoft-student-ambassador-3.jpg",
+          ],
+        },
+
+        kcd: {
+          title: "Kubernetes Community Days",
+          photos: [
+            "/assets/gallery/kcd.jpg",
+            "/assets/gallery/kcd-2.jpg",
+            "/assets/gallery/kcd-3.jpg",
+            "/assets/gallery/kcd-4.jpg",
+          ],
+        },
+
+        devopsCloudMeetup: {
+          title: "DevOps & Cloud Meetup",
+          photos: [
+            "/assets/gallery/devops-cloud-meetup.jpg",
+            "/assets/gallery/devops-cloud-meetup-2.jpg",
+            "/assets/gallery/devops-cloud-meetup-3.jpg",
+          ],
+        },
+
+        otherTechEvents: {
+          title: "Other Tech Events",
+          photos: [
+            "/assets/gallery/other-tech-events.jpg",
+            "/assets/gallery/other-tech-events-2.jpg",
+            "/assets/gallery/other-tech-events-3.jpg",
+            "/assets/gallery/other-tech-events-4.jpg",
+          ],
+        },
+      };
+
+      const filterButtons = document.querySelectorAll(".filter");
+      const cards = document.querySelectorAll(".photo-card");
+      const modal = document.getElementById("galleryModal");
+      const modalTitle = document.getElementById("modalTitle");
+      const modalGrid = document.getElementById("modalGrid");
+      const modalClose = document.getElementById("modalClose");
+
+      filterButtons.forEach((button) => {
+        button.addEventListener("click", () => {
+          const filter = button.dataset.filter;
+
+          filterButtons.forEach((btn) => btn.classList.remove("active"));
+          button.classList.add("active");
+
+          cards.forEach((card) => {
+            const category = card.dataset.category;
+
+            if (filter === "all" || category === filter) {
+              card.style.display = "block";
+            } else {
+              card.style.display = "none";
+            }
+          });
+        });
+      });
+
+      cards.forEach((card) => {
+        card.addEventListener("click", () => {
+          const albumKey = card.dataset.album;
+          const album = albums[albumKey];
+
+          if (!album) return;
+
+          modalTitle.textContent = album.title;
+          modalGrid.innerHTML = album.photos
+            .map(
+              (photo) =>
+                `<div class="modal-photo" style="background-image: url('${photo}')"></div>`
+            )
+            .join("");
+
+          modal.classList.add("active");
+        });
+      });
+
+      modalClose.addEventListener("click", () => {
+        modal.classList.remove("active");
+      });
+
+      modal.addEventListener("click", (e) => {
+        if (e.target === modal) {
+          modal.classList.remove("active");
+        }
+      });
+
+      document.addEventListener("keydown", (e) => {
+        if (e.key === "Escape") {
+          modal.classList.remove("active");
+        }
+      });
+    </script>
+  </body>
+</html>

@@ -1,0 +1,804 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Contact | Naami Ahmed</title>
+    <meta name="description" content="Contact Naami Ahmed for collaboration, mentorship, speaking, or project inquiries." />
+
+    <link
+      href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800;900&family=Permanent+Marker&display=swap"
+      rel="stylesheet"
+    />
+
+    <style>
+      * {
+        margin: 0;
+        padding: 0;
+        box-sizing: border-box;
+      }
+
+      body {
+        font-family: "Inter", system-ui, sans-serif;
+        background: #06111f;
+        color: #ffffff;
+        overflow-x: hidden;
+      }
+
+      a {
+        color: inherit;
+        text-decoration: none;
+      }
+
+      .page {
+        min-height: 100vh;
+        position: relative;
+        overflow: hidden;
+        background:
+          radial-gradient(circle at 72% 22%, rgba(37, 99, 235, 0.2), transparent 32%),
+          radial-gradient(circle at 25% 55%, rgba(14, 165, 233, 0.12), transparent 35%),
+          linear-gradient(180deg, #07111f 0%, #06111f 100%);
+      }
+
+      .page::before,
+      .page::after {
+        content: "";
+        position: absolute;
+        width: 160px;
+        height: 230px;
+        background-image: radial-gradient(#ff6b00 1.4px, transparent 1.4px);
+        background-size: 22px 22px;
+        opacity: 0.35;
+        z-index: 0;
+      }
+
+      .page::before {
+        left: -20px;
+        top: 95px;
+      }
+
+      .page::after {
+        right: -20px;
+        top: 120px;
+      }
+
+      .navbar {
+        height: 70px;
+        border-bottom: 1px solid rgba(255, 255, 255, 0.1);
+        background: rgba(11, 20, 36, 0.92);
+        backdrop-filter: blur(18px);
+        position: sticky;
+        top: 0;
+        z-index: 50;
+      }
+
+      .nav-inner {
+        max-width: 1280px;
+        height: 100%;
+        margin: auto;
+        padding: 0 24px;
+        display: flex;
+        align-items: center;
+        justify-content: space-between;
+      }
+
+      .logo {
+        font-size: 22px;
+        font-weight: 900;
+      }
+
+      .nav-links {
+        display: flex;
+        gap: 42px;
+        font-size: 14px;
+        font-weight: 700;
+        color: #e5e7eb;
+      }
+
+      .nav-links a:hover,
+      .nav-links .active {
+        color: #ff7a18;
+      }
+
+      .nav-links .active {
+        position: relative;
+      }
+
+      .nav-links .active::after {
+        content: "";
+        position: absolute;
+        left: 0;
+        bottom: -26px;
+        width: 100%;
+        height: 2px;
+        background: #ff7a18;
+      }
+
+      .theme-btn {
+        width: 42px;
+        height: 42px;
+        border-radius: 12px;
+        border: 1px solid rgba(255, 255, 255, 0.1);
+        background: rgba(255, 255, 255, 0.06);
+        color: white;
+        font-size: 20px;
+      }
+
+      .container {
+        max-width: 1280px;
+        margin: auto;
+        padding: 48px 24px 28px;
+        position: relative;
+        z-index: 2;
+      }
+
+      .main-grid {
+        display: grid;
+        grid-template-columns: 0.82fr 1.18fr;
+        gap: 70px;
+        align-items: start;
+      }
+
+      .badge {
+        display: inline-flex;
+        align-items: center;
+        gap: 10px;
+        padding: 10px 18px;
+        border-radius: 999px;
+        border: 1px solid rgba(59, 130, 246, 0.35);
+        background: rgba(255, 255, 255, 0.05);
+        font-weight: 800;
+      }
+
+      .badge span {
+        color: #ff7a18;
+      }
+
+      .title {
+        margin-top: 26px;
+        font-size: clamp(46px, 5vw, 66px);
+        line-height: 1.03;
+        font-weight: 900;
+        letter-spacing: -1.5px;
+      }
+
+      .marker {
+        display: block;
+        font-family: "Permanent Marker", cursive;
+        color: #ff6b00;
+        font-size: clamp(46px, 5.4vw, 68px);
+        font-weight: 400;
+        transform: rotate(-2deg);
+      }
+
+      .description {
+        margin-top: 24px;
+        max-width: 520px;
+        color: #e5e7eb;
+        font-size: 18px;
+        line-height: 1.65;
+      }
+
+      .contact-info {
+        margin-top: 34px;
+      }
+
+      .contact-info h2 {
+        font-size: 20px;
+        margin-bottom: 18px;
+      }
+
+      .contact-item {
+        display: flex;
+        align-items: center;
+        gap: 16px;
+        margin-bottom: 18px;
+      }
+
+      .contact-icon {
+        width: 48px;
+        height: 48px;
+        border-radius: 13px;
+        background: rgba(37, 99, 235, 0.18);
+        border: 1px solid rgba(59, 130, 246, 0.25);
+        display: grid;
+        place-items: center;
+        color: #3b82f6;
+        font-size: 24px;
+        flex-shrink: 0;
+      }
+
+      .contact-item h3 {
+        font-size: 15px;
+        margin-bottom: 6px;
+      }
+
+      .contact-item p,
+      .contact-item a {
+        color: #38bdf8;
+        font-size: 15px;
+        word-break: break-word;
+      }
+
+      .contact-item.location p {
+        color: #e5e7eb;
+      }
+
+      .arrow-doodle {
+        color: #ff6b00;
+        font-size: 54px;
+        margin-left: 370px;
+        margin-top: -20px;
+      }
+
+      .form-card {
+        position: relative;
+        border: 1px solid rgba(255, 255, 255, 0.16);
+        background: rgba(15, 23, 42, 0.66);
+        backdrop-filter: blur(18px);
+        border-radius: 18px;
+        padding: 34px;
+        box-shadow: 0 30px 80px rgba(0, 0, 0, 0.24);
+      }
+
+      .form-head {
+        display: flex;
+        gap: 22px;
+        align-items: center;
+        margin-bottom: 26px;
+      }
+
+      .paper-icon {
+        width: 66px;
+        height: 66px;
+        border-radius: 50%;
+        background: rgba(37, 99, 235, 0.18);
+        border: 1px solid rgba(59, 130, 246, 0.25);
+        display: grid;
+        place-items: center;
+        color: #3b82f6;
+        font-size: 34px;
+        flex-shrink: 0;
+      }
+
+      .form-head h2 {
+        font-size: 28px;
+        margin-bottom: 10px;
+      }
+
+      .form-head p {
+        color: #e5e7eb;
+      }
+
+      .form {
+        display: grid;
+        gap: 18px;
+      }
+
+      .two-col {
+        display: grid;
+        grid-template-columns: 1fr 1fr;
+        gap: 18px;
+      }
+
+      .input-box {
+        height: 58px;
+        display: flex;
+        align-items: center;
+        gap: 14px;
+        padding: 0 18px;
+        border-radius: 10px;
+        border: 1px solid rgba(255, 255, 255, 0.16);
+        background: rgba(255, 255, 255, 0.03);
+      }
+
+      .textarea-box {
+        min-height: 150px;
+        align-items: flex-start;
+        padding-top: 18px;
+      }
+
+      .input-box span {
+        color: #e5e7eb;
+        font-size: 20px;
+      }
+
+      input,
+      textarea {
+        width: 100%;
+        border: none;
+        outline: none;
+        background: transparent;
+        color: white;
+        font-family: inherit;
+        font-size: 15px;
+      }
+
+      textarea {
+        resize: vertical;
+        min-height: 118px;
+      }
+
+      input::placeholder,
+      textarea::placeholder {
+        color: #cbd5e1;
+      }
+
+      .send-btn {
+        height: 58px;
+        border: none;
+        border-radius: 9px;
+        background: linear-gradient(90deg, #2563eb, #1d4ed8);
+        color: white;
+        font-size: 17px;
+        font-weight: 900;
+        cursor: pointer;
+      }
+
+      .safe-note {
+        text-align: center;
+        margin-top: 16px;
+        color: #d1d5db;
+        font-size: 14px;
+      }
+
+      .orbit-bg {
+        position: absolute;
+        left: 330px;
+        top: 390px;
+        width: 380px;
+        height: 380px;
+        border-radius: 50%;
+        border: 1px solid rgba(37, 99, 235, 0.15);
+        z-index: -1;
+      }
+
+      .orbit-bg::before,
+      .orbit-bg::after {
+        content: "";
+        position: absolute;
+        inset: 55px;
+        border-radius: 50%;
+        border: 1px solid rgba(37, 99, 235, 0.15);
+      }
+
+      .orbit-bg::after {
+        inset: 110px;
+      }
+
+      .blue-dot {
+        position: absolute;
+        left: 410px;
+        top: 420px;
+        width: 10px;
+        height: 10px;
+        background: #2563eb;
+        border-radius: 50%;
+        box-shadow: 0 0 20px #2563eb;
+      }
+
+      .bottom-card {
+        margin-top: 62px;
+        position: relative;
+        overflow: hidden;
+        min-height: 230px;
+        border: 1px solid rgba(255, 255, 255, 0.14);
+        background: rgba(37, 99, 235, 0.12);
+        border-radius: 16px;
+        display: grid;
+        grid-template-columns: 0.95fr 0.95fr 1fr;
+        gap: 30px;
+        align-items: center;
+        padding: 28px;
+      }
+
+      .schedule-side {
+        display: flex;
+        gap: 24px;
+        align-items: center;
+      }
+
+      .calendar-icon {
+        width: 86px;
+        height: 86px;
+        border-radius: 50%;
+        background: rgba(255, 122, 24, 0.14);
+        color: #ff7a18;
+        display: grid;
+        place-items: center;
+        font-size: 42px;
+        flex-shrink: 0;
+      }
+
+      .schedule-side h2,
+      .available h2 {
+        font-size: 22px;
+        margin-bottom: 12px;
+      }
+
+      .schedule-side p {
+        color: #e5e7eb;
+        line-height: 1.6;
+        margin-bottom: 22px;
+      }
+
+      .schedule-btn {
+        display: inline-flex;
+        padding: 13px 24px;
+        border-radius: 999px;
+        color: #ff7a18;
+        font-weight: 900;
+        border: 1px solid #ff7a18;
+      }
+
+      .available {
+        border-left: 1px solid rgba(255, 255, 255, 0.12);
+        padding-left: 38px;
+      }
+
+      .available ul {
+        list-style: none;
+        display: grid;
+        gap: 13px;
+      }
+
+      .available li {
+        color: #e5e7eb;
+        display: flex;
+        align-items: center;
+        gap: 10px;
+      }
+
+      .available li::before {
+        content: "✓";
+        width: 17px;
+        height: 17px;
+        border-radius: 50%;
+        border: 1px solid #ff7a18;
+        color: #ff7a18;
+        display: grid;
+        place-items: center;
+        font-size: 11px;
+        font-weight: 900;
+      }
+
+      .image-side {
+        position: relative;
+        height: 220px;
+      }
+
+      .image-side::before {
+        content: "";
+        position: absolute;
+        right: 20px;
+        bottom: -70px;
+        width: 310px;
+        height: 310px;
+        border-radius: 50%;
+        border: 1px solid rgba(37, 99, 235, 0.35);
+        background: radial-gradient(circle, rgba(37, 99, 235, 0.18), transparent 65%);
+      }
+
+      .person {
+        position: absolute;
+        right: 40px;
+        bottom: -28px;
+        height: 250px;
+        z-index: 2;
+        filter: drop-shadow(0 20px 55px rgba(37, 99, 235, 0.4));
+      }
+
+      .footer-note {
+        margin-top: 26px;
+        text-align: center;
+        color: #e5e7eb;
+      }
+
+      .footer-note span {
+        color: #ff7a18;
+      }
+
+      @media (max-width: 1024px) {
+        .nav-links {
+          display: none;
+        }
+
+        .main-grid {
+          grid-template-columns: 1fr;
+          gap: 38px;
+        }
+
+        .left {
+          text-align: center;
+        }
+
+        .description {
+          margin-left: auto;
+          margin-right: auto;
+        }
+
+        .contact-info {
+          max-width: 520px;
+          margin-left: auto;
+          margin-right: auto;
+          text-align: left;
+        }
+
+        .arrow-doodle,
+        .orbit-bg,
+        .blue-dot {
+          display: none;
+        }
+
+        .bottom-card {
+          grid-template-columns: 1fr;
+          text-align: center;
+        }
+
+        .schedule-side {
+          flex-direction: column;
+        }
+
+        .available {
+          border-left: 0;
+          padding-left: 0;
+        }
+
+        .available ul {
+          max-width: 330px;
+          margin: auto;
+          text-align: left;
+        }
+
+        .image-side {
+          height: 260px;
+        }
+
+        .person {
+          left: 50%;
+          right: auto;
+          transform: translateX(-50%);
+        }
+
+        .image-side::before {
+          left: 50%;
+          right: auto;
+          transform: translateX(-50%);
+        }
+      }
+
+      @media (max-width: 640px) {
+        .container {
+          padding: 36px 16px 24px;
+        }
+
+        .logo {
+          font-size: 18px;
+        }
+
+        .title {
+          font-size: 44px;
+        }
+
+        .marker {
+          font-size: 45px;
+        }
+
+        .description {
+          font-size: 16px;
+        }
+
+        .form-card {
+          padding: 22px;
+        }
+
+        .form-head {
+          flex-direction: column;
+          text-align: center;
+        }
+
+        .form-head h2 {
+          font-size: 24px;
+        }
+
+        .two-col {
+          grid-template-columns: 1fr;
+        }
+
+        .bottom-card {
+          padding: 22px;
+        }
+
+        .contact-item {
+          align-items: flex-start;
+        }
+
+        .person {
+          height: 230px;
+        }
+      }
+    </style>
+  </head>
+
+  <body>
+    <main class="page">
+      <nav class="navbar">
+        <div class="nav-inner">
+          <a href="/" class="logo">Naami Ahmed</a>
+
+          <div class="nav-links">
+            <a href="/gallery.html">Gallery</a>
+            <a href="/buy-me-a-coffee.html">Buy me a Coffee</a>
+            <a href="/collaboration.html">Collaboration</a>
+            <a href="/contact.html" class="active">Contact</a>
+            <a href="#">More⌄</a>
+          </div>
+
+          <button class="theme-btn">☼</button>
+        </div>
+      </nav>
+
+      <section class="container">
+        <div class="orbit-bg"></div>
+        <div class="blue-dot"></div>
+
+        <div class="main-grid">
+          <div class="left">
+            <div class="badge"><span>✉</span> Let’s Connect</div>
+
+            <h1 class="title">
+              Let’s Build
+              <span class="marker">Something Amazing</span>
+              Together!
+            </h1>
+
+            <p class="description">
+              Have a project idea, collaboration opportunity, or just want to say
+              hello? I’d love to hear from you.
+            </p>
+
+            <div class="arrow-doodle">↝</div>
+
+            <div class="contact-info">
+              <h2>Get in Touch</h2>
+
+              <div class="contact-item">
+                <div class="contact-icon">✉</div>
+                <div>
+                  <h3>Email</h3>
+                  <a href="mailto:naamisaleem5002@gmail.com">
+                    naamisaleem5002@gmail.com
+                  </a>
+                </div>
+              </div>
+
+              <div class="contact-item location">
+                <div class="contact-icon">●</div>
+                <div>
+                  <h3>Location</h3>
+                  <p>Colombo, Sri Lanka</p>
+                </div>
+              </div>
+
+              <div class="contact-item">
+                <div class="contact-icon">in</div>
+                <div>
+                  <h3>LinkedIn</h3>
+                  <a
+                    href="https://www.linkedin.com/in/naami-ahmed/"
+                    target="_blank"
+                    rel="noopener noreferrer"
+                  >
+                    linkedin.com/in/naami-ahmed
+                  </a>
+                </div>
+              </div>
+
+              <div class="contact-item">
+                <div class="contact-icon">⌘</div>
+                <div>
+                  <h3>GitHub</h3>
+                  <a
+                    href="https://github.com/naamiahmed"
+                    target="_blank"
+                    rel="noopener noreferrer"
+                  >
+                    github.com/naamiahmed
+                  </a>
+                </div>
+              </div>
+            </div>
+          </div>
+
+          <div class="form-card">
+            <div class="form-head">
+              <div class="paper-icon">✈</div>
+              <div>
+                <h2>Send Me a Message</h2>
+                <p>Fill out the form and I’ll get back to you as soon as possible.</p>
+              </div>
+            </div>
+
+            <form
+              class="form"
+              action="mailto:naamisaleem5002@gmail.com"
+              method="post"
+              enctype="text/plain"
+            >
+              <div class="two-col">
+                <label class="input-box">
+                  <span>♙</span>
+                  <input type="text" name="Name" placeholder="Your Name" required />
+                </label>
+
+                <label class="input-box">
+                  <span>✉</span>
+                  <input type="email" name="Email" placeholder="Your Email" required />
+                </label>
+              </div>
+
+              <label class="input-box">
+                <span>◇</span>
+                <input type="text" name="Subject" placeholder="Subject" required />
+              </label>
+
+              <label class="input-box textarea-box">
+                <span>☵</span>
+                <textarea name="Message" placeholder="Your Message" required></textarea>
+              </label>
+
+              <button class="send-btn" type="submit">✈ Send Message</button>
+            </form>
+
+            <p class="safe-note">🔒 Your information is safe with me.</p>
+          </div>
+        </div>
+
+        <div class="bottom-card">
+          <div class="schedule-side">
+            <div class="calendar-icon">▣</div>
+            <div>
+              <h2>Let’s Connect!</h2>
+              <p>
+                I’m always open to discussing new projects, creative ideas, or
+                opportunities to be part of your vision.
+              </p>
+
+              <a
+                href="https://calendly.com/naamiahmed"
+                target="_blank"
+                rel="noopener noreferrer"
+                class="schedule-btn"
+              >
+                Schedule a Call →
+              </a>
+            </div>
+          </div>
+
+          <div class="available">
+            <h2>Available For</h2>
+            <ul>
+              <li>Project Collaboration</li>
+              <li>Speaking Engagements</li>
+              <li>Mentorship & Guidance</li>
+              <li>Open Source Contributions</li>
+              <li>Tech Communities & Events</li>
+            </ul>
+          </div>
+
+          <div class="image-side">
+            <img
+              class="person"
+              src="/assets/naami-removebg01.png"
+              alt="Naami Ahmed"
+            />
+          </div>
+        </div>
+
+        <p class="footer-note">
+          <span>♥</span> Thanks for stopping by! Let’s create something impactful together.
+        </p>
+      </section>
+    </main>
+  </body>
+</html>

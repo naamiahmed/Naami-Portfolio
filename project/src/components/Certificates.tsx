@@ -22,78 +22,74 @@ const CertificationsSkills: React.FC = () => {
   const [activeFilter, setActiveFilter] = useState("all");
 
   const certificates = [
+
     {
-      title: "AWS Certified Solutions Architect",
-      level: "Associate",
-      issuer: "Amazon Web Services",
-      date: "Preparing",
-      category: "cloud",
-      icon: "aws",
-      link: "#",
-    },
-    {
-      title: "AWS Certified Cloud Practitioner",
+      title: "AWS Serverless Demonstrated",
       level: "",
       issuer: "Amazon Web Services",
       date: "Preparing",
       category: "cloud",
-      icon: "aws",
-      link: "#",
+      icon: "assets/cert/aws-serverless.png",
+      isImage:true,
+      link: "https://www.credly.com/badges/6af8e92e-9064-408f-9099-1ab17fec50be/public_url",
     },
     {
-      title: "Microsoft Certified Azure Fundamentals",
+      title: "Microsoft Student Ambassador",
       level: "",
       issuer: "Microsoft",
-      date: "Learning",
+      date: "9/9/2025",
       category: "cloud",
-      icon: "▦",
-      link: "#",
+      icon: "assets/cert/MLSA.png",
+      isImage: true,
+      link: "https://www.credly.com/badges/aa895460-4328-4a0f-bce9-4fc423687049/public_url",
     },
     {
-      title: "Google Cloud Digital Leader",
+      title: "Manage Kubernetes in Google Cloud Skill Badge",
       level: "",
       issuer: "Google Cloud",
-      date: "Learning",
+      date: "8/15/2024",
       category: "cloud",
       icon: "☁️",
-      link: "#",
+      link: "https://www.credly.com/badges/e86148c9-618e-4fd8-bdbe-ea1ee45e9b8b/public_url",
     },
     {
-      title: "HashiCorp Certified Terraform Associate",
-      level: "",
-      issuer: "HashiCorp",
-      date: "Learning",
+      title: "LFS101: Introduction to Linux",
+      level: "Foundation",
+      issuer: "Linux Foundation",
+      date: "10/6/2025",
       category: "devops",
-      icon: "⬡",
-      link: "#",
+      icon: "assets/cert/LF-linux.png",
+      isImage: true,
+      link: "https://www.credly.com/badges/038ef089-b73e-46f1-ae9a-5ed3f51eed02/public_url",
     },
+    // {
+    //   title: "GitHub Foundations",
+    //   level: "",
+    //   issuer: "GitHub",
+    //   date: "Learning",
+    //   category: "developer",
+    //   icon: "GH",
+    //   link: "#",
+    // },
     {
-      title: "GitHub Foundations",
-      level: "",
-      issuer: "GitHub",
-      date: "Learning",
-      category: "developer",
-      icon: "GH",
-      link: "#",
-    },
-    {
-      title: "Linux Foundation Introduction to Linux",
+      title: "LFS158: Introduction to Kubernetes",
       level: "",
       issuer: "The Linux Foundation",
-      date: "Learning",
+      date: "4/15/2026",
       category: "other",
-      icon: "LF",
-      link: "#",
+      icon: "assets/cert/LF-k8s.png",
+      isImage: true,
+      link: "https://www.credly.com/badges/eb702cf3-22ba-42e4-828f-6ce35158073e/public_url",
     },
-    {
-      title: "AWS Certified Developer",
-      level: "Associate",
-      issuer: "Amazon Web Services",
-      date: "Future Target",
-      category: "developer",
-      icon: "aws",
-      link: "#",
-    },
+    // {
+    //   title: "AWS Certified Developer",
+    //   level: "Associate",
+    //   issuer: "Amazon Web Services",
+    //   date: "Future Target",
+    //   category: "developer",
+    //   icon: "aws",
+    //   link: "#",
+    // },
   ];
 
   const filteredCertificates =
@@ -379,12 +375,23 @@ const CertificateCard = ({
     date: string;
     icon: string;
     link: string;
+    isImage?:boolean;
   };
 }) => (
   <div className="rounded-2xl border border-white/10 bg-white/5 p-5 transition hover:-translate-y-1 hover:border-orange-500/40">
-    <div className="mb-5 grid h-16 w-16 place-items-center rounded-xl bg-white/5 text-2xl font-black text-orange-400">
+<div className="mb-5 grid h-16 w-16 place-items-center rounded-xl bg-white/5">
+  {cert.isImage ? (
+    <img
+      src={cert.icon}
+      alt={cert.title}
+      className="h-12 w-12 object-contain"
+    />
+  ) : (
+    <span className="text-2xl font-black text-orange-400">
       {cert.icon}
-    </div>
+    </span>
+  )}
+</div>
 
     <h3 className="font-black leading-6">
       {cert.title}

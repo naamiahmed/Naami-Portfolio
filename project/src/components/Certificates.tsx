@@ -2,13 +2,11 @@ import React, { useState } from "react";
 import {
   Award,
   CalendarDays,
-  // CheckCircle,
   Clock3,
   Cloud,
   Code2,
   Database,
   ExternalLink,
-  // Github,
   Infinity,
   Laptop,
   Quote,
@@ -18,11 +16,45 @@ import {
   Trophy,
 } from "lucide-react";
 
+import {
+  // SiAmazonaws,
+  // SiMicrosoftazure,
+  SiGooglecloud,
+  SiDocker,
+  SiKubernetes,
+  SiTerraform,
+  SiGithubactions,
+  SiJenkins,
+  SiGit,
+  SiGithub,
+  SiPython,
+  SiJavascript,
+  SiTypescript,
+  SiGnubash,
+  SiPostgresql,
+  SiHtml5,
+  // SiCss3,
+  SiTailwindcss,
+  SiReact,
+  SiNextdotjs,
+  SiNodedotjs,
+  SiExpress,
+  SiMongodb,
+  SiLinux,
+  SiNotion,
+  SiFigma,
+  SiPostman,
+  SiSlack,
+  SiDiscord,
+  SiFirebase,
+  SiVercel,
+} from "react-icons/si";
+
+
 const CertificationsSkills: React.FC = () => {
   const [activeFilter, setActiveFilter] = useState("all");
 
   const certificates = [
-
     {
       title: "AWS Serverless Demonstrated",
       level: "",
@@ -30,7 +62,7 @@ const CertificationsSkills: React.FC = () => {
       date: "Preparing",
       category: "cloud",
       icon: "assets/cert/aws-serverless.png",
-      isImage:true,
+      isImage: true,
       link: "https://www.credly.com/badges/6af8e92e-9064-408f-9099-1ab17fec50be/public_url",
     },
     {
@@ -62,15 +94,6 @@ const CertificationsSkills: React.FC = () => {
       isImage: true,
       link: "https://www.credly.com/badges/038ef089-b73e-46f1-ae9a-5ed3f51eed02/public_url",
     },
-    // {
-    //   title: "GitHub Foundations",
-    //   level: "",
-    //   issuer: "GitHub",
-    //   date: "Learning",
-    //   category: "developer",
-    //   icon: "GH",
-    //   link: "#",
-    // },
     {
       title: "LFS158: Introduction to Kubernetes",
       level: "",
@@ -81,15 +104,6 @@ const CertificationsSkills: React.FC = () => {
       isImage: true,
       link: "https://www.credly.com/badges/eb702cf3-22ba-42e4-828f-6ce35158073e/public_url",
     },
-    // {
-    //   title: "AWS Certified Developer",
-    //   level: "Associate",
-    //   issuer: "Amazon Web Services",
-    //   date: "Future Target",
-    //   category: "developer",
-    //   icon: "aws",
-    //   link: "#",
-    // },
   ];
 
   const filteredCertificates =
@@ -111,8 +125,6 @@ const CertificationsSkills: React.FC = () => {
             marker="Continuous Growth."
             desc="Here are some of the certifications and learning milestones that help me deepen my knowledge and stay up to date."
           />
-
-          {/* <ImageHero color="orange" /> */}
 
           <div className="mt-8 grid grid-cols-2 gap-4 sm:grid-cols-4">
             <TopStat icon={<Trophy />} value="8+" label="Certifications Targeted" color="orange" />
@@ -150,10 +162,7 @@ const CertificationsSkills: React.FC = () => {
             ))}
           </div>
 
-          <QuoteBox
-            icon={<Trophy />}
-            text="Investing in knowledge pays the best interest."
-          />
+          <QuoteBox icon={<Trophy />} text="Investing in knowledge pays the best interest." />
         </div>
 
         {/* Skills */}
@@ -166,24 +175,33 @@ const CertificationsSkills: React.FC = () => {
             desc="A diverse set of skills and technologies that I use to build, learn and share."
           />
 
-          {/* <ImageHero color="orange" /> */}
-
-          <div className="mt-6 flex flex-wrap justify-center gap-5 text-sm">
-            <Legend color="orange" label="Expert" />
-            <Legend color="blue" label="Advanced" />
-            <Legend color="green" label="Intermediate" />
-            <Legend color="gray" label="Beginner" />
-          </div>
-
           <div className="mt-6 grid grid-cols-1 gap-4 md:grid-cols-2 xl:grid-cols-3">
             <SkillGroup
               icon={<Cloud />}
               title="Cloud"
               skills={[
-                ["AWS", 6],
-                ["Microsoft Azure", 5],
-                ["Google Cloud", 3],
-                ["Cloud Architecture", 5],
+                {
+                name: "AWS",
+                icon: (
+                   <img
+                       src="/assets/devops_icons/AWS.png"
+                       alt="AWS"
+                      className="h-6 w-6 object-contain"
+                    />
+                 )
+                },
+                {
+  name: "Azure",
+  icon: (
+    <img
+      src="/assets/devops_icons/Azure.png"
+      alt="Azure"
+      className="h-6 w-6 object-contain"
+    />
+  )
+},
+                { name: "Google Cloud", icon: <SiGooglecloud /> },
+                // { name: "Cloud Architecture", icon: <Cloud className="h-5 w-5" /> },
               ]}
             />
 
@@ -191,12 +209,13 @@ const CertificationsSkills: React.FC = () => {
               icon={<Infinity />}
               title="DevOps & Tools"
               skills={[
-                ["Docker", 5],
-                ["Kubernetes", 4],
-                ["Terraform", 4],
-                ["CI/CD GitHub Actions", 5],
-                ["Jenkins", 3],
-                ["Git & GitHub", 6],
+                { name: "Docker", icon: <SiDocker /> },
+                { name: "Kubernetes", icon: <SiKubernetes /> },
+                { name: "Terraform", icon: <SiTerraform /> },
+                { name: "GitHub Actions", icon: <SiGithubactions /> },
+                { name: "Jenkins", icon: <SiJenkins /> },
+                { name: "Git", icon: <SiGit /> },
+                { name: "GitHub", icon: <SiGithub /> },
               ]}
             />
 
@@ -204,11 +223,11 @@ const CertificationsSkills: React.FC = () => {
               icon={<Terminal />}
               title="Languages"
               skills={[
-                ["Python", 5],
-                ["JavaScript", 5],
-                ["TypeScript", 4],
-                ["Bash", 3],
-                ["SQL", 4],
+                { name: "Python", icon: <SiPython /> },
+                { name: "JavaScript", icon: <SiJavascript /> },
+                { name: "TypeScript", icon: <SiTypescript /> },
+                { name: "Bash", icon: <SiGnubash /> },
+                { name: "SQL", icon: <SiPostgresql /> },
               ]}
             />
 
@@ -216,11 +235,11 @@ const CertificationsSkills: React.FC = () => {
               icon={<Laptop />}
               title="Frontend"
               skills={[
-                ["HTML", 6],
-                ["CSS", 6],
-                ["Tailwind CSS", 4],
-                ["React.js", 4],
-                ["Next.js", 3],
+                { name: "HTML", icon: <SiHtml5 /> },
+                // { name: "CSS", icon: <SiCss3 /> },
+                { name: "Tailwind CSS", icon: <SiTailwindcss /> },
+                { name: "React.js", icon: <SiReact /> },
+                { name: "Next.js", icon: <SiNextdotjs /> },
               ]}
             />
 
@@ -228,11 +247,11 @@ const CertificationsSkills: React.FC = () => {
               icon={<Database />}
               title="Backend"
               skills={[
-                ["Node.js", 5],
-                ["Express.js", 5],
-                ["REST APIs", 5],
-                ["MongoDB", 3],
-                ["PostgreSQL", 3],
+                { name: "Node.js", icon: <SiNodedotjs /> },
+                { name: "Express.js", icon: <SiExpress /> },
+                { name: "REST APIs", icon: <Code2 className="h-5 w-5" /> },
+                { name: "MongoDB", icon: <SiMongodb /> },
+                { name: "PostgreSQL", icon: <SiPostgresql /> },
               ]}
             />
 
@@ -240,12 +259,12 @@ const CertificationsSkills: React.FC = () => {
               icon={<Star />}
               title="Other Skills"
               skills={[
-                ["Linux", 5],
-                ["Networking", 4],
-                ["Problem Solving", 5],
-                ["Public Speaking", 6],
-                ["Technical Writing", 4],
-                ["Community Building", 5],
+                { name: "Linux", icon: <SiLinux /> },
+                { name: "Networking", icon: <Cloud className="h-5 w-5" /> },
+                { name: "Problem Solving", icon: <Star className="h-5 w-5" /> },
+                { name: "Public Speaking", icon: <Terminal className="h-5 w-5" /> },
+                { name: "Technical Writing", icon: <Code2 className="h-5 w-5" /> },
+                { name: "Community Building", icon: <Infinity className="h-5 w-5" /> },
               ]}
             />
           </div>
@@ -255,18 +274,18 @@ const CertificationsSkills: React.FC = () => {
 
             <div className="grid grid-cols-3 gap-5 text-center sm:grid-cols-5 lg:grid-cols-9">
               {[
-                ["VS Code", "💙"],
-                ["Postman", "🚀"],
-                ["Figma", "🎨"],
-                ["Notion", "N"],
-                ["Slack", "💬"],
-                ["Discord", "🎧"],
-                ["MongoDB", "🍃"],
-                ["Firebase", "🔥"],
-                ["Vercel", "▲"],
+                // ["VS Code", "💙"],
+                ["Postman", <SiPostman />],
+                ["Figma", <SiFigma />],
+                ["Notion", <SiNotion />],
+                ["Slack", <SiSlack />],
+                ["Discord", <SiDiscord />],
+                ["MongoDB", <SiMongodb />],
+                ["Firebase", <SiFirebase />],
+                ["Vercel", <SiVercel />],
               ].map(([name, icon]) => (
-                <div key={name}>
-                  <div className="mx-auto mb-2 grid h-10 w-10 place-items-center rounded-xl bg-white/5 text-xl">
+                <div key={name as string}>
+                  <div className="mx-auto mb-2 grid h-10 w-10 place-items-center rounded-xl bg-white/5 text-xl text-orange-400">
                     {icon}
                   </div>
                   <p className="text-xs text-slate-300">{name}</p>
@@ -319,23 +338,6 @@ const PageHeader = ({
   </div>
 );
 
-// const ImageHero = ({ color }: { color: "orange" | "blue" }) => (
-//   <div className="relative mt-4 flex h-60 justify-center overflow-hidden sm:h-72">
-//     <div
-//       className={`absolute top-6 h-56 w-56 rounded-full border ${
-//         color === "orange"
-//           ? "border-orange-500/30 bg-orange-500/10"
-//           : "border-blue-500/30 bg-blue-500/10"
-//       }`}
-//     />
-//     <img
-//       src="/assets/naami-removebg01.png"
-//       alt="Naami Ahmed"
-//       className="relative z-10 h-full object-contain drop-shadow-[0_25px_60px_rgba(37,99,235,0.35)]"
-//     />
-//   </div>
-// );
-
 const TopStat = ({
   icon,
   value,
@@ -375,23 +377,21 @@ const CertificateCard = ({
     date: string;
     icon: string;
     link: string;
-    isImage?:boolean;
+    isImage?: boolean;
   };
 }) => (
   <div className="rounded-2xl border border-white/10 bg-white/5 p-5 transition hover:-translate-y-1 hover:border-orange-500/40">
-<div className="mb-5 grid h-16 w-16 place-items-center rounded-xl bg-white/5">
-  {cert.isImage ? (
-    <img
-      src={cert.icon}
-      alt={cert.title}
-      className="h-12 w-12 object-contain"
-    />
-  ) : (
-    <span className="text-2xl font-black text-orange-400">
-      {cert.icon}
-    </span>
-  )}
-</div>
+    <div className="mb-5 grid h-16 w-16 place-items-center rounded-xl bg-white/5">
+      {cert.isImage ? (
+        <img
+          src={cert.icon}
+          alt={cert.title}
+          className="h-12 w-12 object-contain"
+        />
+      ) : (
+        <span className="text-2xl font-black text-orange-400">{cert.icon}</span>
+      )}
+    </div>
 
     <h3 className="font-black leading-6">
       {cert.title}
@@ -423,7 +423,10 @@ const SkillGroup = ({
 }: {
   icon: React.ReactNode;
   title: string;
-  skills: [string, number][];
+  skills: {
+    name: string;
+    icon: React.ReactNode;
+  }[];
 }) => (
   <div className="rounded-2xl border border-white/10 bg-white/5 p-5">
     <div className="mb-5 flex items-center gap-3">
@@ -431,57 +434,24 @@ const SkillGroup = ({
       <h3 className="font-black">{title}</h3>
     </div>
 
-    <div className="space-y-4">
-      {skills.map(([skill, level]) => (
-        <div key={skill} className="flex items-center justify-between gap-4">
-          <span className="text-sm text-slate-200">{skill}</span>
-          <Dots level={level} />
+    <div className="grid grid-cols-1 gap-3">
+      {skills.map((skill) => (
+        <div
+          key={skill.name}
+          className="flex items-center gap-3 rounded-xl border border-white/10 bg-slate-950/30 p-3 transition hover:border-orange-500/40 hover:bg-white/10"
+        >
+          <div className="grid h-9 w-9 shrink-0 place-items-center rounded-lg bg-white/5 text-xl text-orange-400">
+            {skill.icon}
+          </div>
+
+          <span className="text-sm font-semibold text-slate-200">
+            {skill.name}
+          </span>
         </div>
       ))}
     </div>
   </div>
 );
-
-const Dots = ({ level }: { level: number }) => (
-  <div className="flex gap-1">
-    {[1, 2, 3, 4, 5, 6].map((dot) => (
-      <span
-        key={dot}
-        className={`h-2 w-2 rounded-full ${
-          dot <= level
-            ? level >= 5
-              ? "bg-orange-400"
-              : level >= 4
-              ? "bg-blue-400"
-              : "bg-green-400"
-            : "bg-slate-600"
-        }`}
-      />
-    ))}
-  </div>
-);
-
-const Legend = ({
-  color,
-  label,
-}: {
-  color: "orange" | "blue" | "green" | "gray";
-  label: string;
-}) => {
-  const colors = {
-    orange: "bg-orange-400",
-    blue: "bg-blue-400",
-    green: "bg-green-400",
-    gray: "bg-slate-400",
-  };
-
-  return (
-    <div className="flex items-center gap-2">
-      <span className={`h-3 w-3 rounded-full ${colors[color]}`} />
-      <span>{label}</span>
-    </div>
-  );
-};
 
 const QuoteBox = ({
   icon,

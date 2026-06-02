@@ -5,7 +5,7 @@ import { useGoogleAnalytics } from './hooks/useGoogleAnalytics';
 import Navbar from './components/Navbar';
 import Hero from './components/Hero';
 import About from './components/About';
-import Education from './components/Education';
+// import Education from './components/Education';
 import Experience from './components/Experience';
 import Services from './components/Services';
 import Certificates from './components/Certificates';
@@ -60,14 +60,14 @@ function App() {
         <Hero />
         <About />
 
-        <div className="grid grid-cols-1 xl:grid-cols-2 gap-8 px-4 xl:px-0">
-          <div className="animate-fade-in-left">
-            <Education />
-          </div>
-          <div className="animate-fade-in-right">
+        {/* <div className="grid grid-cols-1 xl:grid-cols-2 gap-8 px-4 xl:px-0"> */}
+          {/* <div className="animate-fade-in-left"> */}
+            {/* <Education /> */}
+          {/* </div> */}
+          {/* <div className="animate-fade-in-right"> */}
             <Experience />
-          </div>
-        </div>
+          {/* </div> */}
+        {/* </div> */}
 
         <Services />
 

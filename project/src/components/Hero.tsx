@@ -15,7 +15,10 @@ import {
   Moon,
   Menu,
   X,
+  MessageCircle,
+  Mic
 } from "lucide-react";
+import { FaWhatsapp } from "react-icons/fa";
 import { personalInfo } from "../data/portfolio";
 import { useTheme } from "../contexts/ThemeContext";
 
@@ -205,7 +208,7 @@ const Hero: React.FC = () => {
                     Icon: Linkedin,
                     label: "LinkedIn",
                   },
-                  { href: "#", Icon: Twitter, label: "Twitter" },
+                  { href: "https://wa.me/94702652676", Icon: FaWhatsapp , label: "Whatsapp" },
                   {
                     href: `mailto:${personalInfo.email}`,
                     Icon: Mail,
@@ -235,7 +238,7 @@ const Hero: React.FC = () => {
             {/* Orbit circle */}
             <div className="absolute left-1/2 top-20 h-[300px] w-[300px] -translate-x-1/2 rounded-full border border-blue-500/20 sm:top-24 sm:h-[420px] sm:w-[420px] lg:top-28 lg:h-[540px] lg:w-[540px]" />
 
-            {/* Dotted lines */}
+            {/* Dotted lines
             <svg className="absolute inset-0 z-10 h-full w-full">
               <path
                 d="M80 160 C180 150, 250 185, 330 215"
@@ -261,7 +264,7 @@ const Hero: React.FC = () => {
                 strokeDasharray="8 8"
                 fill="none"
               />
-            </svg>
+            </svg> */}
 
             <img
               src="/assets/naami-removebg01.png"
@@ -272,12 +275,20 @@ const Hero: React.FC = () => {
             {/* Floor glow */}
             <div className="absolute bottom-3 left-1/2 z-10 h-8 w-56 -translate-x-1/2 rounded-full bg-sky-400/40 blur-2xl sm:w-72 lg:w-96" />
 
-            <FloatingBadge
-              className="left-[2%] top-[18%] sm:left-[5%] lg:left-[-4%]"
-              icon={<span className="text-sm font-bold text-orange-400">aws</span>}
-              title="AWS"
-              subtitle="Community Member"
-            />
+<FloatingBadge
+  className="left-[2%] top-[18%] sm:left-[5%] lg:left-[-4%]"
+  icon={
+    <div className="flex h-8 w-8 items-center justify-center">
+      <img
+        src="/assets/devops_icons/AWS.png"
+        alt="AWS"
+        className="h-7 w-7 object-contain"
+      />
+    </div>
+  }
+  title="AWS"
+  subtitle="Community Member"
+/>
 
             <FloatingBadge
               className="right-[2%] top-[24%] sm:right-[5%] lg:right-[-6%]"
@@ -288,7 +299,7 @@ const Hero: React.FC = () => {
 
             <FloatingBadge
               className="bottom-[26%] left-[2%] sm:left-[5%] lg:left-[-5%]"
-              icon={<Volume2 className="h-5 w-5 text-orange-400" />}
+              icon={<Mic className="h-5 w-5 text-orange-400" />}
               title="Community"
               subtitle="Speaker"
             />
@@ -310,7 +321,7 @@ const Hero: React.FC = () => {
                 label="Projects Completed"
               />
               <Divider />
-              <Stat icon={<Cloud />} value="3+" label="Years Experience" />
+              <Stat icon={<Cloud />} value="2+" label="Years Experience" />
               <Divider />
               <Stat icon={<Users />} value="1K+" label="Community Impact" />
             </div>

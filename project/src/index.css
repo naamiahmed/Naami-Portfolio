@@ -1,3 +1,5 @@
+@import url('https://fonts.googleapis.com/css2?family=Permanent+Marker&display=swap');
+
 @tailwind base;
 @tailwind components;
 @tailwind utilities;
@@ -109,6 +111,14 @@
 .bg-blue-gradient {
   @apply bg-gradient-to-br from-sky-50 via-blue-50 to-purple-50 dark:from-slate-900 dark:via-sky-900 dark:to-slate-900 transition-colors duration-300;
   background-attachment: fixed;
+  position: relative;
+  overflow: hidden;
+}
+
+.bg-hero-dark {
+  background: radial-gradient(circle at 20% 10%, rgba(56, 189, 248, 0.16), transparent 22%),
+    radial-gradient(circle at 80% 20%, rgba(249, 115, 22, 0.14), transparent 24%),
+    linear-gradient(180deg, #020916 0%, #08132f 50%, #020611 100%);
   position: relative;
   overflow: hidden;
 }

@@ -59,13 +59,36 @@ function App() {
         <Navbar />
         <Hero />
         <About />
-        <Education />
-        <Experience />
+
+        <div className="grid grid-cols-1 xl:grid-cols-2 gap-8 px-4 xl:px-0">
+          <div className="animate-fade-in-left">
+            <Education />
+          </div>
+          <div className="animate-fade-in-right">
+            <Experience />
+          </div>
+        </div>
+
         <Services />
-        <Certificates />
-        <Skills activeToggle={activeToggle} onToggle={handleToggle} />
-        <Projects activeToggle={activeToggle} onToggle={handleToggle} />
-        <Blog activeToggle={activeToggle} onToggle={handleToggle} />
+
+        <div className="grid grid-cols-1 xl:grid-cols-2 gap-8 px-4 xl:px-0">
+          <div className="animate-fade-in-left">
+            <Certificates />
+          </div>
+          <div className="animate-fade-in-right">
+            <Skills activeToggle={activeToggle} onToggle={handleToggle} />
+          </div>
+        </div>
+
+        <div className="grid grid-cols-1 xl:grid-cols-2 gap-8 px-4 xl:px-0">
+          <div className="animate-fade-in-left">
+            <Projects activeToggle={activeToggle} onToggle={handleToggle} />
+          </div>
+          <div className="animate-fade-in-right">
+            <Blog activeToggle={activeToggle} onToggle={handleToggle} />
+          </div>
+        </div>
+
         <Volunteering />
         <Contact />
       </div>

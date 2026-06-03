@@ -4,8 +4,8 @@ import {
   Code2,
   ExternalLink,
   Github,
-  Layers,
-  Rocket,
+  // Layers,
+  // Rocket,
   Server,
   Sparkles,
   Star,
@@ -62,7 +62,7 @@ const Projects: React.FC<ProjectsProps> = ({ activeToggle, onToggle }) => {
               impact.
             </p>
 
-            <div className="mt-7 grid grid-cols-1 gap-4 sm:grid-cols-3">
+            {/* <div className="mt-7 grid grid-cols-1 gap-4 sm:grid-cols-3">
               <MiniCard
                 icon={<Layers />}
                 title="Full Stack"
@@ -78,7 +78,7 @@ const Projects: React.FC<ProjectsProps> = ({ activeToggle, onToggle }) => {
                 title="Real Impact"
                 desc="Projects solving real problems"
               />
-            </div>
+            </div> */}
           </div>
 {/* 
           <div className="relative flex h-72 justify-center overflow-hidden sm:h-80 lg:h-96">
@@ -202,26 +202,26 @@ const Projects: React.FC<ProjectsProps> = ({ activeToggle, onToggle }) => {
   );
 };
 
-const MiniCard = ({
-  icon,
-  title,
-  desc,
-}: {
-  icon: React.ReactNode;
-  title: string;
-  desc: string;
-}) => (
-  <div className="flex items-start gap-3 rounded-2xl border border-white/10 bg-white/5 p-4">
-    <div className="grid h-11 w-11 shrink-0 place-items-center rounded-xl border border-blue-500/30 bg-blue-500/10 text-blue-400">
-      {icon}
-    </div>
+// const MiniCard = ({
+//   icon,
+//   title,
+//   desc,
+// }: {
+//   icon: React.ReactNode;
+//   title: string;
+//   desc: string;
+// }) => (
+//   <div className="flex items-start gap-3 rounded-2xl border border-white/10 bg-white/5 p-4">
+//     <div className="grid h-11 w-11 shrink-0 place-items-center rounded-xl border border-blue-500/30 bg-blue-500/10 text-blue-400">
+//       {icon}
+//     </div>
 
-    <div>
-      <h3 className="font-black text-white">{title}</h3>
-      <p className="mt-1 text-sm leading-5 text-slate-400">{desc}</p>
-    </div>
-  </div>
-);
+//     <div>
+//       <h3 className="font-black text-white">{title}</h3>
+//       <p className="mt-1 text-sm leading-5 text-slate-400">{desc}</p>
+//     </div>
+//   </div>
+// );
 
 const ProjectStat = ({
   icon,

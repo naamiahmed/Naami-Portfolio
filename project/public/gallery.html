@@ -12,11 +12,7 @@
     />
 
     <style>
-      * {
-        margin: 0;
-        padding: 0;
-        box-sizing: border-box;
-      }
+      * { margin: 0; padding: 0; box-sizing: border-box; }
 
       body {
         font-family: "Inter", system-ui, sans-serif;
@@ -25,10 +21,7 @@
         overflow-x: hidden;
       }
 
-      a {
-        color: inherit;
-        text-decoration: none;
-      }
+      a { color: inherit; text-decoration: none; }
 
       .page {
         min-height: 100vh;
@@ -52,15 +45,8 @@
         z-index: 0;
       }
 
-      .page::before {
-        left: -15px;
-        top: 78px;
-      }
-
-      .page::after {
-        right: -20px;
-        top: 78px;
-      }
+      .page::before { left: -15px; top: 78px; }
+      .page::after { right: -20px; top: 78px; }
 
       .navbar {
         height: 70px;
@@ -82,10 +68,7 @@
         justify-content: space-between;
       }
 
-      .logo {
-        font-size: 22px;
-        font-weight: 900;
-      }
+      .logo { font-size: 22px; font-weight: 900; }
 
       .nav-links {
         display: flex;
@@ -93,12 +76,11 @@
         font-size: 14px;
         font-weight: 700;
         color: #e5e7eb;
+        align-items: center;
       }
 
       .nav-links a:hover,
-      .nav-links .active {
-        color: #ff7a18;
-      }
+      .nav-links .active { color: #ff7a18; }
 
       .nav-links .active {
         position: relative;
@@ -112,6 +94,97 @@
         width: 100%;
         height: 2px;
         background: #ff7a18;
+      }
+
+      .dropdown {
+        position: relative;
+        display: flex;
+        align-items: center;
+      }
+
+      .dropdown-btn {
+        display: flex;
+        align-items: center;
+        gap: 6px;
+        background: none;
+        border: none;
+        color: #e5e7eb;
+        font-size: 14px;
+        font-weight: 700;
+        cursor: pointer;
+        transition: 0.2s ease;
+      }
+
+      .dropdown-btn:hover {
+        color: #ff7a18;
+      }
+
+      .dropdown-chevron {
+        display: inline-block;
+        transition: transform 0.2s ease;
+        font-size: 12px;
+      }
+
+      .dropdown-chevron.active {
+        transform: rotate(180deg);
+      }
+
+      .dropdown-menu {
+        position: absolute;
+        top: 100%;
+        right: 0;
+        margin-top: 8px;
+        min-width: 200px;
+        background: rgba(15, 23, 42, 0.96);
+        border: 1px solid rgba(255, 255, 255, 0.12);
+        border-radius: 12px;
+        box-shadow: 0 10px 30px rgba(0, 0, 0, 0.3);
+        backdrop-filter: blur(16px);
+        display: none;
+        flex-direction: column;
+        z-index: 100;
+      }
+
+      .dropdown-menu.active {
+        display: flex;
+      }
+
+      .dropdown-item {
+        padding: 12px 16px;
+        color: #e5e7eb;
+        text-decoration: none;
+        font-size: 14px;
+        font-weight: 600;
+        cursor: pointer;
+        transition: 0.2s ease;
+        border: none;
+        background: none;
+        width: 100%;
+        text-align: left;
+      }
+
+      .dropdown-item:hover {
+        color: #ff7a18;
+        background: rgba(255, 122, 24, 0.1);
+      }
+
+      .dropdown-item:first-child {
+        border-radius: 12px 12px 0 0;
+      }
+
+      .dropdown-item:last-child {
+        border-radius: 0 0 12px 12px;
+      }
+
+      .dropdown-overlay {
+        position: fixed;
+        inset: 0;
+        z-index: 50;
+        display: none;
+      }
+
+      .dropdown-overlay.active {
+        display: block;
       }
 
       .theme-btn {
@@ -152,9 +225,7 @@
         font-weight: 800;
       }
 
-      .badge span {
-        color: #ff7a18;
-      }
+      .badge span { color: #ff7a18; }
 
       .title {
         margin-top: 22px;
@@ -322,9 +393,7 @@
         margin-bottom: 6px;
       }
 
-      .cta p {
-        color: #d1d5db;
-      }
+      .cta p { color: #d1d5db; }
 
       .cta-btn {
         padding: 15px 28px;
@@ -347,9 +416,7 @@
         padding: 24px;
       }
 
-      .modal.active {
-        display: flex;
-      }
+      .modal.active { display: flex; }
 
       .modal-content {
         width: min(1100px, 100%);
@@ -369,9 +436,7 @@
         gap: 16px;
       }
 
-      .modal-header h2 {
-        font-size: 26px;
-      }
+      .modal-header h2 { font-size: 26px; }
 
       .modal-close {
         width: 42px;
@@ -396,12 +461,71 @@
         background-size: cover;
         background-position: center;
         border: 1px solid rgba(255, 255, 255, 0.12);
+        cursor: pointer;
+        transition: 0.25s ease;
+      }
+
+      .modal-photo:hover {
+        transform: scale(1.05);
+        border-color: rgba(255, 122, 24, 0.5);
+      }
+
+      .image-viewer {
+        position: fixed;
+        inset: 0;
+        z-index: 120;
+        background: rgba(2, 6, 23, 0.96);
+        backdrop-filter: blur(16px);
+        display: none;
+        align-items: center;
+        justify-content: center;
+        flex-direction: column;
+        padding: 30px;
+      }
+
+      .image-viewer.active {
+        display: flex;
+      }
+
+      .image-viewer img {
+        max-width: 95%;
+        max-height: 85vh;
+        border-radius: 16px;
+        object-fit: contain;
+      }
+
+      .viewer-header {
+        position: absolute;
+        top: 20px;
+        left: 20px;
+        display: flex;
+        align-items: center;
+        gap: 12px;
+      }
+
+      .viewer-back {
+        padding: 12px 18px;
+        border-radius: 12px;
+        border: 1px solid rgba(255, 255, 255, 0.15);
+        background: rgba(255, 255, 255, 0.08);
+        color: white;
+        cursor: pointer;
+        font-weight: 700;
+        font-size: 14px;
+        transition: 0.2s ease;
+      }
+
+      .viewer-back:hover {
+        background: rgba(255, 255, 255, 0.12);
+      }
+
+      .viewer-counter {
+        color: rgba(255, 255, 255, 0.6);
+        font-size: 14px;
       }
 
       @media (max-width: 1050px) {
-        .nav-links {
-          display: none;
-        }
+        .nav-links { display: none; }
 
         .hero {
           grid-template-columns: 1fr;
@@ -414,39 +538,23 @@
           margin-right: auto;
         }
 
-        .stats {
-          grid-template-columns: repeat(2, 1fr);
-        }
+        .stats { grid-template-columns: repeat(2, 1fr); }
 
-        .gallery-grid {
-          grid-template-columns: repeat(2, 1fr);
-        }
+        .gallery-grid { grid-template-columns: repeat(2, 1fr); }
 
-        .filters {
-          justify-content: center;
-        }
+        .filters { justify-content: center; }
       }
 
       @media (max-width: 640px) {
-        .container {
-          padding: 30px 16px;
-        }
+        .container { padding: 30px 16px; }
 
-        .logo {
-          font-size: 18px;
-        }
+        .logo { font-size: 18px; }
 
-        .title {
-          font-size: 40px;
-        }
+        .title { font-size: 40px; }
 
-        .marker {
-          font-size: 42px;
-        }
+        .marker { font-size: 42px; }
 
-        .description {
-          font-size: 15px;
-        }
+        .description { font-size: 15px; }
 
         .stats {
           grid-template-columns: 1fr 1fr;
@@ -458,22 +566,16 @@
           padding: 14px;
         }
 
-        .stat h2 {
-          font-size: 24px;
-        }
+        .stat h2 { font-size: 24px; }
 
         .filter {
           width: 100%;
           text-align: center;
         }
 
-        .gallery-grid {
-          grid-template-columns: 1fr;
-        }
+        .gallery-grid { grid-template-columns: 1fr; }
 
-        .photo {
-          height: 210px;
-        }
+        .photo { height: 210px; }
 
         .cta {
           flex-direction: column;
@@ -481,34 +583,22 @@
           padding: 22px;
         }
 
-        .cta-left {
-          flex-direction: column;
-        }
+        .cta-left { flex-direction: column; }
 
         .cta-btn {
           width: 100%;
           text-align: center;
         }
 
-        .modal {
-          padding: 12px;
-        }
+        .modal { padding: 12px; }
 
-        .modal-content {
-          padding: 16px;
-        }
+        .modal-content { padding: 16px; }
 
-        .modal-header h2 {
-          font-size: 20px;
-        }
+        .modal-header h2 { font-size: 20px; }
 
-        .modal-grid {
-          grid-template-columns: 1fr;
-        }
+        .modal-grid { grid-template-columns: 1fr; }
 
-        .modal-photo {
-          height: 240px;
-        }
+        .modal-photo { height: 240px; }
       }
     </style>
   </head>
@@ -524,8 +614,24 @@
             <a href="/buy-me-a-coffee.html">Buy me a Coffee</a>
             <a href="/collaboration.html">Collaboration</a>
             <a href="/contact.html">Contact</a>
-            <a href="#">More⌄</a>
+            <div class="dropdown">
+              <!-- <button class="dropdown-btn" id="moreBtn">
+                More
+                <span class="dropdown-chevron" id="chevron">⌄</span> -->
+              </button>
+              <!-- <div class="dropdown-menu" id="dropdownMenu">
+                <a href="/" class="dropdown-item">Home</a>
+                <a href="/#education" class="dropdown-item">Education</a>
+                <a href="/#experience" class="dropdown-item">Experience</a>
+                <a href="/#certificates" class="dropdown-item">Certificates</a>
+                <a href="/#skills" class="dropdown-item">Skills</a>
+                <a href="/#projects" class="dropdown-item">Projects</a>
+                <a href="/#blog" class="dropdown-item">Blogs</a>
+                <a href="/#volunteering" class="dropdown-item">Volunteering</a>
+              </div> -->
+            </div>
           </div>
+          <div class="dropdown-overlay" id="dropdownOverlay"></div>
 
           <button class="theme-btn">☼</button>
         </div>
@@ -561,7 +667,7 @@
             </div>
 
             <div class="stat">
-              <div class="stat-icon">👥</div>
+              <div class="stat-icon">🤝</div>
               <h2>5000+</h2>
               <p>Connections Made</p>
             </div>
@@ -579,75 +685,67 @@
         <div class="filters">
           <button class="filter active" data-filter="all">All Events</button>
           <button class="filter" data-filter="aws-community-day">👥 AWS Community Day</button>
-          <button class="filter" data-filter="aws-meetups">👥 AWS Meetups</button>
+          <button class="filter" data-filter="aws-meetup">👥 AWS Meetups</button>
           <button class="filter" data-filter="aws-student-community-day">👥 AWS Student Community Day</button>
-          <button class="filter" data-filter="microsoft">👥 Microsoft Student Ambassadors</button>
+          <button class="filter" data-filter="gdg">👥 GDG Events</button>
           <button class="filter" data-filter="kcd">👥 KCD</button>
           <button class="filter" data-filter="other">••• Other Tech Events</button>
         </div>
 
         <div class="gallery-grid">
-          <article class="photo-card" data-category="aws-community-day" data-album="awsCommunityDay">
-            <div class="photo" style="background-image: url('/assets/gallery/aws-community-day-2024.jpg')"></div>
+          <article class="photo-card" data-category="aws-community-day" data-album="awsCommunityDay2025">
+            <div class="photo" style="background-image: url('/assets/events/aws-cd/2025/1.jpg')"></div>
             <div class="photo-card-body">
-              <h3>AWS Community Day Sri Lanka</h3>
-              <p class="count">▧ 24 Photos</p>
+              <h3>AWS Community Day 2025</h3>
+              <p class="count">▧ View Album</p>
             </div>
           </article>
 
-          <article class="photo-card" data-category="aws-meetups" data-album="awsMeetups">
-            <div class="photo" style="background-image: url('/assets/gallery/aws-cloud-club-meetup.jpg')"></div>
+          <article class="photo-card" data-category="aws-community-day" data-album="awsCommunityDay2024">
+            <div class="photo" style="background-image: url('/assets/events/aws-cd/2024/1.jpg')"></div>
             <div class="photo-card-body">
-              <h3>AWS Cloud Club Meetup</h3>
-              <p class="count">▧ 18 Photos</p>
+              <h3>AWS Community Day 2024</h3>
+              <p class="count">▧ View Album</p>
+            </div>
+          </article>
+
+          <article class="photo-card" data-category="aws-meetup" data-album="awsMeetups">
+            <div class="photo" style="background-image: url('/assets/events/aws-meetup/1.jpg')"></div>
+            <div class="photo-card-body">
+              <h3>AWS Meetups</h3>
+              <p class="count">▧ View Album</p>
             </div>
           </article>
 
           <article class="photo-card" data-category="aws-student-community-day" data-album="awsStudentCommunityDay">
-            <div class="photo" style="background-image: url('/assets/gallery/aws-student-community-day.jpg')"></div>
+            <div class="photo" style="background-image: url('/assets/events/aws-scd/1.jpg')"></div>
             <div class="photo-card-body">
               <h3>AWS Student Community Day</h3>
-              <p class="count">▧ 32 Photos</p>
+              <p class="count">▧ View Album</p>
             </div>
           </article>
 
-          <article class="photo-card" data-category="aws-meetups" data-album="awsUserGroupMeetup">
-            <div class="photo" style="background-image: url('/assets/gallery/aws-user-group-meetup.jpg')"></div>
+          <article class="photo-card" data-category="gdg" data-album="gdg">
+            <div class="photo" style="background-image: url('/assets/events/gdg/1.jpg')"></div>
             <div class="photo-card-body">
-              <h3>AWS User Group Meetup</h3>
-              <p class="count">▧ 16 Photos</p>
-            </div>
-          </article>
-
-          <article class="photo-card" data-category="microsoft" data-album="microsoftMeetup">
-            <div class="photo" style="background-image: url('/assets/gallery/microsoft-student-ambassador.jpg')"></div>
-            <div class="photo-card-body">
-              <h3>Microsoft Student Ambassador Meetup</h3>
-              <p class="count">▧ 20 Photos</p>
+              <h3>GDG Events</h3>
+              <p class="count">▧ View Album</p>
             </div>
           </article>
 
           <article class="photo-card" data-category="kcd" data-album="kcd">
-            <div class="photo" style="background-image: url('/assets/gallery/kcd.jpg')"></div>
+            <div class="photo" style="background-image: url('/assets/events/kcd/1.jpg')"></div>
             <div class="photo-card-body">
-              <h3>Kubernetes Community Days (KCD)</h3>
-              <p class="count">▧ 22 Photos</p>
-            </div>
-          </article>
-
-          <article class="photo-card" data-category="other" data-album="devopsCloudMeetup">
-            <div class="photo" style="background-image: url('/assets/gallery/devops-cloud-meetup.jpg')"></div>
-            <div class="photo-card-body">
-              <h3>DevOps & Cloud Meetup</h3>
-              <p class="count">▧ 15 Photos</p>
+              <h3>Kubernetes Community Days</h3>
+              <p class="count">▧ View Album</p>
             </div>
           </article>
 
           <article class="photo-card" data-category="other" data-album="otherTechEvents">
-            <div class="photo" style="background-image: url('/assets/gallery/other-tech-events.jpg')"></div>
+            <div class="photo" style="background-image: url('/assets/events/other/1.jpg')"></div>
             <div class="photo-card-body">
               <h3>Other Tech Events</h3>
-              <p class="count">▧ 28 Photos</p>
+              <p class="count">▧ View Album</p>
             </div>
           </article>
         </div>
@@ -663,7 +761,7 @@
             </div>
           </div>
 
-          <a href="/contact.html" class="cta-btn">See Upcoming Events →</a>
+          <a href="https://wa.me/94702652676" class="cta-btn">See Upcoming Events →</a>
         </div>
 
         <div class="modal" id="galleryModal">
@@ -676,86 +774,61 @@
             <div class="modal-grid" id="modalGrid"></div>
           </div>
         </div>
+
+        <div class="image-viewer" id="imageViewer">
+          <div class="viewer-header">
+            <button class="viewer-back" id="viewerBack">← Back to Album</button>
+            <span class="viewer-counter">
+              <span id="currentImageIndex">1</span> / <span id="totalImages">1</span>
+            </span>
+          </div>
+          <img id="viewerImage" src="" alt="Full screen image" />
+        </div>
       </section>
     </main>
 
     <script>
+      function generatePhotos(folder, count) {
+        return Array.from(
+          { length: count },
+          (_, i) => `/assets/events/${folder}/${i + 1}.jpg`
+        );
+      }
+
       const albums = {
-        awsCommunityDay: {
-          title: "AWS Community Day Sri Lanka",
-          photos: [
-            "/assets/gallery/aws-community-day-2024.jpg",
-            "/assets/gallery/aws-community-day-2024-2.jpg",
-            "/assets/gallery/aws-community-day-2024-3.jpg",
-            "/assets/gallery/aws-community-day-2024-4.jpg",
-          ],
+        awsCommunityDay2025: {
+          title: "AWS Community Day 2025",
+          photos: generatePhotos("aws-cd/2025", 10),
+        },
+
+        awsCommunityDay2024: {
+          title: "AWS Community Day 2024",
+          photos: generatePhotos("aws-cd/2024", 10),
         },
 
         awsMeetups: {
-          title: "AWS Cloud Club Meetup",
-          photos: [
-            "/assets/gallery/aws-cloud-club-meetup.jpg",
-            "/assets/gallery/aws-meetup-2.jpg",
-            "/assets/gallery/aws-meetup-3.jpg",
-            "/assets/gallery/aws-meetup-4.jpg",
-          ],
+          title: "AWS Meetups",
+          photos: generatePhotos("aws-meetup", 10),
         },
 
         awsStudentCommunityDay: {
           title: "AWS Student Community Day",
-          photos: [
-            "/assets/gallery/aws-student-community-day.jpg",
-            "/assets/gallery/aws-student-community-day-2.jpg",
-            "/assets/gallery/aws-student-community-day-3.jpg",
-            "/assets/gallery/aws-student-community-day-4.jpg",
-          ],
+          photos: generatePhotos("aws-scd", 10),
         },
 
-        awsUserGroupMeetup: {
-          title: "AWS User Group Meetup",
-          photos: [
-            "/assets/gallery/aws-user-group-meetup.jpg",
-            "/assets/gallery/aws-user-group-meetup-2.jpg",
-            "/assets/gallery/aws-user-group-meetup-3.jpg",
-          ],
-        },
-
-        microsoftMeetup: {
-          title: "Microsoft Student Ambassador Meetup",
-          photos: [
-            "/assets/gallery/microsoft-student-ambassador.jpg",
-            "/assets/gallery/microsoft-student-ambassador-2.jpg",
-            "/assets/gallery/microsoft-student-ambassador-3.jpg",
-          ],
+        gdg: {
+          title: "Google Developer Groups Events",
+          photos: generatePhotos("gdg", 10),
         },
 
         kcd: {
           title: "Kubernetes Community Days",
-          photos: [
-            "/assets/gallery/kcd.jpg",
-            "/assets/gallery/kcd-2.jpg",
-            "/assets/gallery/kcd-3.jpg",
-            "/assets/gallery/kcd-4.jpg",
-          ],
-        },
-
-        devopsCloudMeetup: {
-          title: "DevOps & Cloud Meetup",
-          photos: [
-            "/assets/gallery/devops-cloud-meetup.jpg",
-            "/assets/gallery/devops-cloud-meetup-2.jpg",
-            "/assets/gallery/devops-cloud-meetup-3.jpg",
-          ],
+          photos: generatePhotos("kcd", 10),
         },
 
         otherTechEvents: {
           title: "Other Tech Events",
-          photos: [
-            "/assets/gallery/other-tech-events.jpg",
-            "/assets/gallery/other-tech-events-2.jpg",
-            "/assets/gallery/other-tech-events-3.jpg",
-            "/assets/gallery/other-tech-events-4.jpg",
-          ],
+          photos: generatePhotos("other", 10),
         },
       };
 
@@ -776,11 +849,8 @@
           cards.forEach((card) => {
             const category = card.dataset.category;
 
-            if (filter === "all" || category === filter) {
-              card.style.display = "block";
-            } else {
-              card.style.display = "none";
-            }
+            card.style.display =
+              filter === "all" || category === filter ? "block" : "none";
           });
         });
       });
@@ -793,12 +863,17 @@
           if (!album) return;
 
           modalTitle.textContent = album.title;
-          modalGrid.innerHTML = album.photos
-            .map(
-              (photo) =>
-                `<div class="modal-photo" style="background-image: url('${photo}')"></div>`
-            )
-            .join("");
+
+modalGrid.innerHTML = album.photos
+  .map(
+    (photo) =>
+      `<div class="modal-photo"
+          style="background-image:url('${photo}')"
+          data-image="${photo}">
+      </div>`
+  )
+  .join("");
+        updateImageViewerEvents();
 
           modal.classList.add("active");
         });
@@ -817,7 +892,76 @@
       document.addEventListener("keydown", (e) => {
         if (e.key === "Escape") {
           modal.classList.remove("active");
+          imageViewer.classList.remove("active");
         }
+      });
+
+      // Image Viewer
+      const imageViewer = document.getElementById("imageViewer");
+      const viewerImage = document.getElementById("viewerImage");
+      const viewerBack = document.getElementById("viewerBack");
+      const currentImageIndex = document.getElementById("currentImageIndex");
+      const totalImages = document.getElementById("totalImages");
+      let allPhotos = [];
+      let currentImageNum = 1;
+
+      function updateImageViewerEvents() {
+        const photoElements = document.querySelectorAll(".modal-photo");
+        allPhotos = Array.from(photoElements).map(el => el.dataset.image);
+        totalImages.textContent = allPhotos.length;
+
+        photoElements.forEach((photo, index) => {
+          photo.addEventListener("click", () => {
+            viewerImage.src = photo.dataset.image;
+            currentImageNum = index + 1;
+            currentImageIndex.textContent = currentImageNum;
+            imageViewer.classList.add("active");
+          });
+        });
+      }
+
+      viewerBack.addEventListener("click", () => {
+        imageViewer.classList.remove("active");
+      });
+
+      // Keyboard navigation
+      document.addEventListener("keydown", (e) => {
+        if (!imageViewer.classList.contains("active")) return;
+        
+        if (e.key === "ArrowLeft") {
+          currentImageNum = currentImageNum > 1 ? currentImageNum - 1 : allPhotos.length;
+        } else if (e.key === "ArrowRight") {
+          currentImageNum = currentImageNum < allPhotos.length ? currentImageNum + 1 : 1;
+        }
+        
+        viewerImage.src = allPhotos[currentImageNum - 1];
+        currentImageIndex.textContent = currentImageNum;
+      });
+
+      // More Dropdown
+      const moreBtn = document.getElementById("moreBtn");
+      const dropdownMenu = document.getElementById("dropdownMenu");
+      const chevron = document.getElementById("chevron");
+      const dropdownOverlay = document.getElementById("dropdownOverlay");
+
+      moreBtn.addEventListener("click", () => {
+        dropdownMenu.classList.toggle("active");
+        chevron.classList.toggle("active");
+        dropdownOverlay.classList.toggle("active");
+      });
+
+      dropdownOverlay.addEventListener("click", () => {
+        dropdownMenu.classList.remove("active");
+        chevron.classList.remove("active");
+        dropdownOverlay.classList.remove("active");
+      });
+
+      document.querySelectorAll(".dropdown-item").forEach(item => {
+        item.addEventListener("click", () => {
+          dropdownMenu.classList.remove("active");
+          chevron.classList.remove("active");
+          dropdownOverlay.classList.remove("active");
+        });
       });
     </script>
   </body>

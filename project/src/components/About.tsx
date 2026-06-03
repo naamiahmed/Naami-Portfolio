@@ -1,34 +1,60 @@
-import React from 'react';
-import { personalInfo } from '../data/portfolio';
+import React from "react";
+import { User, Quote } from "lucide-react";
 
 const About: React.FC = () => {
   return (
-    <section id="about" className="py-20 relative bg-blue-gradient overflow-hidden">
-      {/* Floating Particles */}
-      {[...Array(5)].map((_, i) => (
-        <div
-          key={i}
-          className={`particle particle-${i + 1}`}
-          style={{
-            left: `${Math.random() * 100}%`,
-            animationDelay: `${i * 1.5}s`
-          }}
-        ></div>
-      ))}
-      
-      {/* Grid Pattern Overlay */}
-      <div className="absolute inset-0 grid-pattern -z-30 opacity-40 dark:opacity-20"></div>
-      
-      <div className="max-w-4xl mx-auto px-4 relative z-10">
-        <div className="text-center mb-12 animate-fade-in-up">
-          <h2 className="text-4xl font-bold text-gray-900 dark:text-white mb-4 transition-colors duration-300">About Me</h2>
-          <div className="w-20 h-1 bg-gradient-to-r from-sky-600 to-purple-600 mx-auto transition-colors duration-300"></div>
+    <section
+      id="about"
+      className="relative overflow-hidden bg-[#06111f] px-4 py-16 text-white sm:px-6 lg:px-8"
+    >
+      <div className="pointer-events-none absolute inset-0 bg-[radial-gradient(circle_at_70%_18%,rgba(37,99,235,0.2),transparent_30%),radial-gradient(circle_at_15%_45%,rgba(14,165,233,0.10),transparent_35%)]" />
+
+      <div className="relative z-10 mx-auto max-w-5xl text-center">
+        <div className="inline-flex items-center gap-2 rounded-full border border-white/10 bg-white/5 px-4 py-2 text-sm font-bold">
+          <User className="h-4 w-4 text-orange-400" />
+          About Me
         </div>
-        
-        <div className="bg-white dark:bg-gray-800 rounded-2xl p-8 lg:p-12 transition-all duration-300 animate-fade-in-up shadow-lg border border-blue-100 dark:border-sky-900">
-          <p className="text-lg text-gray-700 dark:text-gray-300 leading-relaxed text-center max-w-3xl mx-auto transition-colors duration-300">
-            {personalInfo.about}
+
+        <h2 className="mt-6 text-4xl font-black sm:text-5xl">
+          Building Solutions,
+        </h2>
+
+        <h3
+          className="mt-2 text-4xl text-orange-500 sm:text-5xl"
+          style={{ fontFamily: "'Permanent Marker', cursive" }}
+        >
+          Growing Communities.
+        </h3>
+
+        <div className="mx-auto mt-10 max-w-4xl rounded-3xl border border-white/10 bg-white/5 p-6 text-left backdrop-blur-xl sm:p-10">
+          <p className="text-base leading-8 text-slate-300 sm:text-lg">
+            I’m Naami Ahmed, a passionate technology enthusiast from Sri Lanka
+            with a strong interest in cloud computing, DevOps, full-stack
+            development, and community building.
           </p>
+
+          <p className="mt-5 text-base leading-8 text-slate-300 sm:text-lg">
+            I enjoy building practical solutions, learning modern technologies,
+            and turning ideas into useful digital experiences. My journey is
+            focused on improving my technical skills, exploring real-world
+            engineering practices, and continuously growing as a professional in
+            the tech industry.
+          </p>
+
+          <p className="mt-5 text-base leading-8 text-slate-300 sm:text-lg">
+            Beyond development, I actively engage with tech communities, share
+            knowledge, participate in events, and support others who are starting
+            their journey in software, cloud, and DevOps. I believe that learning
+            becomes more powerful when it is shared with others.
+          </p>
+
+          <div className="mt-8 flex flex-col gap-4 rounded-2xl border border-white/10 bg-slate-950/30 p-5 sm:flex-row sm:items-center">
+            <Quote className="h-8 w-8 shrink-0 text-orange-400" />
+            <p className="text-slate-200">
+              My goal is to keep learning, keep building, and create meaningful
+              impact through technology and community.
+            </p>
+          </div>
         </div>
       </div>
     </section>

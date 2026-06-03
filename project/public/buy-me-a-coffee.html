@@ -93,10 +93,15 @@
         font-weight: 700;
         font-size: 14px;
         color: #e5e7eb;
+        align-items: center;
+      }
+
+      .nav-links a:hover,
+      .nav-links .active {
+        color: #ff7a18;
       }
 
       .nav-links a.active {
-        color: #ff7a18;
         position: relative;
       }
 
@@ -108,6 +113,97 @@
         left: 0;
         bottom: -26px;
         background: #ff7a18;
+      }
+
+      .dropdown {
+        position: relative;
+        display: flex;
+        align-items: center;
+      }
+
+      .dropdown-btn {
+        display: flex;
+        align-items: center;
+        gap: 6px;
+        background: none;
+        border: none;
+        color: #e5e7eb;
+        font-size: 14px;
+        font-weight: 700;
+        cursor: pointer;
+        transition: 0.2s ease;
+      }
+
+      .dropdown-btn:hover {
+        color: #ff7a18;
+      }
+
+      .dropdown-chevron {
+        display: inline-block;
+        transition: transform 0.2s ease;
+        font-size: 12px;
+      }
+
+      .dropdown-chevron.active {
+        transform: rotate(180deg);
+      }
+
+      .dropdown-menu {
+        position: absolute;
+        top: 100%;
+        right: 0;
+        margin-top: 8px;
+        min-width: 200px;
+        background: rgba(15, 23, 42, 0.96);
+        border: 1px solid rgba(255, 255, 255, 0.12);
+        border-radius: 12px;
+        box-shadow: 0 10px 30px rgba(0, 0, 0, 0.3);
+        backdrop-filter: blur(16px);
+        display: none;
+        flex-direction: column;
+        z-index: 100;
+      }
+
+      .dropdown-menu.active {
+        display: flex;
+      }
+
+      .dropdown-item {
+        padding: 12px 16px;
+        color: #e5e7eb;
+        text-decoration: none;
+        font-size: 14px;
+        font-weight: 600;
+        cursor: pointer;
+        transition: 0.2s ease;
+        border: none;
+        background: none;
+        width: 100%;
+        text-align: left;
+      }
+
+      .dropdown-item:hover {
+        color: #ff7a18;
+        background: rgba(255, 122, 24, 0.1);
+      }
+
+      .dropdown-item:first-child {
+        border-radius: 12px 12px 0 0;
+      }
+
+      .dropdown-item:last-child {
+        border-radius: 0 0 12px 12px;
+      }
+
+      .dropdown-overlay {
+        position: fixed;
+        inset: 0;
+        z-index: 50;
+        display: none;
+      }
+
+      .dropdown-overlay.active {
+        display: block;
       }
 
       .theme-btn {
@@ -565,8 +661,24 @@
             <a href="/buy-me-a-coffee.html" class="active">Buy me a Coffee</a>
             <a href="/collaboration.html">Collaboration</a>
             <a href="/contact.html">Contact</a>
-            <a href="#">More⌄</a>
+            <div class="dropdown">
+              <!-- <button class="dropdown-btn" id="moreBtn">
+                More
+                <span class="dropdown-chevron" id="chevron">⌄</span>
+              </button> -->
+              <div class="dropdown-menu" id="dropdownMenu">
+                <!-- <a href="/" class="dropdown-item">Home</a>
+                <a href="/#education" class="dropdown-item">Education</a>
+                <a href="/#experience" class="dropdown-item">Experience</a>
+                <a href="/#certificates" class="dropdown-item">Certificates</a>
+                <a href="/#skills" class="dropdown-item">Skills</a>
+                <a href="/#projects" class="dropdown-item">Projects</a>
+                <a href="/#blog" class="dropdown-item">Blogs</a>
+                <a href="/#volunteering" class="dropdown-item">Volunteering</a> -->
+              </div>
+            </div>
           </div>
+          <div class="dropdown-overlay" id="dropdownOverlay"></div>
 
           <button class="theme-btn">☼</button>
         </div>
@@ -575,7 +687,7 @@
       <section class="container">
         <div class="grid">
           <div class="left">
-            <div class="badge">☕ Buy Me a Coffee</div>
+            <div class="badge"> Buy Me a Coffee</div>
 
             <h1 class="title">
               Fuel Ideas.
@@ -664,7 +776,7 @@
                 target="_blank"
                 rel="noopener noreferrer"
               >
-                <button class="coffee-button">☕ Buy Me a Coffee</button>
+                <button class="coffee-button"> Buy Me a Coffee</button>
               </a>
 
               <div class="divider">Or support using</div>
@@ -672,8 +784,7 @@
 <div class="payment-options">
   <a
     class="payment"
-    href="https://www.paypal.com/paypalme/YOUR_PAYPAL_USERNAME"
-    target="_blank"
+    href="coming-soon.html"
     rel="noopener noreferrer"
   >
     <img
@@ -685,8 +796,7 @@
 
   <a
     class="payment"
-    href="https://www.paypal.com/paypalme/YOUR_PAYPAL_USERNAME"
-    target="_blank"
+    href="coming-soon.html"
     rel="noopener noreferrer"
   >
     <img
@@ -722,7 +832,7 @@
                 </div>
               </div>
 
-              <a href="#" class="support-btn">Become a Supporter →</a>
+              <a href="https://wa.me/94702652676" class="support-btn">Become a Supporter →</a>
             </div>
           </div>
         </div>
@@ -733,5 +843,33 @@
         </div>
       </section>
     </main>
+
+    <script>
+      // More Dropdown
+      const moreBtn = document.getElementById("moreBtn");
+      const dropdownMenu = document.getElementById("dropdownMenu");
+      const chevron = document.getElementById("chevron");
+      const dropdownOverlay = document.getElementById("dropdownOverlay");
+
+      moreBtn.addEventListener("click", () => {
+        dropdownMenu.classList.toggle("active");
+        chevron.classList.toggle("active");
+        dropdownOverlay.classList.toggle("active");
+      });
+
+      dropdownOverlay.addEventListener("click", () => {
+        dropdownMenu.classList.remove("active");
+        chevron.classList.remove("active");
+        dropdownOverlay.classList.remove("active");
+      });
+
+      document.querySelectorAll(".dropdown-item").forEach(item => {
+        item.addEventListener("click", () => {
+          dropdownMenu.classList.remove("active");
+          chevron.classList.remove("active");
+          dropdownOverlay.classList.remove("active");
+        });
+      });
+    </script>
   </body>
 </html>

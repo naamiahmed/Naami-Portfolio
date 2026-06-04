@@ -3,13 +3,13 @@ import {
   GraduationCap,
   Briefcase,
   MapPin,
-  Code2,
-  Cloud,
-  Users,
-  Mic,
-  Rocket,
+  // Code2,
+  // Cloud,
+  // Users,
+  // Mic,
+  // Rocket,
   Quote,
-  Award,
+  // Award,
   // CheckCircle,
 } from "lucide-react";
 
@@ -161,7 +161,7 @@ const EducationExperience: React.FC = () => {
               title="Intern Software Engineer"
               company="EverestX Technology"
               desc="Working on real-world software features using React, Angular, Spring Boot, AWS, Docker, Nginx and deployment workflows."
-              status="Ongoing"
+              status="Complated"
               location="Remote"
             />
 
@@ -178,7 +178,7 @@ const EducationExperience: React.FC = () => {
               title="AWS Cloud Club Captain"
               company="AWS"
               desc="Organizing cloud learning sessions, building community, and helping students learn AWS and cloud fundamentals."
-              status="Ongoing"
+              status="Active"
               location="Sri Lanka"
             />
 
